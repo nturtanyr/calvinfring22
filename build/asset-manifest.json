@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.81bea946.css",
+    "main.js": "/static/js/main.8c772f3e.js",
+    "static/js/787.a55729a2.chunk.js": "/static/js/787.a55729a2.chunk.js",
+    "static/media/keclogo.png": "/static/media/keclogo.3710fe5779bb310a0ea2.png",
+    "index.html": "/index.html",
+    "main.81bea946.css.map": "/static/css/main.81bea946.css.map",
+    "main.8c772f3e.js.map": "/static/js/main.8c772f3e.js.map",
+    "787.a55729a2.chunk.js.map": "/static/js/787.a55729a2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.81bea946.css",
+    "static/js/main.8c772f3e.js"
+  ]
+}

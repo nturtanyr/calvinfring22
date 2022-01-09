@@ -1,0 +1,13 @@
+body {
+    background-color: rgb(243, 243, 243);
+    margin: 0px;
+    overflow-x: hidden;
+}
+
+.constituencyHeader {
+    vertical-align: middle;
+}
+
+.constituencyInfo {
+    width: 100%;
+}

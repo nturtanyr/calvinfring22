@@ -1,0 +1,39 @@
+.cmap {
+    width : 100%;
+}
+
+.red_tile { 
+    fill: hsl(12, 80%, 33%);
+ }
+
+.red_tile:hover { 
+    fill: hsl(9, 28%, 72%);
+    cursor: pointer;
+ }
+
+.blue_tile { 
+     fill: hsl(231, 52%, 47%);
+  }
+
+.blue_tile:hover { 
+     fill: hsl(227, 28%, 72%);
+     cursor: pointer;
+  }
+
+.gold_tile { 
+      fill: hsl(56, 52%, 47%);
+   }
+
+.gold_tile:hover { 
+      fill: hsl(58, 28%, 72%);
+      cursor: pointer;
+   }
+
+.pink_tile { 
+       fill: hsl(300, 52%, 47%);
+    }
+
+.pink_tile:hover { 
+       fill: hsl(299, 28%, 72%);
+       cursor: pointer;
+    }

@@ -1,0 +1,19 @@
+// 1. Import the initial variables
+
+// 2. Set your own initial variables
+// Update blue
+// Add pink and its invert
+// Add a serif family
+$family-serif: "Merriweather", "Georgia", serif;
+
+// 3. Set the derived variables
+// Use the new pink as the primary color
+// Use the existing orange as the danger color
+// Use the new serif family
+
+// 4. Setup your Custom Colors
+
+$primary: #6996b5;;
+
+
+@import "../node_modules/bulma/bulma.sass";
