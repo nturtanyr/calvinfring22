@@ -1,0 +1,23 @@
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 120px);
+    gap: 15px;
+  }
+
+.constituencyIcon {
+    position: static;
+    display: block;
+    margin-top: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 4px;
+    align-self: center;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #fff;
+    border-radius: 14px;
+    background-color: #9c9c9c;
+    text-align: center;
+    object-fit: fill;
+    justify-content: center;
+}

@@ -8,6 +8,7 @@ import {
 import Layout from './components/layout';
 import Home from './components/home';
 import Constituency from './components/constituency';
+import Assembly from './components/assembly';
 
 function App() {
   return (
@@ -15,8 +16,11 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
       </Route>
-      <Route path="constituency/:id" element={<Layout />}>
+      <Route path="/constituency/:id" element={<Layout />}>
         <Route index element={<Constituency />} />
+      </Route>
+      <Route path="/assembly/:id" element={<Layout />}>
+        <Route index element={<Assembly />} />
       </Route>
     </Routes>
   );
