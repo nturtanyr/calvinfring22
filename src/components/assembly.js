@@ -11,16 +11,28 @@ function Assembly() {
     let [gridData, setGridData] = React.useState(null);
 
     React.useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_ROOT}/constituency`)
+        axios.get(`${process.env.REACT_APP_API_ROOT}/assembly/latest/members`)
         .then(res => {
             const data = res.data.data;
             setGridData(data);
         })
-        console.log(gridData)
-    },[params]);
+
+        axios.get(`${process.env.REACT_APP_API_ROOT}/assemblyfeed/latest`)
+        .then(res => {
+            const data = res.data.data;
+            setFeedData(data);
+        })
+
+        const interval = setInterval(() => {
+            setTime(timer => timer + 1);
+        }, 3000);
+        
+        return () => clearInterval(interval);
+        
+    },[timer, params]);
 
     return (
-        <div className='columns'> 
+        <div className='columns '> 
             <div className='column is-one-third'>
                 <AssemblyFeed data={feedData}/>    
             </div>

@@ -26,9 +26,9 @@ function Constituency() {
             setdemData(data);
         })
 
-        axios.get(`${process.env.REACT_APP_API_ROOT}/election/constituency/` + params.id)
+        axios.get(`${process.env.REACT_APP_API_ROOT}/constituency/` + params.id + `/election/latest`)
         .then(res => {
-            const data = res.data.format_data;
+            const data = res.data.data;
             setchartData(data);
         })
         console.log("queried for data again")
@@ -84,7 +84,7 @@ function Constituency() {
                 <div className='tabs is-boxed is-justify-content-left'>
                     <li className="tab is-active" data-target="tabInfo" onClick={handleClick}><a><span>Info</span></a></li>
                     <li className="tab" data-target="tabDemography" onClick={handleClick}><a><span>Demography</span></a></li>
-                    <li className="tab" data-target="tabCandoidates" onClick={handleClick}><a><span>Candidates</span></a></li>
+                    <li className="tab" data-target="tabCandidates" onClick={handleClick}><a><span>Candidates</span></a></li>
                     <li className="tab" data-target="tabVotes" onClick={handleClick}><a><span>Current Election</span></a></li>
 
                 </div>

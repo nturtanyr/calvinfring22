@@ -21,3 +21,28 @@
     object-fit: fill;
     justify-content: center;
 }
+
+.feedContainer {
+    overflow-y: scroll;
+    max-height: 75vh;
+}
+
+.feedTop {
+    display : flex;
+    margin-left: 4px;
+    margin-bottom: 0.5em;
+}
+.feedAction {
+    display : flex;
+    margin-left: 36px;
+    margin-bottom: 0.5em;
+}
+.feedComment {
+    display : flex;
+    margin-left: 68px;
+    margin-bottom: 0.5em;
+}
+
+.commentRule {
+    margin: 0.25em 0;
+}
