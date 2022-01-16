@@ -37,17 +37,18 @@ class ConstituencyInfo extends React.Component {
         }
         
         return (
-            <div>
-                <div className="is-align-items-center is-flex">
+            <section className="section">
+                <div className="content is-align-items-center is-flex">
                     {image}
                     <span>
-                        <h2 class={`title ${titlesize}`}>{this.props.constituencyDetails.Name}  </h2>
+                        <h1 >{this.props.constituencyDetails.Name}  </h1>
                     </span>
                 </div>
-                <div className="content mt-2">
+                <hr/>
+                <div className="content">
                     { details }
                 </div>
-            </div>
+            </section>
         )
     }
 }

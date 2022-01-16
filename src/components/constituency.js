@@ -2,7 +2,6 @@ import React from "react";
 import axios from 'axios';
 import { useParams } from "react-router-dom"
 import { ConstituencyDemography } from "./constituencycomponents"
-import useScript from "./utility";
 import ConstituencyElectionChart from "./electionresults";
 
 function Constituency() {

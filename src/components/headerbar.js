@@ -58,6 +58,9 @@ class HeaderBar extends React.Component {
                                 <NavLink to="/assembly/latest" className="navbar-item">
                                     Parliament
                                 </NavLink>
+                                <NavLink to="/rankings" className="navbar-item">
+                                    Rankings
+                                </NavLink>
                                 <div className="navbar-item">
                                     <div className="buttons">
                                         <NavLink to="/"  className="button is-primary">
