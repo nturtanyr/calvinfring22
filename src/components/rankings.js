@@ -5,6 +5,7 @@ import styles from "./rankings.module.css"
 
 function Rankings() {
     let [rankData, setrankData] = React.useState(null);
+    let [deficitNumber, setDeficit] = React.useState(null);
     
     React.useEffect(() => {
 
@@ -12,6 +13,12 @@ function Rankings() {
         .then(res => {
             const data = res.data.data;
             setrankData(data);
+        })
+
+        axios.get(`${process.env.REACT_APP_API_ROOT}/deficit`)
+        .then(res => {
+            const data = res.data.data;
+            setDeficit(data);
         })
         
     },[]);
@@ -38,7 +45,7 @@ function Rankings() {
                 <h3>Constituency Rankings by Government Sector</h3>
             </div>
             <div className="content has-text-centered">
-                <h4>Current Deficit: A lot</h4>
+                <h4>Current Deficit: K {(deficitNumber * 1000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h4>
             </div>
             <div className="table-container">
                 <table className="table is-hoverable">
@@ -156,7 +163,7 @@ function SpendingCell(props){
     return (
         <td className={className + " " + styles.cellStyle}>
             <span>
-                K {value * 1000} {icon}
+                K {(value * 1000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} {icon}
             </span>
         </td>)
     

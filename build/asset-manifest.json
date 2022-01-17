@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.de67d57a.css",
-    "main.js": "/static/js/main.bac916ec.js",
+    "main.css": "/static/css/main.567a04e5.css",
+    "main.js": "/static/js/main.935ecb51.js",
     "static/js/787.a55729a2.chunk.js": "/static/js/787.a55729a2.chunk.js",
     "static/media/keclogo.png": "/static/media/keclogo.3710fe5779bb310a0ea2.png",
     "index.html": "/index.html",
-    "main.de67d57a.css.map": "/static/css/main.de67d57a.css.map",
-    "main.bac916ec.js.map": "/static/js/main.bac916ec.js.map",
+    "main.567a04e5.css.map": "/static/css/main.567a04e5.css.map",
+    "main.935ecb51.js.map": "/static/js/main.935ecb51.js.map",
     "787.a55729a2.chunk.js.map": "/static/js/787.a55729a2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.de67d57a.css",
-    "static/js/main.bac916ec.js"
+    "static/css/main.567a04e5.css",
+    "static/js/main.935ecb51.js"
   ]
 }

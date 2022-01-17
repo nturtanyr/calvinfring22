@@ -35,7 +35,7 @@ function Constituency() {
         {
             const interval = setInterval(() => {
                 setTime(timer => timer + 1);
-            }, 1000);
+            }, 90000);
             
             return () => clearInterval(interval);
         }
