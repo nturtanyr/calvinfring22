@@ -9,7 +9,7 @@ class TickerTape extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`${process.env.REACT_APP_API_ROOT}/newsfeed/latest`)
+        axios.get(`${process.env.REACT_APP_API_ROOT}/news/feed`)
         .then(res => {
             const news = res.data.data;
             this.setState({ news });

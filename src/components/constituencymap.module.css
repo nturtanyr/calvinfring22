@@ -3,37 +3,37 @@
 }
 
 .red_tile { 
-    fill: hsl(12, 80%, 33%);
+    fill: #ff7c98;
  }
 
 .red_tile:hover { 
-    fill: hsl(9, 28%, 72%);
+    fill: #ffacc5;
     cursor: pointer;
  }
 
 .blue_tile { 
-     fill: hsl(231, 52%, 47%);
+     fill: #98ff7c;
   }
 
 .blue_tile:hover { 
-     fill: hsl(227, 28%, 72%);
+     fill: #c5ffac;
      cursor: pointer;
   }
 
 .gold_tile { 
-      fill: hsl(56, 52%, 47%);
+      fill: #ffb07c;
    }
 
 .gold_tile:hover { 
-      fill: hsl(58, 28%, 72%);
+      fill: #ffc9ac;
       cursor: pointer;
    }
 
 .pink_tile { 
-       fill: hsl(300, 52%, 47%);
+       fill: #7cb5ff;
     }
 
 .pink_tile:hover { 
-       fill: hsl(299, 28%, 72%);
+       fill: #acdeff;
        cursor: pointer;
     }

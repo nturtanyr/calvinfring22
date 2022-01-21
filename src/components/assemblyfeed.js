@@ -1,42 +1,66 @@
 import React from "react";
+import axios from 'axios';
+import { useParams } from "react-router-dom"
 import styles from "./assembly.module.css"
 import ScrollToBottom from 'react-scroll-to-bottom';
 
-export default class AssemblyFeed extends React.Component {
-    render() {
+export default function AssemblyFeed() {
+    let params = useParams();
+    let [timer, setTime] = React.useState(null);
+    let [feedData, setFeedData] = React.useState(null);
 
-        var feed = []
-        if(this.props.data){
-            var current_policy_id = 0
-            this.props.data.forEach( (object) =>{
-                if( ! object.parent_id )
-                {
-                    current_policy_id = object.id
-                    feed.push(
-                        <AssemblyFeedTop key={`comment-${object.id}`} data={object}/>
-                    )
-                }
-                else if(object.parent_id == current_policy_id)
-                {
-                    feed.push(
-                        <AssemblyFeedAction key={`comment-${object.id}`} data={object}/>
-                    )
-                }
-                else
-                {
-                    feed.push(
-                        <AssemblyFeedComment key={`comment-${object.id}`} data={object}/>
-                    )
-                }
-            });
-                
-        }
-        return (
-            <ScrollToBottom className={styles.feedContainer}>
-                {feed}
-            </ScrollToBottom>
-        )
+    React.useEffect(() => {
+
+        axios.get(`${process.env.REACT_APP_API_ROOT}/assemblyfeed/` + params.id)
+        .then(res => {
+            const data = res.data.data;
+            setFeedData(data);
+        })
+
+        const interval = setInterval(() => {
+            setTime(timer => timer + 1);
+        }, 3000);
+        
+        return () => clearInterval(interval);
+        
+    },[timer, params]);
+
+    var feed = []
+    if(feedData){
+        var current_policy_id = 0
+        feedData.forEach( (object) =>{
+            if( ! object.parent_id )
+            {
+                current_policy_id = object.id
+                feed.push(
+                    <AssemblyFeedTop key={`comment-${object.id}`} data={object}/>
+                )
+            }
+            else if(object.parent_id == current_policy_id)
+            {
+                feed.push(
+                    <AssemblyFeedAction key={`comment-${object.id}`} data={object}/>
+                )
+            }
+            else
+            {
+                feed.push(
+                    <AssemblyFeedComment key={`comment-${object.id}`} data={object}/>
+                )
+            }
+        });
+            
     }
+    else
+    {
+        feed = <div><i>The assembly is yet to begin! The discussions will appear here.</i></div>
+    }
+    return (
+        <ScrollToBottom className={styles.feedContainer}>
+            {feed}
+        </ScrollToBottom>
+    )
+    
 }
 
 class AssemblyFeedTop extends React.Component  {

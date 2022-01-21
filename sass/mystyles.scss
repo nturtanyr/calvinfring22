@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+// Set your brand colors
+$blue: #4d8cb2;
+$blue-lighter: #73a4c3;
+
+$pink: #A64DB2;
+$pink-lighter: #B973C3;
+$orange: #B2734D;
+$orange-lighter: #C39173;
+$green: #59B24D;
+$green-lighter: #7CC373;
+$yellow: #80711f;
+$yellow-lighter: #dbce86;
+$navy: #0a126b;
+$navy-lighter: #3343EC;
+$blue-lightest: #f3f3f3;
+$red: #6B0A12;
+$red-lighter: #EC3343;
+$forest: #126B0A;
+$forest-lighter: #43EC33;
+
+// Update Bulma's global variables
+$primary: $blue;
+$link: $navy;
+$danger: $orange;
+$info: $red;
+$success: $green;
+
+// Update some of Bulma's component variables
+$body-background-color: $blue-lightest;
+
+// Import only what you need from Bulma
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/base/_all.sass";
+@import "../node_modules/bulma/sass/elements/_all.sass";
+@import "../node_modules/bulma/sass/components/_all.sass";
+@import "../node_modules/bulma/sass/layout/_all.sass";
+@import "../node_modules/bulma/sass/grid/_all.sass";
+@import "../node_modules/bulma/sass/helpers/_all.sass";

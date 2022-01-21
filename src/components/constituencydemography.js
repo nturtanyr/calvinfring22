@@ -1,6 +1,6 @@
 import React from "react";
 
-export class ConstituencyDemography extends React.Component {
+export default class ConstituencyDemography extends React.Component {
     
     render() {
         if (this.props.data)

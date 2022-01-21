@@ -4,10 +4,10 @@ import FooterBar from "./footbar"
 import MidSection from "./midsection"
 import { Outlet } from "react-router-dom"
 
-function Layout() {
+function Layout(props) {
     return (
         <div>
-            <HeaderBar/>
+            <HeaderBar color={props.color}/>
             <MidSection>
               <Outlet/>
             </MidSection>

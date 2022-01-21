@@ -103,7 +103,10 @@ function RatingCell(props){
     var className;
     var value = props.data['rating_value'] ;
     var direction = props.data['rating_direction'] ;
-    if( value < 50){
+    if( props.data['rating_privatised']){
+        className = "has-background-grey-light";
+    }
+    else if( value < 50){
         className = "has-background-danger-light";
     }
     else if(value < 75){

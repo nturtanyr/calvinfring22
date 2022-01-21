@@ -7,20 +7,13 @@ import AssemblyGrid from "./assemblygrid";
 function Assembly() {
     let params = useParams();
     let [timer, setTime] = React.useState(null);
-    let [feedData, setFeedData] = React.useState(null);
     let [gridData, setGridData] = React.useState(null);
 
     React.useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_ROOT}/assembly/latest/members`)
+        axios.get(`${process.env.REACT_APP_API_ROOT}/assembly/` + params.id + `/members`)
         .then(res => {
             const data = res.data.data;
             setGridData(data);
-        })
-
-        axios.get(`${process.env.REACT_APP_API_ROOT}/assemblyfeed/latest`)
-        .then(res => {
-            const data = res.data.data;
-            setFeedData(data);
         })
 
         const interval = setInterval(() => {
@@ -32,12 +25,15 @@ function Assembly() {
     },[timer, params]);
 
     return (
-        <div className='columns '> 
-            <div className='column is-one-third'>
-                <AssemblyFeed data={feedData}/>    
-            </div>
-            <div className='column'>
-                <AssemblyGrid data={gridData}/> 
+        <div>
+            <section className="content"><h2>The Kalmany Parliamentary Assembly</h2></section>
+            <div className='columns '> 
+                <div className='column is-one-third'>
+                    <AssemblyFeed/>    
+                </div>
+                <div className='column'>
+                    <AssemblyGrid data={gridData}/> 
+                </div>
             </div>
         </div>
     )

@@ -1,7 +1,8 @@
 import React from "react";
 import axios from 'axios';
-import { useParams } from "react-router-dom"
-import { ConstituencyDemography } from "./constituencycomponents"
+import { useParams } from "react-router-dom";
+import ConstituencyDemography from "./constituencydemography";
+import ConstituencyCandidates from "./constituencycandidates";
 import ConstituencyElectionChart from "./electionresults";
 
 function Constituency() {
@@ -72,11 +73,13 @@ function Constituency() {
         <div className='columns'> 
                 { conData && (
                     <div className='column is-one-fifth'>
-                        <h1 className="title">
-                            { conData[0].name }
-                        </h1>
-                        <h3 className="subtitle"><i>{ conData[0].description }</i></h3>
-                        <img className="image is-fullwidth" src={`../images/con-${conData[0].id}.svg`} alt={conData[0].name} />
+                        <div className="content">
+                            <h1 className="title">
+                                { conData[0].name }
+                            </h1>
+                            <h3 className="subtitle"><i>{ conData[0].description }</i></h3>
+                            <img className="image is-fullwidth" src={`../images/con-${conData[0].id}.svg`} alt={conData[0].name} />
+                        </div>
                     </div>
                 )}
             <div className='column'>
@@ -90,6 +93,7 @@ function Constituency() {
                 { conData && demData && (
                     <div className='column'>
                         <ConstituencyDemography data={demData}/>
+                        <ConstituencyCandidates/>
                         <ConstituencyElectionChart data={chartData}/>
                     </div>
                 )}

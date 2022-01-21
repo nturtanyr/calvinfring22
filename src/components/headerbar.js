@@ -18,17 +18,25 @@ class HeaderBar extends React.Component {
             this.setState({ constituencies });
         })
     }
-
     render() {
+        var colorClass
+        if(this.props.color == "red")
+        {
+            colorClass = "is-info"
+        }
+        else
+        {
+            colorClass = "is-primary"
+        }
         return (
-            <section className={`is-primary ${styles.kheader}`}>
-                <section className={`hero is-small is-primary ${styles.kbar}`}>
+            <section className={`${colorClass} ${styles.kheader}`}>
+                <section className={`hero is-small ${colorClass} ${styles.kbar}`}>
                     <div className="hero-body">
                         <img alt="kec_logo" className={`image is-96x96 ${styles.klogo}`} src={kec_logo}/>
                         <h1 className={`title has-text-white is-hidden-mobile ${styles.ktitletext}`}>The Kalmany Electoral Commission</h1>
                         <h1 className={`title has-text-white is-hidden-tablet ${styles.ktitletext}`}>KEC</h1>   
                     </div>
-                    <nav className={`navbar is-primary ${styles.knavbar}`} role="navigation" aria-label="main navigation">
+                    <nav className={`navbar ${colorClass} ${styles.knavbar}`} role="navigation" aria-label="main navigation">
                         <div className="navbar-brand">
                             <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarKalmany">
                                 <span aria-hidden="true"></span>
@@ -40,6 +48,9 @@ class HeaderBar extends React.Component {
                             <div className="navbar-end">
                                 <NavLink to="/" className="navbar-item">
                                     Home
+                                </NavLink>
+                                <NavLink to="/news" className="navbar-item">
+                                    News
                                 </NavLink>
                                 <div className="navbar-item has-dropdown is-hoverable">
                                     <a className="navbar-link">
@@ -63,7 +74,7 @@ class HeaderBar extends React.Component {
                                 </NavLink>
                                 <div className="navbar-item">
                                     <div className="buttons">
-                                        <NavLink to="/"  className="button is-primary">
+                                        <NavLink to="/"  className={`button ${colorClass}`}>
                                             <strong>Log in</strong>
                                         </NavLink>
                                     </div>

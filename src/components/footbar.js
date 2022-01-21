@@ -6,7 +6,7 @@ function FooterBar() {
         <footer className={`footer p-1 ${styles.footer}`}>
             <div className="content is-small has-text-centered">
                 <i>No bears were hurt in the making of - so say us, the Kalmany Electoral Commission</i><br/>
-                (c) 2022 nturtaynment
+                v0.20 &#169; 2022 nturtaynment
             </div>    
         </footer>
     )
