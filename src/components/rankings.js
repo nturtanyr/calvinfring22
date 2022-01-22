@@ -100,20 +100,17 @@ class RankingRow extends React.Component{
 }
 
 function RatingCell(props){
-    var className;
+    var className = "";
     var value = props.data['rating_value'] ;
     var direction = props.data['rating_direction'] ;
     if( props.data['rating_privatised']){
-        className = "has-background-grey-light";
+        className += "has-background-grey-lighter";
     }
-    else if( value < 50){
-        className = "has-background-danger-light";
+    if( value < 25){
+        className += " has-text-danger-dark";
     }
-    else if(value < 75){
-        className = "has-background-warning-light";
-    }
-    else{
-        className = "has-background-success-light";
+    else if(value > 80){
+        className += " has-text-success-dark";
     }
 
     var icon;
@@ -142,14 +139,11 @@ function SpendingCell(props){
     var className;
     var value = props.data['spending_daily'] ;
     var direction = props.data['spending_direction'] ;
-    if( value > 0){
-        className = "has-background-danger-light"
-    }
-    else if(value < 75){
-        className = "has-background-success-light"
+    if( value < 0){
+        className = "has-text-success-dark"
     }
     else{
-        className = "has-text-black"
+        className = "has-text-danger-dark"
     }
 
     var icon;
@@ -178,13 +172,10 @@ function RankingCell(props){
     var value = props.data['rating_value'] ;
     var direction = props.data['rating_direction'] ;
     if( value < 3){
-        className = "has-background-danger-light"
+        className = "has-text-danger"
     }
-    else if(value < 6){
-        className = "has-background-warning-light"
-    }
-    else{
-        className = "has-background-success-light"
+    else if(value > 6){
+        className = "has-text-success"
     }
 
     var icon;
@@ -200,9 +191,9 @@ function RankingCell(props){
     } 
 
     return (
-        <td className={className + " " + styles.cellStyle}>
+        <td className={styles.cellStyle}>
             <span>
-                <strong>{value} </strong>{icon}
+                <strong className={className}>{value} </strong>{icon}
             </span>
         </td>
     )

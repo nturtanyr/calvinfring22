@@ -75,7 +75,9 @@ function NewsArticleMain(props){
         <p class="title">{props.data.title}</p>
         <p class="subtitle">{props.data.subtitle}</p>
         <figure class="image is-4by3">
-            <img src={`../images/news/${props.data.id}.png`}/>
+            <img src={`../images/news/${props.data.id}.jpg`}/>
+            <figcaption>Photo by <a href="https://unsplash.com/@element5digital?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Element5 Digital</a> on <a href="https://unsplash.com/s/photos/democracy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  </figcaption>
         </figure>
         <div className="content">
             {ReactHtmlParser(props.data.content || '')}

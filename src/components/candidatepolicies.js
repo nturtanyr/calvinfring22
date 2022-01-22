@@ -20,7 +20,7 @@ export default function CandidatePolicies() {
     if (policies_data && policies_data.length > 0)
     {
         policies_data.forEach(object => {
-            rows.push(<tr><td><img className="image is-24x24" src={`../images/cat-${object.category_id}.svg`} title={object.category_name}/></td><td>{object.description}</td></tr>)
+            rows.push(<tr><td><img className="image is-24x24" src={`../images/cat-${object.category_id}.png`} title={object.category_name}/></td><td>{object.description}</td></tr>)
         });
     }
     else{

@@ -22,7 +22,7 @@ export default function CandidateVoteHistory() {
     {
         votes_data.forEach(object => {
             tables.push(<tr ><th colSpan={3} onClick={(event) => showPolicies(event,object.assembly_id)}>{object.assembly_id} <i id={`icon-${object.assembly_id}`} className="fas fa-angle-down"></i></th></tr>)
-
+            object.policies.sort((a,b) => a.category_id- b.category_id)
             object.policies.forEach(policy => {
                 let vote_string = 'Abstained'
                 if(policy.vote == 1){
@@ -31,7 +31,7 @@ export default function CandidateVoteHistory() {
                     vote_string = 'Voted against'
                 }
                 tables.push(<tr className={`is-hidden ${object.assembly_id}`}>
-                    <td><img className="image is-24x24" src={`../images/cat-${object.category_id}`} title={object.category_name}/></td>
+                    <td><img className="image is-24x24" src={`../images/cat-${policy.category_id}.png`}/></td>
                     <td>{policy.policy_description}</td>
                     <td>{vote_string}</td>
                     </tr>
