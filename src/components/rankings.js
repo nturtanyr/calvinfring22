@@ -116,12 +116,12 @@ function RatingCell(props){
     var icon;
     if(direction === 'up'){
         icon = (
-            <i class="fas fa-angle-double-up has-text-success"></i>
+            <i className="fas fa-angle-double-up has-text-success"></i>
         );
     }
     if(direction === 'down'){
         icon = (
-            <i class="fas fa-angle-double-down has-text-danger"></i>
+            <i className="fas fa-angle-double-down has-text-danger"></i>
         );
     } 
     
@@ -149,12 +149,12 @@ function SpendingCell(props){
     var icon;
     if(direction === 'up'){
         icon = (
-            <i class="fas fa-angle-double-up has-text-success"></i>
+            <i className="fas fa-angle-double-up has-text-success"></i>
         );
     }
     if(direction === 'down'){
         icon = (
-            <i class="fas fa-angle-double-down has-text-danger"></i>
+            <i className="fas fa-angle-double-down has-text-danger"></i>
         );
     } 
     return (
@@ -181,12 +181,12 @@ function RankingCell(props){
     var icon;
     if(direction === 'up'){
         icon = (
-            <i class="fas fa-angle-double-up has-text-success"></i>
+            <i className="fas fa-angle-double-up has-text-success"></i>
         );
     }
     if(direction === 'down'){
         icon = (
-            <i class="fas fa-angle-double-down has-text-danger"></i>
+            <i className="fas fa-angle-double-down has-text-danger"></i>
         );
     } 
 

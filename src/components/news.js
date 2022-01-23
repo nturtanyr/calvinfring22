@@ -38,28 +38,28 @@ function News() {
         <div>
             <section className="section">
                 <div className="content has-text-centered">
-                    <p class="title">The Kalmany United Broadcasting Company</p>
-                    <p class="subtitle"><i>Reporting on the latest in the elections</i></p>
+                    <p className="title">The Kalmany United Broadcasting Company</p>
+                    <p className="subtitle"><i>Reporting on the latest in the elections</i></p>
                 </div>
             </section>
-            <div class="tile is-ancestor is-vertical">
-                <div class="tile">
-                    <div class="tile is-parent is-vertical is-3">
+            <div className="tile is-ancestor is-vertical">
+                <div className="tile">
+                    <div className="tile is-parent is-vertical is-3">
                         <NewsArticleRandom data={articles_random[0]}/>
                         <NewsArticleRandom data={articles_random[1]}/>
                     </div>
-                    <div class="tile is-parent is-5">
+                    <div className="tile is-parent is-5">
                         <NewsArticleMain data={articles_main[0]}/>
                     </div>
-                    <div class="tile is-parent is-4">
+                    <div className="tile is-parent is-4">
                         <NewsArticleEditorial data={articles_editorial[0]}/>
                     </div>
                 </div>
-                <div class="tile">
-                    <div class="tile is-parent is-6">
+                <div className="tile">
+                    <div className="tile is-parent is-6">
                         <NewsArticleSub data={articles_main[1]} subtitle="Last month's news"/>
                     </div>
-                    <div class="tile is-parent is-6">
+                    <div className="tile is-parent is-6">
                         <NewsArticleSub data={articles_main[2]}  subtitle="Earlier in the year..."/>
                     </div>
                 </div>
@@ -71,10 +71,10 @@ function News() {
 function NewsArticleMain(props){
     if(!props.data){return <article>Data error</article>}
     return(
-        <article class="tile is-child notification">
-        <p class="title">{props.data.title}</p>
-        <p class="subtitle">{props.data.subtitle}</p>
-        <figure class="image is-4by3">
+        <article className="tile is-child notification">
+        <p className="title">{props.data.title}</p>
+        <p className="subtitle">{props.data.subtitle}</p>
+        <figure className="image is-4by3">
             <img src={`../images/news/${props.data.id}.jpg`}/>
             <figcaption>Photo by <a href="https://unsplash.com/@element5digital?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Element5 Digital</a> on <a href="https://unsplash.com/s/photos/democracy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   </figcaption>
@@ -89,9 +89,9 @@ function NewsArticleMain(props){
 function NewsArticleSub(props){
     if(!props.data){return <article>Data error</article>}
     return(
-        <article class="tile is-child notification">
-        <p class="title is-4">{props.data.title}</p>
-        <p class="subtitle is-6">{props.subtitle}</p>
+        <article className="tile is-child notification">
+        <p className="title is-4">{props.data.title}</p>
+        <p className="subtitle is-6">{props.subtitle}</p>
         <div className="content">
             {ReactHtmlParser(props.data.short_content || '')}
         </div>
@@ -103,11 +103,11 @@ function NewsArticleSub(props){
 function NewsArticleEditorial(props){
     if(!props.data){return <article>Data error</article>}
     return(
-    <article class="tile is-child notification">
-        <div class="content">
-            <p class="title is-4">EDITORIAL: {props.data.title}</p>
-            <p class="subtitle is-6"><i>{props.data.subtitle}</i></p>
-            <div class="content">
+    <article className="tile is-child notification">
+        <div className="content">
+            <p className="title is-4">EDITORIAL: {props.data.title}</p>
+            <p className="subtitle is-6"><i>{props.data.subtitle}</i></p>
+            <div className="content">
                 {ReactHtmlParser(props.data.content || '')}
             </div>
         </div>
@@ -119,9 +119,9 @@ function NewsArticleEditorial(props){
 function NewsArticleRandom(props){
     if(!props.data){return <article>Data error</article>}
     return(
-        <article class="tile is-child notification">
-            <p class="title is-4">{props.data.title}</p>
-            <p class="subtitle is-6">{props.data.subtitle}</p>
+        <article className="tile is-child notification">
+            <p className="title is-4">{props.data.title}</p>
+            <p className="subtitle is-6">{props.data.subtitle}</p>
             <div className="content">
                 {ReactHtmlParser(props.data.content || '')}
             </div>

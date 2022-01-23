@@ -3,7 +3,7 @@ import React from "react";
 function generateStars(value){
     var rating = []
     for (let i = 0; i < value; i++) {
-        rating.push(<i class="far fa-star"></i>);
+        rating.push(<i className="far fa-star"></i>);
     }
 
     return rating
@@ -35,9 +35,9 @@ function CandidateProfile(props) {
                         <h3>{props.data.profile.quote}</h3>
                     </section>
                     <div className='tile is-ancestor'>
-                        <div class="tile is-4 is-parent">
+                        <div className="tile is-4 is-parent">
                             <div className='tile is-child notification is-primary'>
-                                <p class="subtitle">Personal</p>
+                                <p className="subtitle">Personal</p>
                                 <table className="table">
                                     <tbody>
                                         <tr><td>Home: </td><td>{props.data.profile.home_constituency_name}</td></tr>
@@ -50,9 +50,9 @@ function CandidateProfile(props) {
                                 </table>
                             </div>
                         </div>
-                        <div class="tile is-4 is-parent ">
+                        <div className="tile is-4 is-parent ">
                             <div className='tile is-child notification is-success'>
-                                <p class="subtitle">Demography</p>
+                                <p className="subtitle">Demography</p>
                                 <table className="table">
                                     <tbody>
                                         <tr><td>Age: </td><td>{props.data.profile.age}</td></tr>
@@ -65,9 +65,9 @@ function CandidateProfile(props) {
                                 </table>
                             </div>
                         </div>
-                        <div class="tile is-4 is-parent">
+                        <div className="tile is-4 is-parent">
                             <div className='tile is-child notification is-danger'>
-                                <p class="subtitle">Attributes</p>
+                                <p className="subtitle">Attributes</p>
                                 <table className="table">
                                     <tbody>
                                         <tr><td>Charisma: </td><td>{generateStars(props.data.attribute.charisma)}</td></tr>

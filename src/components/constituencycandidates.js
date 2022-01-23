@@ -33,7 +33,7 @@ export default function ConstituencyDemography() {
             var candidate_link = (<td><Link to={`/candidate/${object.candidate_id}`}>{object.first_name + " " + object.last_name}</Link></td>);
             var tagline = (<td><i>{object.quote}</i></td>)
             if(object.elected){
-                star = (<td><i class="fas fa-star"></i></td>)
+                star = (<td><i className="fas fa-star"></i></td>)
             }
             if(!object.running){
                 candidate_link = (<td><Link className="has-text-grey-light" to={`/candidate/${object.candidate_id}`}><i>{object.first_name + " " + object.last_name}</i></Link></td>);
@@ -50,7 +50,7 @@ export default function ConstituencyDemography() {
     }
     
     return (
-        <div className="tabcontent is-hidden" id="tabCandidates">
+        <div>
             <table className="table">
                 <thead>
                     <tr>

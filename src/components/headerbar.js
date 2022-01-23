@@ -4,10 +4,10 @@ import { NavLink, Link } from "react-router-dom"
 import TickerTape from "./tickertape"
 import styles from "./headerbar.module.css"
 import kec_logo from '../images/keclogo.png';
+import ModalLogin from "./modallogin"
 
 function HeaderBar(props) {
     
-    const [LoginShow, setLoginShow] = React.useState(false);
     const [conList, setConstituencies] = React.useState([]);
     const [modalState, setModalState] = React.useState(null);
 
@@ -19,21 +19,15 @@ function HeaderBar(props) {
         })
         
     },[]);
-    
-    React.useEffect(() => {
-        if(LoginShow){
-            setModalState("is-active");
-        }
-        else{
-            setModalState(null);
-        }
-        
-    },[LoginShow]);
 
     var colorClass
     if(props.color == "red")
     {
         colorClass = "is-info"
+    }
+    else if(props.color == "cyan")
+    {
+        colorClass = "is-warning"
     }
     else
     {
@@ -77,15 +71,21 @@ function HeaderBar(props) {
                                     }
                                 </div>
                             </div>
+                            <NavLink to="/election/latest" className="navbar-item">
+                                Election
+                            </NavLink>
                             <NavLink to="/assembly/latest" className="navbar-item">
                                 Parliament
                             </NavLink>
                             <NavLink to="/rankings" className="navbar-item">
                                 Rankings
                             </NavLink>
+                            <NavLink to="/codex" className="navbar-item">
+                                Information
+                            </NavLink>
                             <div className="navbar-item">
                                 <div className="buttons">
-                                    <div className={`button ${colorClass}`} onClick={() => setLoginShow(true)}>
+                                    <div className={`button ${colorClass}`} onClick={() => setModalState("is-active")}>
                                         <strong>Log in</strong>
                                     </div>
                                 </div>
@@ -95,44 +95,7 @@ function HeaderBar(props) {
                 </nav>
             </section>
             <TickerTape/>
-            <div id="modal-login" className={`modal ${modalState}`}>
-                <div className="modal-background"></div>
-                <div className="modal-card">
-                    <header className="modal-card-head">
-                    <p className="modal-card-title">Login</p>
-                    <button className="delete" aria-label="close" onClick={() => setLoginShow(false)}></button>
-                    </header>
-                    <section className="modal-card-body">
-                        <div className="field">
-                            <label className="label">Citizen Name</label>
-                            <div className="control">
-                                <input className="input" type="text" placeholder="Name"/>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <label className="label">Citizen Email</label>
-                            <div className="control has-icons-left has-icons-right">
-                                <input className="input" type="email" placeholder="Email"/>
-                                <span className="icon is-small is-left">
-                                    <i className="fas fa-envelope"></i>
-                                </span>
-                            </div>
-                        </div>
-                        <div className="field">
-                            <label className="label">Citizen Password</label>
-                            <div className="control has-icons-left has-icons-right">
-                                <input className="input is-danger" type="password" placeholder="********"/>
-                            </div>
-                        </div>
-                        <p>
-                            <strong>If you are a citizen of Kalmany and haven't registered to vote, please register <a>here</a>.</strong></p>
-                    </section>
-                    <footer className="modal-card-foot">
-                    <button className="button is-primary">Login</button>
-                    <button className="button" onClick={() => setLoginShow(false)}>Cancel</button>
-                    </footer>
-                </div>
-            </div>
+            <ModalLogin active={modalState}/>
         </section>
         
     )
