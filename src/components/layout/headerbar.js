@@ -1,24 +1,14 @@
 import React from "react"
-import axios from 'axios';
-import { NavLink, Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import TickerTape from "./tickertape"
 import styles from "./headerbar.module.css"
-import kec_logo from '../images/keclogo.png';
-import ModalLogin from "./modallogin"
+import kec_logo from '../../images/keclogo.png';
+import ModalLogin from "../modallogin"
 
 function HeaderBar(props) {
     
-    const [conList, setConstituencies] = React.useState([]);
     const [modalState, setModalState] = React.useState(null);
 
-    React.useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_ROOT}/constituency`)
-        .then(res => {
-            const constituencies = res.data.data;
-            setConstituencies(constituencies);
-        })
-        
-    },[]);
 
     var colorClass
     if(props.color == "red")
@@ -57,20 +47,12 @@ function HeaderBar(props) {
                             <NavLink to="/news" className="navbar-item">
                                 News
                             </NavLink>
-                            <div className="navbar-item has-dropdown is-hoverable">
-                                <a className="navbar-link">
-                                    Constituencies
-                                </a>
-                                <div className="navbar-dropdown has-text-black">
-                                    {
-                                        conList.map(con =>
-                                            <Link key={`con${con.id}`} to={`/constituency/${con.id}`} className="navbar-item"  onClick={(event) => { event.target.blur(); }}>
-                                                {con.name}
-                                            </Link>
-                                        )
-                                    }
-                                </div>
-                            </div>
+                            <NavLink to="/candidate" className="navbar-item">
+                                Candidates
+                            </NavLink>
+                            <NavLink to="/demographies" className="navbar-item">
+                                Demographies
+                            </NavLink>
                             <NavLink to="/election/latest" className="navbar-item">
                                 Election
                             </NavLink>

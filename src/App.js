@@ -5,24 +5,20 @@ import {
   Route
 } from "react-router-dom";
 
-import Layout from './components/layout';
-import Home from './components/home';
-import Constituency from './components/constituency';
-import Assembly from './components/assembly';
-import Rankings from './components/rankings';
-import Candidate from './components/candidate';
-import News from './components/news';
-import Codex from './components/codex';
-import Election from './components/election';
+import Layout from './components/layout/layout';
+import Home from './components/home/home';
+import Assembly from './components/assembly/assembly';
+import Rankings from './components/rankings/rankings';
+import Candidate from './components/candidate/candidatecard';
+import News from './components/news/news';
+import Codex from './components/codex/codex';
+import Election from './components/election/election';
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout color="blue"/>}>
         <Route index element={<Home />} />
-      </Route>
-      <Route path="/constituency/:id" element={<Layout color="blue"/>}>
-        <Route index element={<Constituency />} />
       </Route>
       <Route path="/candidate/:id" element={<Layout color="blue"/>}>
         <Route index element={<Candidate />} />
