@@ -1,15 +1,12 @@
-import React from "react"
+import React, { useContext } from "react"
 import { NavLink } from "react-router-dom"
 import TickerTape from "./tickertape"
 import styles from "./headerbar.module.css"
 import kec_logo from '../../images/keclogo.png';
-import ModalLogin from "../modallogin"
+import {userDetails} from "../auth/authutils";
 
 function HeaderBar(props) {
-    
-    const [modalState, setModalState] = React.useState(null);
-
-
+    var loggedIn = React.useContext(userDetails).loggedIn
     var colorClass
     if(props.color == "red")
     {
@@ -67,9 +64,16 @@ function HeaderBar(props) {
                             </NavLink>
                             <div className="navbar-item">
                                 <div className="buttons">
-                                    <div className={`button ${colorClass}`} onClick={() => setModalState("is-active")}>
-                                        <strong>Log in</strong>
-                                    </div>
+                                    {loggedIn && (
+                                        <NavLink to="/user" className="button is-white">
+                                            <strong>Your Account</strong>
+                                        </NavLink>
+                                    )}
+                                    {!loggedIn && (
+                                        <NavLink to="/login" className="button is-primary-invert">
+                                            <strong>Log in</strong>
+                                        </NavLink>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -77,7 +81,6 @@ function HeaderBar(props) {
                 </nav>
             </section>
             <TickerTape/>
-            <ModalLogin active={modalState}/>
         </section>
         
     )

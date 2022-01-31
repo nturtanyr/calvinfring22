@@ -28,61 +28,50 @@ function CandidateProfile(props) {
             wears_socks = "No"
         }
         return (
-            <div className="tabcontent is-visible" id="tabProfile">
-            { props.data && (
-                <div>
-                    <section className="content">
-                        <h3>{props.data.profile.quote}</h3>
-                    </section>
-                    <div className='tile is-ancestor'>
-                        <div className="tile is-4 is-parent">
-                            <div className='tile is-child notification is-primary'>
-                                <p className="subtitle">Personal</p>
-                                <table className="table">
-                                    <tbody>
-                                        <tr><td>Home: </td><td>{props.data.profile.home_constituency_name}</td></tr>
-                                        <tr><td>Lives: </td><td>{props.data.profile.constituency_name}</td></tr>
-                                        <tr><td>Status: </td><td>{running_state}</td></tr>
-                                        <tr><td>Likes: </td><td>{props.data.profile.like}</td></tr>
-                                        <tr><td>Dislikes: </td><td>{props.data.profile.dislike}</td></tr>
-                                        <tr><td>Wears Socks: </td><td>{wears_socks}</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div className="tile is-4 is-parent ">
-                            <div className='tile is-child notification is-success'>
-                                <p className="subtitle">Demography</p>
-                                <table className="table">
-                                    <tbody>
-                                        <tr><td>Age: </td><td>{props.data.profile.age}</td></tr>
-                                        <tr><td>Sex: </td><td>{props.data.sex.name}</td></tr>
-                                        <tr><td>Sexuality: </td><td>{props.data.sexuality.name}</td></tr>
-                                        <tr><td>Ethnicity: </td><td>{props.data.ethnicity.name}</td></tr>
-                                        <tr><td>Industry: </td><td>{props.data.industry.name}</td></tr>
-                                        <tr><td>Religion: </td><td>{props.data.religion.name}</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div className="tile is-4 is-parent">
-                            <div className='tile is-child notification is-danger'>
-                                <p className="subtitle">Attributes</p>
-                                <table className="table">
-                                    <tbody>
-                                        <tr><td>Charisma: </td><td>{generateStars(props.data.attribute.charisma)}</td></tr>
-                                        <tr><td>Tenacity: </td><td>{generateStars(props.data.attribute.tenacity)}</td></tr>
-                                        <tr><td>Loyalty: </td><td>{generateStars(props.data.attribute.loyalty)}</td></tr>
-                                        <tr><td>Baldness: </td><td>{generateStars(props.data.attribute.baldness)}</td></tr>
-                                        <tr><td>Fear of Bears: </td><td>{generateStars(props.data.attribute.fear_of_bears)}</td></tr>
-                                        <tr><td>Socks: </td><td>{generateStars(props.data.attribute.socks)}</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+            <div className="card">
+                <header className="card-header">
+                    <p className="card-header-title">
+                        Citizen Data
+                    </p>
+                </header>
+                <div className="card-content">
+                <div className='columns'>
+                    <div className='column'>
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th className="has-text-centered" colSpan={2}>Personal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Home: </td><td>{props.data.profile.home_constituency_name}</td></tr>
+                                <tr><td>Lives: </td><td>{props.data.profile.constituency_name}</td></tr>
+                                <tr><td>Status: </td><td>{running_state}</td></tr>
+                                <tr><td>Likes: </td><td>{props.data.profile.like}</td></tr>
+                                <tr><td>Dislikes: </td><td>{props.data.profile.dislike}</td></tr>
+                                <tr><td>Wears Socks: </td><td>{wears_socks}</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className='column'>
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th className="has-text-centered" colSpan={2}>Demography</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Age: </td><td>{props.data.profile.age}</td></tr>
+                                <tr><td>Sex: </td><td>{props.data.sex.name}</td></tr>
+                                <tr><td>Sexuality: </td><td>{props.data.sexuality.name}</td></tr>
+                                <tr><td>Ethnicity: </td><td>{props.data.ethnicity.name}</td></tr>
+                                <tr><td>Industry: </td><td>{props.data.industry.name}</td></tr>
+                                <tr><td>Religion: </td><td>{props.data.religion.name}</td></tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            )}
+                </div>
             </div>
         )
     }

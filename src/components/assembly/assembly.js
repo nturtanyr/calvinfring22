@@ -6,8 +6,8 @@ import AssemblyGrid from "./assemblygrid";
 
 function Assembly() {
     let params = useParams();
-    let [timer, setTime] = React.useState(null);
-    let [gridData, setGridData] = React.useState(null);
+    const [timer, setTime] = React.useState(null);
+    const [gridData, setGridData] = React.useState(null);
 
     React.useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_ROOT}/assembly/` + params.id + `/members`)
@@ -22,11 +22,16 @@ function Assembly() {
         
         return () => clearInterval(interval);
         
-    },[timer, params]);
+    },[timer]);
 
     return (
         <div>
-            <section className="content"><h2>The Kalmany Parliamentary Assembly</h2></section>
+            <section className="section">
+                <div className="content has-text-centered">
+                    <h2>The Kalmany Parliamentary Assembly</h2>
+                    <p>The details of the current assembly will show below</p>
+                </div>
+            </section>
             <div className='columns '> 
                 <div className='column is-one-third'>
                     <AssemblyFeed/>    

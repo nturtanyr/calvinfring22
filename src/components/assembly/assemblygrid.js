@@ -38,6 +38,15 @@ class AssemblyTile extends React.Component {
         {
             policy_desc = <strong className="has-text-success">{this.props.data.policy_desc}</strong>
         }
+        else if(this.props.data.policy_result == 2)
+        {
+            policy_desc = <strong>{this.props.data.policy_desc}</strong>
+
+        }
+        else if(this.props.data.policy_result == -1)
+        {
+            policy_desc = <strong className="has-text-danger">{this.props.data.policy_desc}</strong>
+        }
         else
         {
             policy_desc = <i>{this.props.data.policy_desc}</i>

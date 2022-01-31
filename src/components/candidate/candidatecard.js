@@ -1,10 +1,15 @@
 import React from "react";
-import axios from 'axios';
 import { useParams } from "react-router-dom";
-import CandidateProfile from "./candidateprofile";
-import CandidatePolicies from "./candidatepolicies";
 import styles from "./candidate.module.css"
-import CandidateVoteHistory from "./candidatehistory";
+import {
+    Radar,
+    RadarChart,
+    PolarGrid,
+    PolarAngleAxis,
+    PolarRadiusAxis,
+    ResponsiveContainer
+  } from "recharts";
+// Gonna need party_name. sex, ethnicity, age, industry, religion, sexuality, attributes
 
 function determineAvatar(sex_id, ethnicity_id, age){
     var image_path = "av-"
@@ -81,90 +86,79 @@ function determineSexuality(sex_id, sexuality_id){
     return image_path
 }
 
-function Candidate() {
-    let params = useParams();
-    let [candidate_data, set_CandidateData] = React.useState(null);
-    
-    React.useEffect(() => {
-
-        axios.get(`${process.env.REACT_APP_API_ROOT}/candidates/${params.id}/citizen`)
-        .then(res => {
-            console.log(res.data)
-            const data = res.data.data[0];
-            set_CandidateData(data);
-        })
-        
-    },[params]);
-
-    function handleClick(event) {
-        // Get the target from the "data-target" attribute
-        const $element = event.target.parentElement.parentElement
-        const target = $element.dataset.target;
-        const $target = document.getElementById(target);
-        // Get all tabs and set to not active
-        const $tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'), 0);
-        $tabs.forEach( el => {
-            el.classList.remove('is-active');
-        });
-    
-        // Get all tab contents and hide them
-        const $tabcontents = Array.prototype.slice.call(document.querySelectorAll('.tabcontent'), 0);
-        $tabcontents.forEach( fl => {
-        fl.classList.remove('is-visible');
-        fl.classList.add('is-hidden');
-        });
-        
-        if ($target){
-            // Add the "is-active" class and switch between "hidden" and "visible" on active tab content
-            $element.classList.toggle('is-active');
-            $target.classList.remove('is-hidden');
-            $target.classList.add('is-visible');
-        }
-    };
+export default function CandidateCard(props) {
+    var attribute_data = []
+    attribute_data.push({
+        "attribute" : "Charisma",
+        "value" : props.data.attribute.charisma
+    })
+    attribute_data.push({
+        "attribute" : "Tenacity",
+        "value" : props.data.attribute.tenacity
+    })
+    attribute_data.push({
+        "attribute" : "Loyalty",
+        "value" : props.data.attribute.loyalty
+    })
+    attribute_data.push({
+        "attribute" : "Baldness",
+        "value" : props.data.attribute.baldness
+    })
+    attribute_data.push({
+        "attribute" : "Fear of Bears",
+        "value" : props.data.attribute.fear_of_bears
+    })
+    attribute_data.push({
+        "attribute" : "Socks",
+        "value" : props.data.attribute.socks
+    })
 
     return(
         
-        <div className='columns'> 
-            {candidate_data && (
-            <div className='column is-one-fifth'>
-                <h1 className="title">
-                    {candidate_data.profile.first_name} {candidate_data.profile.last_name}
-                </h1>
-                <h3 className="subtitle"><i>{candidate_data.profile.party_name}</i></h3>
-                <figure className="image is-fullwidth">
-                    <img className="image is-fullwidth" src={`../images/${determineAvatar(
-                        candidate_data.sex.id,
-                        candidate_data.ethnicity.id,
-                        candidate_data.profile.age
-                        )}`} alt="candidate picture" />
-                    <div className={`is-flex ${styles.avatarLowerIcon}`}>
-                        <img className="image is-48x48 is-flex" src={`../images/${determineSexuality(
-                            candidate_data.sex.id,
-                            candidate_data.sexuality.id
-                        )}`} title={candidate_data.sexuality.name}/>
-                        <img className="image is-48x48 is-flex" src={`../images/ind-${candidate_data.industry.id}.png`} title={candidate_data.industry.name}/>
-                        <img className="image is-48x48 is-flex" src={`../images/rel-${candidate_data.religion.id}.png`} title={candidate_data.religion.name}/>
+        <div className='card'> 
+            <header className="card-header">
+                <p className="card-header-title">
+                    Candidate Data
+                </p>
+            </header>
+            <div className="card-content">
+                <div className="columns">
+                    <div className='column is-one-third'>
+                        <h3 className="subtitle"><i>{props.data.profile.party_name}</i></h3>
+                        <figure className="image is-fullwidth">
+                            <img className="image is-fullwidth" src={`../images/${determineAvatar(
+                                props.data.sex.id,
+                                props.data.ethnicity.id,
+                                props.data.profile.age
+                                )}`} alt="candidate picture" />
+                            <div className={`is-flex ${styles.avatarLowerIcon}`}>
+                                <img className="image is-48x48 is-flex" src={`../images/${determineSexuality(
+                                    props.data.sex.id,
+                                    props.data.sexuality.id
+                                )}`} title={props.data.sexuality.name}/>
+                                <img className="image is-48x48 is-flex" src={`../images/ind-${props.data.industry.id}.png`} title={props.data.industry.name}/>
+                                <img className="image is-48x48 is-flex" src={`../images/rel-${props.data.religion.id}.png`} title={props.data.religion.name}/>
+                            </div>
+                        </figure>
                     </div>
-                </figure>
-            </div>
-            )}
-            {candidate_data && (
-            <div className='column'>
-                <div className='tabs is-boxed is-justify-content-left'>
-                    <li className="tab is-active" data-target="tabProfile" onClick={handleClick}><a><span>Profile</span></a></li>
-                    <li className="tab" data-target="tabPolicies" onClick={handleClick}><a><span>Policies</span></a></li>
-                    <li className="tab" data-target="tabVoteHistory" onClick={handleClick}><a><span>Voting History</span></a></li>
-
+                    <div className='column'>
+                        <ResponsiveContainer width="100%" height={500}>
+                        <RadarChart data={attribute_data} >
+                            <PolarGrid />
+                            <PolarAngleAxis dataKey="attribute" />
+                            <PolarRadiusAxis />
+                            <Radar
+                                name="Mike"
+                                dataKey="value"
+                                stroke="#8884d8"
+                                fill="#8884d8"
+                                fillOpacity={0.6}
+                            />
+                        </RadarChart>
+                        </ResponsiveContainer>
+                    </div>
                 </div>
-                <div className='column'>
-                    <CandidateProfile data={candidate_data}/>
-                    <CandidatePolicies/>
-                    <CandidateVoteHistory/>
-                </div>
             </div>
-            )}
         </div>
     )
 }
-
-export default Candidate;

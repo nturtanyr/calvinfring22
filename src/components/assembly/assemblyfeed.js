@@ -23,29 +23,20 @@ export default function AssemblyFeed() {
         
         return () => clearInterval(interval);
         
-    },[timer, params]);
+    },[timer]);
 
     var feed = []
     if(feedData){
-        var current_policy_id = 0
         feedData.forEach( (object) =>{
-            if( ! object.parent_id )
+            if(object.style == "discussion_start" || object.style == "assembly_finish" || object.style == "assembly_start" || object.style == "vote_begin")
             {
-                current_policy_id = object.id
                 feed.push(
                     <AssemblyFeedTop key={`comment-${object.id}`} data={object}/>
                 )
             }
-            else if(object.parent_id == current_policy_id)
-            {
+            else{
                 feed.push(
                     <AssemblyFeedAction key={`comment-${object.id}`} data={object}/>
-                )
-            }
-            else
-            {
-                feed.push(
-                    <AssemblyFeedComment key={`comment-${object.id}`} data={object}/>
                 )
             }
         });
@@ -55,11 +46,26 @@ export default function AssemblyFeed() {
     {
         feed = <div><i>The assembly is yet to begin! The discussions will appear here.</i></div>
     }
-    return (
-        <ScrollToBottom className={styles.feedContainer}>
-            {feed}
-        </ScrollToBottom>
-    )
+    
+
+    if(feedData)
+    {
+        return (
+            <div>
+                <div className="content has-text-centered">
+                    <h3>Live Updates:</h3>
+                </div>
+                <div className={styles.feedContainer}>
+                <ScrollToBottom>
+                    {feed}
+                </ScrollToBottom>
+                </div>
+            </div>
+        )
+    }else{
+        return (<progress className="progress is-primary" max="100"></progress>)
+    }
+
     
 }
 
@@ -82,7 +88,7 @@ class AssemblyFeedTop extends React.Component  {
                 image_path = '/images/assembly-finish.svg';
                 break;
 
-            default:
+            case "discussion_start":
                 image_path = ("/images/con-" + this.props.data.constituency_id + ".svg");
                 break;
         }
@@ -93,9 +99,7 @@ class AssemblyFeedTop extends React.Component  {
                     <img src={image_path} />
                 </figure>
                 <div className="ml-3">
-                    <strong>{this.props.data.first_name} {this.props.data.last_name}</strong>
-                    <br/>
-                    <i>{this.props.data.message}</i>
+                    <strong>{this.props.data.message}</strong>
                     <hr className={styles.commentRule}/>
                 </div>
             </div>
@@ -107,45 +111,61 @@ class AssemblyFeedAction extends React.Component {
 
         // Determine image off style and whether there's a candidate involved
         var image_path
-        if(!this.props.data.candidate_id){
-            // No candidate means it's the final tallies of a motion being passed
-            switch(this.props.data.style)
-            {
-                case "vote_for":
-                    image_path = '/images/assembly-votesFor.svg';
-                    break;
-
-                case "vote_against":
-                    image_path = '/images/assembly-votesAgainst.svg';
-                    break;
-
-                case "vote_success":
-                    image_path = '/images/assembly-votePassed.svg';
-                    break;
-
-                case "vote_failure":
-                    image_path = '/images/assembly-voteFailed.svg';
-                    break;
-            }
-        }
-        else
+        var text_class
+        // No candidate means it's the final tallies of a motion being passed
+        switch(this.props.data.style)
         {
-            // A candidate means it's an action by a candidate
-            switch(this.props.data.style)
-            {
-                case "positive":
-                    image_path = '/images/assembly-actionFor.svg';
-                    break;
+            case "vote_for":
+                image_path = '/images/assembly-actionFor.svg';
+                break;
 
-                case "negative":
-                    image_path = '/images/assembly-actionAgainst.svg';
-                    break;
+            case "vote_against":
+                image_path = '/images/assembly-actionAgainst.svg';
+                break;
 
-                default:
-                    image_path = '/images/assembly-actionMeh.svg';
-                    break;
+            case "vote_abstain":
+                image_path = '/images/assembly-actionMeh.svg';
+                break;
 
-            }
+            case "vote_for_total":
+                image_path = '/images/assembly-votesFor.svg';
+                break;
+
+            case "vote_against_total":
+                image_path = '/images/assembly-votesAgainst.svg';
+                break;
+
+            case "vote_success":
+                image_path = '/images/assembly-votePassed.svg';
+                break;
+
+            case "vote_failure":
+                image_path = '/images/assembly-voteFailed.svg';
+                break;
+            case "positive_success":
+                image_path = '/images/assembly-actionFor.svg';
+                text_class = "has-text-success"
+                break;
+            case "positive_failure":
+                image_path = '/images/assembly-failedFor.svg';
+                text_class = "has-text-black"
+                break;
+            case "negative_success":
+                image_path = '/images/assembly-actionAgainst.svg';
+                text_class = "has-text-danger"
+                break;
+            case "negative_failure":
+                image_path = '/images/assembly-failedAgainst.svg';
+                text_class = "has-text-black"
+                break;
+            case "neutral_bitetongue":
+                image_path = '/images/assembly-quietMeh.svg';
+                text_class = "has-text-black"
+                break;
+            default:
+                image_path = '/images/assembly-quietMeh.svg';
+                text_class = "has-text-black"
+                break;
         }
 
         return (
@@ -154,42 +174,10 @@ class AssemblyFeedAction extends React.Component {
                     <img src={image_path} />
                 </figure>
                 <div className="ml-3">
-                    <strong>{this.props.data.first_name} {this.props.data.last_name}</strong>
-                    <br/>
-                    <i>{this.props.data.message}</i>
+                    <p className={text_class}>{this.props.data.message}</p>
                     <hr className={styles.commentRule}/>
                 </div>
             </div>
         )
     }
 } 
-class AssemblyFeedComment extends React.Component {
-    render() {
-        var textClass
-
-        // If the comment is a positive action, a success on a positive action, or a failure on a negative action, we display in green
-        if(this.props.data.style == 'positive' || this.props.data.style == 'pos_success' || this.props.data.style == 'neg_failure' )
-        {
-            textClass = "has-text-success"
-        }
-        // If the comment is a negative action, a success on a negative action, or a failure on a positive action, we display in red
-        else if(this.props.data.style == 'negative' || this.props.data.style == 'pos_failure' || this.props.data.style == 'neg_success')
-        {
-            textClass = "has-text-danger"
-        }
-        // Otherwise, it's black and informational
-        else
-        {
-            textClass = "has-text-black"
-        }
-
-        return (
-            <div className={styles.feedComment}>
-                <div className="ml-3">
-                    <strong className={textClass}>{this.props.data.message}</strong>
-                    <hr className={styles.commentRule}/>
-                </div>
-            </div>
-        )
-    }
-}

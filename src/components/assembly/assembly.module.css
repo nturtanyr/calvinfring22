@@ -25,6 +25,7 @@
 .feedContainer {
     overflow-y: scroll;
     max-height: 75vh;
+    border-radius: 1em;
 }
 
 .feedTop {
@@ -35,11 +36,6 @@
 .feedAction {
     display : flex;
     margin-left: 36px;
-    margin-bottom: 0.5em;
-}
-.feedComment {
-    display : flex;
-    margin-left: 68px;
     margin-bottom: 0.5em;
 }
 

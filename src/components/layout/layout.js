@@ -7,7 +7,7 @@ import { Outlet } from "react-router-dom"
 function Layout(props) {
     return (
         <div>
-            <HeaderBar color={props.color}/>
+            <HeaderBar color={props.color} loggedIn={props.loggedIn} />
             <MidSection>
               <Outlet/>
             </MidSection>

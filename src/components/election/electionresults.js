@@ -2,12 +2,12 @@ import React from "react";
 import axios from 'axios';
 import { BarChart, XAxis, YAxis, Bar, Cell, Tooltip, ResponsiveContainer } from "recharts";
 
-export default function ConstituencyElectionChart (props) {
+export default function ConstituencyElectionChart ({constituency_id, election_id}) {
     const [chartData, setChartData] = React.useState(null);
     const [timer, setTime] = React.useState(null);
 
     React.useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_ROOT}/constituency/` + props.constituency_id + `/election/` + props.election_id)
+        axios.get(`${process.env.REACT_APP_API_ROOT}/constituency/` + constituency_id + `/election/` + election_id)
         .then(res => {
             const data = res.data.data;
             setChartData(data);
@@ -21,7 +21,7 @@ export default function ConstituencyElectionChart (props) {
             
             return () => clearInterval(interval);
         }
-    },[timer, props.constituency_id, props.election_id]);
+    },[timer, constituency_id, election_id]);
 
     var barColors = [
         "#6996b5",
@@ -82,6 +82,6 @@ export default function ConstituencyElectionChart (props) {
     }
     else
     {
-        return ("?")
+        return (<progress className="progress is-primary" max="100"></progress>)
     }
 }
