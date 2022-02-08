@@ -1,10 +1,12 @@
 import React from "react";
 import axios from 'axios';
 import CandidateInfo from "./candidateinfo";
+import { useParams } from "react-router-dom";
 
 
-export default function Candidate({candidate_index}) {
-    const [selectedCandidate, setSelectedCandidate] = React.useState(candidate_index)
+export default function Candidate() {
+    var params = useParams();
+    const [selectedCandidate, setSelectedCandidate] = React.useState(params.id)
     const [candidateList, setCandidateList] = React.useState([]);
     const [constituencyList, setConstituencyList] = React.useState([]);
 

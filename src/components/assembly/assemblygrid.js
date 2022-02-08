@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom"
-import Assembly from "./assembly";
 import styles from "./assembly.module.css"
 
 export default class AssemblyGrid extends React.Component {
@@ -26,30 +25,39 @@ export default class AssemblyGrid extends React.Component {
 class AssemblyTile extends React.Component {
 
     render() {
+        var constituencyName
         if(this.props.data.constituency_name == 'Here\'s That City You Wanted'){
-            var constituencyName = 'HTCYW'
+            constituencyName = 'HTCYW'
         }
         else
         {
-            var constituencyName = this.props.data.constituency_name
+            constituencyName = this.props.data.constituency_name
         }
         var policy_desc
         if(this.props.data.policy_result == 1)
         {
-            policy_desc = <strong className="has-text-success">{this.props.data.policy_desc}</strong>
+            policy_desc = <strong className="has-text-success">{this.props.data.policy_desc}
+            <br/>
+            {this.props.data.votes_for } / {this.props.data.votes_against}</strong>
         }
         else if(this.props.data.policy_result == 2)
         {
-            policy_desc = <strong>{this.props.data.policy_desc}</strong>
+            policy_desc = <strong>{this.props.data.policy_desc}
+            <br/>
+            {this.props.data.votes_for } / {this.props.data.votes_against}</strong>
 
         }
         else if(this.props.data.policy_result == -1)
         {
-            policy_desc = <strong className="has-text-danger">{this.props.data.policy_desc}</strong>
+            policy_desc = <strong className="has-text-danger">{this.props.data.policy_desc}
+            <br/>
+            {this.props.data.votes_for } / {this.props.data.votes_against}</strong>
         }
         else
         {
-            policy_desc = <i>{this.props.data.policy_desc}</i>
+            policy_desc = <i>{this.props.data.policy_desc}
+            <br/>
+            {this.props.data.votes_for } / {this.props.data.votes_against}</i>
 
         }
         return (

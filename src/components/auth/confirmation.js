@@ -8,15 +8,15 @@ export default function Confirmation()
 
   const navigate = useNavigate();
 
-  const [emailEntry, setEmailEntry] = React.useState(null);
-  const [codeEntry, setCodeEntry] = React.useState(null);
+  const emailEntry = React.createRef()
+  const codeEntry = React.createRef()
 
   const handleSubmit = async function (e){
     e.preventDefault();
     setLoading(true);
 
     try {
-      await Auth.confirmSignUp(emailEntry, codeEntry);
+      await Auth.confirmSignUp(emailEntry.current.value, codeEntry.current.value);
       alert("Success!!", "Verified Successfully", "success");
       navigate("/signin");
     } catch (error) {
@@ -33,7 +33,7 @@ export default function Confirmation()
     <div className="field">
       <label className="label">Citizen Email</label>
       <div className="control has-icons-left">
-        <input className="input" type="email" placeholder="Email" value={emailEntry} onChange={e => setEmailEntry(e.target.value)}/>
+        <input className="input" type="email" placeholder="Email" ref={emailEntry}/>
         <span className="icon is-small is-left">
           <i className="fas fa-envelope"></i>
         </span>
@@ -42,7 +42,7 @@ export default function Confirmation()
     <div className="field">
       <label className="label">Verification Code</label>
       <div className="control has-icons-left">
-        <input className="input is-danger" type="text" placeholder="Check your email"  value={codeEntry} onChange={e => setCodeEntry(e.target.value)}/>
+        <input className="input is-danger" type="text" placeholder="Check your email" ref={codeEntry} />
         <span className="icon is-small is-left">
           <i className="fas fa-lock"></i>
         </span>

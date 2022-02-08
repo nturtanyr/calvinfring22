@@ -4,6 +4,8 @@ import { ResponsiveContainer, PureComponent, PieChart, Pie, Legend, Tooltip, Cel
 
 export default function ConstituencyDemography({constituency_id}) {
     let [demographyData, setDemographyData] = React.useState(null);
+    const [selectedDemography, setSelectedDemography] = React.useState('ethnicity');
+  
     
     React.useEffect(() => {
 
@@ -18,36 +20,21 @@ export default function ConstituencyDemography({constituency_id}) {
     if (demographyData)
     {
         return (
-            <div className="columns">
-                <div className="column">
-                    <figure className="content">
-                        <h2>Ethnicity</h2>
-                        <DemographyPie data={demographyData.ethnicity}/>
-                    </figure>
-                    <figure className="content">
-                        <h2>Religion</h2>
-                <DemographyPie data={demographyData.religion}/>
-                    </figure>
-                    <figure className="content">
-                        <h2>Age Groups</h2>
-                <DemographyPie data={demographyData.age}/>
-                    </figure>
+            <>
+                <div class="select" value={selectedDemography} onChange={(e) => (setSelectedDemography(e.target.value))}>
+                    <select>
+                        <option value="ethnicity">Ethnicity</option>
+                        <option value="religion">Religion</option>
+                        <option value="industry">Industry</option>
+                        <option value="sex">Sex</option>
+                        <option value="sexuality">Sexuality</option>
+                        <option value="age">Age</option>
+                    </select>
                 </div>
-                <div className="column">
-                    <figure className="content">
-                        <h2>Industry</h2>
-                <DemographyPie data={demographyData.industry}/>
-                    </figure>
-                    <figure className="content">
-                        <h2>Sex</h2>
-                <DemographyPie data={demographyData.sex}/>
-                    </figure>
-                    <figure className="content">
-                        <h2>Sexuality</h2>
-                <DemographyPie data={demographyData.sexuality}/>
-                    </figure>
-                </div>
-            </div>
+                <figure className="content">
+                    <DemographyPie data={demographyData[selectedDemography]}/>
+                </figure>
+            </>
         )
     }
     else

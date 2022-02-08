@@ -1,13 +1,13 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import {userDetails} from "../auth/authutils";
+import { isLoggedIn} from "../auth/authutils";
 
 
 export default function ProtectedRoute({ component })
 {
-    var loggedIn = React.useContext(userDetails).loggedIn
+    const { loggedInState} = React.useContext(isLoggedIn)
 
-    if(loggedIn)
+    if(loggedInState)
     {
         return (
             React.createElement(component)

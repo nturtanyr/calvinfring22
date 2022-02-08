@@ -46,7 +46,7 @@ export default function Election() {
                         )}
                         <hr/>
                     </div>
-                    <ConstituencyElectionChart constituency_id={selected_index} election_id="latest"/>
+                    <ConstituencyElectionChart constituency_id={selected_index} election_id={params.id}/>
                 </div>
             </div>
         </section>

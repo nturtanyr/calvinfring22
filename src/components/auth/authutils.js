@@ -1,44 +1,62 @@
 import React from "react";
+import axios from 'axios';
 import { Auth } from "aws-amplify";
-import { useParams } from "react-router-dom";
 
-export const userDetails = React.createContext({ "loggedIn" : false, "userAttributes" : []});
+export const isLoggedIn = React.createContext({
+     "loggedInState" : false, 
+     "setLoggedInState" : (state) => {}
+    });
 
-export function useAuthenticatedUser() {
-
-    let params = useParams();
-
-    const [userInfo, setUserInfo] = React.useState({"loggedIn" : false});
+export function useAuthenticatedInfo() {
+    const { loggedInState } = React.useContext(isLoggedIn)
+    const [userInfo, setUserInfo] = React.useState(null);
 
     React.useEffect(() => {
-        (async () => {
-            let dictionary = null;
-            let user = null;
-    
-            try {
-                user = await Auth.currentAuthenticatedUser();
-                if (user) {
-                    dictionary = {
-                        "loggedIn" : true,
-                        "email" :  user.attributes.email,
-                        "constituency_id" :  user.attributes['custom:constituency'],
-                        "name" :  user.attributes.name
-                    };
-                    setUserInfo(dictionary);
-                } else {
-                    dictionary = {
-                        "loggedIn" : false
-                    };
-                    setUserInfo(dictionary);
-                }
-            } catch (e) {
-                dictionary = {
-                    "loggedIn" : false
-                };
-                setUserInfo(dictionary);
-            };
-        })();
-    },[params]);
+        Auth.currentAuthenticatedUser()
+        .then(user =>{
+            setUserInfo(user.attributes);
+        })
+        .catch(error => {
+            setUserInfo(null);
+        });
+
+    },[loggedInState]);
 
     return userInfo;
+}
+
+export function useHasUserVoted() {
+    const [userHasVoted, setUserHasVoted] = React.useState(false);
+    
+    Auth.currentSession()
+    .then( response => {
+        var options = {
+            headers: {
+                Authorization: response.getIdToken().jwtToken,
+                "Content-Type" : "application/json"
+            }
+        }
+    
+        axios.get(`${process.env.REACT_APP_API_ROOT}/user/vote`,options)
+        .then(res => {
+            const data = res.data.data;
+            if(data)
+            {
+                setUserHasVoted(true);
+            }
+            else
+            {
+                setUserHasVoted(false);
+            }
+        })
+        .catch(error => {
+            setUserHasVoted(false);
+        });
+    })
+    .catch(error => {
+        console.log("No access token available")
+        setUserHasVoted(false);
+    });
+
+    return userHasVoted
 }

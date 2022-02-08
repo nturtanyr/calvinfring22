@@ -68,7 +68,14 @@ export default function ConstituencyElectionChart ({constituency_id, election_id
                         <XAxis dataKey="last_name" />
                         <YAxis />
                         <Tooltip />
-                        <Bar dataKey="vote_tally">
+                        <Bar dataKey="vote_tally_inperson" name="In Person">
+                            {
+                                chartData.details.map((entry, index) => (
+                                    <Cell key={`cell-${index}`} fill={fill_colour[index % 6]} />
+                                ))
+                            }
+                        </Bar>
+                        <Bar dataKey="vote_tally_online" name="Online Votes">
                             {
                                 chartData.details.map((entry, index) => (
                                     <Cell key={`cell-${index}`} fill={fill_colour[index % 6]} />

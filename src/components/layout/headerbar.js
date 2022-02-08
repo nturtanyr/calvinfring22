@@ -3,10 +3,10 @@ import { NavLink } from "react-router-dom"
 import TickerTape from "./tickertape"
 import styles from "./headerbar.module.css"
 import kec_logo from '../../images/keclogo.png';
-import {userDetails} from "../auth/authutils";
+import {isLoggedIn} from "../auth/authutils";
 
 function HeaderBar(props) {
-    var loggedIn = React.useContext(userDetails).loggedIn
+    const { loggedInState } = React.useContext(isLoggedIn)
     var colorClass
     if(props.color == "red")
     {
@@ -44,7 +44,7 @@ function HeaderBar(props) {
                             <NavLink to="/news" className="navbar-item">
                                 News
                             </NavLink>
-                            <NavLink to="/candidate" className="navbar-item">
+                            <NavLink to="/candidate/0" className="navbar-item">
                                 Candidates
                             </NavLink>
                             <NavLink to="/demographies" className="navbar-item">
@@ -64,12 +64,12 @@ function HeaderBar(props) {
                             </NavLink>
                             <div className="navbar-item">
                                 <div className="buttons">
-                                    {loggedIn && (
+                                    {loggedInState && (
                                         <NavLink to="/user" className="button is-white">
                                             <strong>Your Account</strong>
                                         </NavLink>
                                     )}
-                                    {!loggedIn && (
+                                    {!loggedInState && (
                                         <NavLink to="/login" className="button is-primary-invert">
                                             <strong>Log in</strong>
                                         </NavLink>

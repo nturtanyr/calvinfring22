@@ -1,10 +1,8 @@
 import React from "react";
 import axios from 'axios';
-import { useParams } from "react-router-dom";
 
 
 export default function CandidateVoteHistory({candidate_id, trust}) {
-    let params = useParams();
     let [votes_data, set_voteData] = React.useState(null);
     
     React.useEffect(() => {

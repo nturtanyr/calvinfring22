@@ -1,10 +1,10 @@
 import './App.css';
 import {
   Routes,
-  Route,
-  Navigate
+  Route
 } from "react-router-dom";
 import Amplify from "aws-amplify";
+import React from "react";
 
 import Layout from './components/layout/layout';
 import Home from './components/home/home';
@@ -20,7 +20,7 @@ import Login from './components/auth/login';
 import Register from './components/auth/register';
 import ProtectedRoute from './components/auth/protectedroute';
 import Confirmation from './components/auth/confirmation';
-import {userDetails, useAuthenticatedUser} from './components/auth/authutils';
+import { isLoggedIn } from './components/auth/authutils';
 
 Amplify.configure({
   aws_cognito_region: "eu-west-2",
@@ -30,14 +30,14 @@ Amplify.configure({
 
 export default function App() {
   
-  var userInfo = useAuthenticatedUser();
+  const [loggedInState, setLoggedInState] = React.useState(false);
 
   return (
-    <userDetails.Provider value={userInfo}>
+    <isLoggedIn.Provider value={{ loggedInState, setLoggedInState }}>
       <Routes>
         <Route element={<Layout color="blue" />}>
           <Route path="/" element={<Home />} />
-          <Route path="/candidate" element={<Candidate candidate_index={0}/>} />
+          <Route path="/candidate/:id" element={<Candidate candidate_index={0}/>} />
           <Route path="/demographies" element={<Demography />} />
           <Route path="/election/:id"  element={<Election />} />
           <Route path="/assembly/:id" element={<Assembly />} />
@@ -54,6 +54,6 @@ export default function App() {
           <Route path="/user" element={<ProtectedRoute component={UserPage}/>} />
         </Route>
       </Routes>
-    </userDetails.Provider>
+    </isLoggedIn.Provider>
   );
 };

@@ -13,7 +13,7 @@ export default function CandidatePolicies({candidate_id}) {
             set_policyData(data);
         })
         
-    },[]);
+    },[candidate_id]);
 
     var rows =[]
     if (policies_data && policies_data.length > 0)
