@@ -40,7 +40,7 @@ export function useHasUserVoted() {
         axios.get(`${process.env.REACT_APP_API_ROOT}/user/vote`,options)
         .then(res => {
             const data = res.data.data;
-            if(data)
+            if(data.length > 0)
             {
                 setUserHasVoted(true);
             }

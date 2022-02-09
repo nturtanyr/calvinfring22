@@ -18,7 +18,7 @@ export default function Confirmation()
     try {
       await Auth.confirmSignUp(emailEntry.current.value, codeEntry.current.value);
       alert("Success!!", "Verified Successfully", "success");
-      navigate("/signin");
+      navigate("/");
     } catch (error) {
       alert("Error!!", error.message, "danger");
     }

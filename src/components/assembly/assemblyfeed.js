@@ -8,6 +8,7 @@ export default function AssemblyFeed() {
     let params = useParams();
     let [timer, setTime] = React.useState(null);
     let [feedData, setFeedData] = React.useState(null);
+    const messagesEndRef = React.createRef()
 
     React.useEffect(() => {
 
@@ -21,8 +22,9 @@ export default function AssemblyFeed() {
             setTime(timer => timer + 1);
         }, 3000);
         
+        if(messagesEndRef.current){
+        messagesEndRef.current.scrollIntoView({ behavior: 'smooth' })}
         return () => clearInterval(interval);
-        
     },[timer]);
 
     var feed = []
@@ -56,9 +58,8 @@ export default function AssemblyFeed() {
                     <h3>Live Updates:</h3>
                 </div>
                 <div className={styles.feedContainer}>
-                <ScrollToBottom>
                     {feed}
-                </ScrollToBottom>
+                    <div ref={messagesEndRef} />
                 </div>
             </div>
         )

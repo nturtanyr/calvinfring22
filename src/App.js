@@ -4,6 +4,7 @@ import {
   Route
 } from "react-router-dom";
 import Amplify from "aws-amplify";
+import { Auth } from 'aws-amplify';
 import React from "react";
 
 import Layout from './components/layout/layout';
@@ -31,6 +32,9 @@ Amplify.configure({
 export default function App() {
   
   const [loggedInState, setLoggedInState] = React.useState(false);
+  Auth.currentAuthenticatedUser()
+  .then(user =>{setLoggedInState(true);})
+  .catch(error => {setLoggedInState(false);});
 
   return (
     <isLoggedIn.Provider value={{ loggedInState, setLoggedInState }}>

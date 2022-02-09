@@ -113,8 +113,8 @@ export default function UserVoting({constituency_id}) {
                 buttonCell = <td><button className="button is-disabled">No election</button></td>
                 
             }
-            else
-             if(userHasVoted)
+            else 
+            if(userHasVoted)
             {
                 buttonCell = <td><button className="button is-disabled">Vote cast</button></td>
             } 

@@ -16,6 +16,44 @@ export default function Register() {
   const passwordConfirmEntry = React.createRef();
   const constituencyEntry = React.createRef();
 
+  const [passwordInvalidMissingUppercase, setPasswordInvalidMissingUppercase] = React.useState(false);
+  const [passwordInvalidMissingLowercase, setPasswordInvalidMissingLowercase] = React.useState(false);
+  const [passwordInvalidMissingSpecialCharacter, setPasswordInvalidMissingSpecialCharacter] = React.useState(false);
+  const [passwordInvalidMissingNumber, setPasswordInvalidMissingNumber] = React.useState(false);
+  const [confirmPasswordInvalid, setConfirmPasswordInvalid] = React.useState(false);
+  const [emailInvalid, setEmailInvalid] = React.useState(false);
+  const [nameInvalid, setNameInvalid] = React.useState(false);
+
+  function checkPasswordParameters()
+  {
+    if(!passwordEntry.current.value.match('[a-z]'))
+    {
+      setPasswordInvalidMissingLowercase(true);
+    }else{setPasswordInvalidMissingLowercase(false);}
+    if(!passwordEntry.current.value.match('[A-Z]'))
+    {
+      setPasswordInvalidMissingUppercase(true);
+    }else{setPasswordInvalidMissingUppercase(false);}
+    
+    if(!passwordEntry.current.value.match('[\^$*.[\]{}()?\-"!@#%&/\\\\,><\':;|_~`+=]'))
+    {
+      setPasswordInvalidMissingSpecialCharacter(true);
+    }else{setPasswordInvalidMissingSpecialCharacter(false);}
+
+    if(!passwordEntry.current.value.match('[0-9]'))
+    {
+      setPasswordInvalidMissingNumber(true);
+    }else{setPasswordInvalidMissingNumber(false);}
+  }
+
+  function checkConfirmPassword()
+  {
+    if(passwordEntry.current.value !== passwordConfirmEntry.current.value)
+    {
+      setConfirmPasswordInvalid(true);
+    }else{setConfirmPasswordInvalid(false);};
+  }
+
   React.useEffect(() => {
       axios.get(`${process.env.REACT_APP_API_ROOT}/constituency`)
       .then(res => {
@@ -56,12 +94,20 @@ export default function Register() {
   };
 
   return (
+    <>
+    <div className="block"/>
+    <div className="columns is-centered">
+      <div className="column is-one-third">
+        <p className="title">Citizen Registration</p>
+        <hr/>
+        
     <form onSubmit={handleSignUp} >
       <div className="field">
           <label className="label">Citizen Name</label>
           <div className="control">
               <input ref={nameEntry} className="input" type="text" placeholder="Name"/>
           </div>
+          <p className={`help is-danger ${!emailInvalid && "is-hidden"}`}>You must register a name as an individual.</p>
       </div>
       <div className="field">
           <label className="label">Citizen Email</label>
@@ -71,20 +117,25 @@ export default function Register() {
                   <i className="fas fa-envelope"></i>
               </span>
           </div>
+          <p className={`help is-danger ${!emailInvalid && "is-hidden"}`}>You must attach an email as a username and to retrieve a forgotten password.</p>
       </div>
       <div className="field">
           <label className="label">Citizen Password</label>
           <div className="control has-icons-left">
-              <input ref={passwordEntry} className="input is-danger" type="password" placeholder="********" />
+              <input ref={passwordEntry} className="input is-danger" type="password" placeholder="********" onChange={checkPasswordParameters}/>
               <span className="icon is-small is-left">
                   <i className="fas fa-lock"></i>
               </span>
           </div>
+          <p className={`help is-danger ${!passwordInvalidMissingLowercase && "is-hidden"}`}>Password should contain a lowercase character</p>
+          <p className={`help is-danger ${!passwordInvalidMissingUppercase && "is-hidden"}`}>Password should contain an uppercase character</p>
+          <p className={`help is-danger ${!passwordInvalidMissingNumber && "is-hidden"}`}>Password should contain a number</p>
+          <p className={`help is-danger ${!passwordInvalidMissingSpecialCharacter && "is-hidden"}`}>Password should contain a symbol</p>
       </div>
       <div className="field">
           <label className="label">Confirm Password</label>
           <div className="control has-icons-left">
-              <input ref={passwordConfirmEntry} className="input is-danger" type="password" placeholder="********"/>
+              <input ref={passwordConfirmEntry} className="input is-danger" type="password" placeholder="********" onChange={checkConfirmPassword}/>
               <span className="icon is-small is-left">
                   <i className="fas fa-lock"></i>
               </span>
@@ -107,5 +158,9 @@ export default function Register() {
       </p>
       <button className={`button is-primary ${loading && "is-loading"}`} type="submit">Register</button>
     </form>
+      </div>
+    </div>
+    <div className="block"/>
+    </>
   );
 };

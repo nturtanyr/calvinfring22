@@ -31,22 +31,18 @@ export default function Login() {
       if(error.message.match("Username cannot be empty"))
       {
         setEmailInvalid(true)
-        console.log("Username cannot be empty")
       }
       else if(error.message.match("Custom auth lambda trigger is not configured for the user pool."))
       {
         setPasswordInvalid(true)
-        console.log("Password cannot be empty")
       }
       else if(error.message.match("Incorrect username or password."))
       {
         setDetailsInvalid(true)
-        console.log("Incorrect username or password.")
       }
       else
       {
         setErrorInvalid(true)
-        console.log("Something went wrong")
       }
       setLoading(false);
     })
@@ -74,7 +70,7 @@ export default function Login() {
               <span className="icon is-small is-left">
                 <i className="fas fa-envelope"></i>
               </span>
-              <p class={`help is-danger ${!emailInvalid && "is-hidden"}`}>You must enter a valid email</p>
+              <p className={`help is-danger ${!emailInvalid && "is-hidden"}`}>You must enter a valid email</p>
             </div>
           </div>
           <div className="field">
@@ -84,11 +80,11 @@ export default function Login() {
               <span className="icon is-small is-left">
                 <i className="fas fa-lock"></i>
               </span>
-              <p class={`help is-danger ${!passwordInvalid && "is-hidden"}`}>Password is incorrect</p>
+              <p className={`help is-danger ${!passwordInvalid && "is-hidden"}`}>Password is incorrect</p>
             </div>
           </div>
-          <p class={`help is-danger ${!detailsInvalid && "is-hidden"}`}>Username or password is incorrect</p>
-          <p class={`help is-danger ${!errorInvalid && "is-hidden"}`}>Something went wrong - try again later</p>
+          <p className={`help is-danger ${!detailsInvalid && "is-hidden"}`}>Username or password is incorrect</p>
+          <p className={`help is-danger ${!errorInvalid && "is-hidden"}`}>Something went wrong - try again later</p>
           <p>
               <strong>If you are a citizen of Kalmany and haven't registered to vote, please register <Link to="/register">here</Link>.</strong>
           </p>
