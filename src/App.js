@@ -1,11 +1,12 @@
 import './App.css';
 import {
   Routes,
-  Route
+  Route,
+  Navigate,
+  Outlet
 } from "react-router-dom";
-import Amplify from "aws-amplify";
-import { Auth } from 'aws-amplify';
 import React from "react";
+import { useAuthenticator } from '@aws-amplify/ui-react';
 
 import Layout from './components/layout/layout';
 import Home from './components/home/home';
@@ -17,27 +18,18 @@ import News from './components/news/news';
 import Codex from './components/codex/codex';
 import Election from './components/election/election';
 import UserPage from './components/user/userpage';
-import Login from './components/auth/login';
-import Register from './components/auth/register';
-import ProtectedRoute from './components/auth/protectedroute';
-import Confirmation from './components/auth/confirmation';
-import { isLoggedIn } from './components/auth/authutils';
+import ConstituencyDemography from "./components/demography/constituencydemography";
+import ConstituencyElectionChart from "./components/election/electionresults";
+import UserVoting from "./components/user/uservoting";
+import UserProfile from "./components/user/userprofile";
+import UserLogout from "./components/user/userlogout";
+import AuthenticatedRoute from './components/user/authroute';
+import NotFound from './components/util/notfound';
 
-Amplify.configure({
-  aws_cognito_region: "eu-west-2",
-  aws_user_pools_id: "eu-west-2_9qwNvza2L",
-  aws_user_pools_web_client_id: "5p1s59hddne68gvq5lfuvth163",
-});
 
 export default function App() {
-  
-  const [loggedInState, setLoggedInState] = React.useState(false);
-  Auth.currentAuthenticatedUser()
-  .then(user =>{setLoggedInState(true);})
-  .catch(error => {setLoggedInState(false);});
-
+  const { user, signOut } = useAuthenticator((context) => [context.user]);
   return (
-    <isLoggedIn.Provider value={{ loggedInState, setLoggedInState }}>
       <Routes>
         <Route element={<Layout color="blue" />}>
           <Route path="/" element={<Home />} />
@@ -47,17 +39,24 @@ export default function App() {
           <Route path="/assembly/:id" element={<Assembly />} />
           <Route path="/rankings" element={<Rankings />} />
         </Route>
-        <Route path="/news" element={<Layout color="red" />}>
-          <Route index element={<News />} />
+        <Route element={<Layout color="red" />}>
+          <Route path="/news" element={<News />} />
         </Route>
         <Route  element={<Layout color="cyan" />}>
           <Route path="/codex" element={<Codex />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/confirmation" element={<Confirmation />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/user" element={<ProtectedRoute component={UserPage}/>} />
+          <Route element={<AuthenticatedRoute/>}>
+            <Route path="/user" element={<UserPage signOut={signOut}/>}>
+              <Route index element={<UserProfile/>} />
+              <Route path="logout" element={<UserLogout signOut={signOut}/>} />
+              <Route path="voting" element={<UserVoting constituency_id={user ? user.attributes['custom:constituency'] : 0}/>} />
+              <Route path="demography" element={<ConstituencyDemography constituency_id={user ? user.attributes['custom:constituency'] : 0}/>} />
+              <Route path="election" element={<ConstituencyElectionChart constituency_id={user ? user.attributes['custom:constituency'] : 0} election_id="latest"/>} />
+            </Route>
+          </Route>
+        </Route>
+        <Route element={<Layout color="red" />}>
+          <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>
-    </isLoggedIn.Provider>
   );
 };

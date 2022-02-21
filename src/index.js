@@ -7,11 +7,14 @@ import reportWebVitals from './reportWebVitals';
 import {
   BrowserRouter as Router
 } from "react-router-dom";
+import { Authenticator } from '@aws-amplify/ui-react';
 
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  <Authenticator.Provider>
+    <Router>
+      <App />
+    </Router>
+  </Authenticator.Provider>,
   document.getElementById('root')
 );
 
