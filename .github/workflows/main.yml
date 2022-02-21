@@ -22,3 +22,18 @@ jobs:
     steps:
       - name: S3 Deploy
         uses: Reggionick/s3-deploy@v3.1.1
+        with:
+          # Directory to deploy
+          folder: build
+          # Name of AWS Bucket
+          bucket: kalmany-frontend-static
+          # The destination bucket region
+          bucket-region: eu-west-2
+          # AWS CloudFront distribution ID
+          dist-id: E2DEX0M8EIX6R
+          # AWS CloudFront invalidation path(s)
+          invalidation: /
+          # Removes files in S3 that are not available in the local copy of the directory
+          delete-removed: true
+          # Upload files with private ACL, needed for S3 static website hosting
+          private: true
