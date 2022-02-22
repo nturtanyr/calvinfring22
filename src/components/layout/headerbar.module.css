@@ -1,13 +1,3 @@
-.kheader {
-    max-height: 50vh;
-}
-
-.kbar {
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-top: 24px;
-    padding-bottom: 0px;
-}
 
 .klogo {
     display: inline-block;
@@ -16,11 +6,8 @@
 
 .ktitletext {
     display: inline-block;
+    vertical-align: middle;
     text-align: left;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-left: 5px;
-}
-
-.knavbar {
-    background-color: inherit;
 }

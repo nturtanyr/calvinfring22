@@ -4,7 +4,7 @@ import styles from "./midsection.module.css"
 function MidSection({ children }) {
 return (
     
-        <section className={`section ${styles.midSection}`}>
+        <section className="section">
             <div className={`container ${styles.floatingContainer}`}>
                 { children }
             </div>

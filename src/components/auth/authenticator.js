@@ -32,7 +32,6 @@ export default function AuthenticatorK() {
           }}
           services={{
             async validateCustomSignUp(formData) {
-                console.log(formData["custom:constituency"].value)
               if (formData["custom:constituency"].value === 0) {
                 return {
                   constituencySelect: 'You must pick a home constituency.',

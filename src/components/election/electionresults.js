@@ -1,12 +1,24 @@
 import React from "react";
 import axios from 'axios';
 import { BarChart, XAxis, YAxis, Bar, Cell, Tooltip, ResponsiveContainer } from "recharts";
+import { useParams } from "react-router-dom";
 
 export default function ConstituencyElectionChart ({constituency_id, election_id}) {
+    const params = useParams()
     const [chartData, setChartData] = React.useState(null);
     const [timer, setTime] = React.useState(null);
 
     React.useEffect(() => {
+        if(params.constituency_id)
+        {
+            constituency_id = params.constituency_id
+        }
+
+        if(params.election_id)
+        {
+            election_id = params.election_id
+        }
+
         axios.get(`${process.env.REACT_APP_API_ROOT}/constituency/` + constituency_id + `/election/` + election_id)
         .then(res => {
             const data = res.data.data;
@@ -21,7 +33,7 @@ export default function ConstituencyElectionChart ({constituency_id, election_id
             
             return () => clearInterval(interval);
         }
-    },[timer, constituency_id, election_id]);
+    },[timer, params.constituency_id, params.election_id]);
 
     var barColors = [
         "#6996b5",
@@ -63,10 +75,9 @@ export default function ConstituencyElectionChart ({constituency_id, election_id
         return (
             <div>
                 <h1 className="subtitle">{title_text}</h1>
-                <ResponsiveContainer width="100%" height={500}>
+                <ResponsiveContainer width="100%" aspect={2}>
                     <BarChart data={chartData.details}>
-                        <XAxis dataKey="last_name" />
-                        <YAxis />
+                        <XAxis type='category' dataKey="last_name"/>
                         <Tooltip />
                         <Bar dataKey="vote_tally_inperson" name="In Person">
                             {

@@ -60,12 +60,34 @@ export default function CodexInformation(props) {
                 </div>
             )
             break;
-        case 8: //Socks
+        case 5: //Elections
             component_output = (
                 <div className="content is-scrollable">
-                    <h3>Socks</h3>
+                    <h3>Elections</h3>
                     <hr/>
-                    <p>Since the Great Sock Fire of 1866, the citizens of Kalmany have held socks to be a contentious issue. Socks have a major part of the political system</p>
+                    <p>Every citizen is given the opportunity to vote for a candidate in their constituency to represent them in parliament. Elections take place from 09:00 until 17:00 each day, apart from Sundays; the day of rest. Any citizen is welcome to stand for election, as long as they bring an application form to the Kalmany Electoral Commission Headquarters in Kalbal. A candidate will be asked to provide a standard list of policies as part of their platform that they may take to parliament.</p>
+                    <p>Election results are determined by first past the post - the candidate with the most votes is elected as a member of parliament. If there is a tie, the Kalmany Electoral Commission is dedicated to providing a solution as and when this occurs.</p>
+                </div>
+            )
+            break;
+        case 6: //Parliament
+            component_output = (
+                <div className="content is-scrollable">
+                    <h3>Assemblies</h3>
+                    <hr/>
+                    <p>The central system of legislation within the Kalmany government still stands as it did almost two-hundred years ago, when the Great Sock Fire of 1812 took place. Since then, the parliament of Kalmany has operated using twenty-four elected members to represent each of Kalmany's twenty-four constituencies.</p>
+                    <p>When elected, at 19:00 each day, the parliament will convene at an assembly, where each member is given the opportunity to bring one policy to parliament that they wish to enact.</p>
+                    <p>Each member is then given an opportunity to discuss the policy, but they may only speak by throwing a sock into a ceremonial ring. Discussing a policy is vital to persuading the other members of parliament to the cause.</p>
+                    <p>Once the discussion has completed, all members will be allowed to vote For, Against, or Abstain. If the votes For can reached quorum of a third of parliament, and outnumber the votes Against, the policy will be passed and implemented by the government.</p>
+                </div>
+            )
+            break;
+        case 7: //Rankings
+            component_output = (
+                <div className="content is-scrollable">
+                    <h3>Rankings</h3>
+                    <hr/>
+                    <p>The Kalmany Electoral Commission has collaborated with Bulford University to provide the means to survey the public on a regular basis to determine a suitable scoring system against each sector of Government spending and operation. Using these surveys, each constituency is then ranked on a score of 0-10 on their performance. This information is not intended to provoke competition between constituencies and is meant to only provide a meaningful way to compare if one constituency is, without a doubt, better than another.</p>
                 </div>
             )
             break;

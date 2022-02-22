@@ -51,18 +51,122 @@ function Rankings() {
                 <table className="table is-hoverable">
                     <thead>
                         <tr>
-                            <th>Constituency</th>
-                            <th>Welfare</th>
-                            <th>Health</th>
-                            <th>Pensions</th>
-                            <th>Education</th>
-                            <th>Defense</th>
-                            <th>Transport</th>
-                            <th><nobr>Public Order</nobr> <nobr>& Safety</nobr></th>
-                            <th>Business <nobr>& Industry</nobr></th>
-                            <th>Housing <nobr>& Utilities</nobr></th>
-                            <th>Culture</th>
-                            <th>Environment</th>
+                            <th>
+                                Constituency
+                            </th>
+                            <th>
+                                <span className="icon-text is-flex-wrap-nowrap">
+                                    <span className="icon" >
+                                        <img src={"../images/categories/cat-1.svg"} />
+                                    </span>
+                                    <span>
+                                        Welfare
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span className="icon-text is-flex-wrap-nowrap">
+                                    <span className="icon" >
+                                        <img src={"../images/categories/cat-2.svg"} />
+                                    </span>
+                                    <span>
+                                        Health
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span className="icon-text is-flex-wrap-nowrap">
+                                    <span className="icon" >
+                                        <img src={"../images/categories/cat-3.svg"} />
+                                    </span>
+                                    <span>
+                                        Pensions
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span className="icon-text is-flex-wrap-nowrap">
+                                    <span className="icon" >
+                                        <img src={"../images/categories/cat-4.svg"} />
+                                    </span>
+                                    <span>
+                                        Education
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span className="icon-text is-flex-wrap-nowrap">
+                                    <span className="icon" >
+                                        <img src={"../images/categories/cat-5.svg"} />
+                                    </span>
+                                    <span>
+                                        Defense
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span className="icon-text is-flex-wrap-nowrap">
+                                    <span className="icon" >
+                                        <img src={"../images/categories/cat-6.svg"} />
+                                    </span>
+                                    <span>
+                                        Transport
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span className="icon-text is-flex-wrap-nowrap">
+                                    <span className="icon" >
+                                        <img src={"../images/categories/cat-7.svg"} />
+                                    </span>
+                                    <span>
+                                        <nobr>Public Order</nobr><br/>
+                                        <nobr> & Safety</nobr>
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span className="icon-text is-flex-wrap-nowrap">
+                                    <span className="icon" >
+                                        <img src={"../images/categories/cat-8.svg"} />
+                                    </span>
+                                    <span>
+                                        Business <br/>
+                                        <nobr> & Industry</nobr>
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span className="icon-text is-flex-wrap-nowrap">
+                                    <span className="icon" >
+                                        <img src={"../images/categories/cat-10.svg"} />
+                                    </span>
+                                    <span>
+                                        Housing <br/>
+                                        <nobr> & Utilities</nobr>
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span className="icon-text is-flex-wrap-nowrap">
+                                    <span className="icon" >
+                                        <img src={"../images/categories/cat-11.svg"} />
+                                    </span>
+                                    <span>
+                                        Culture
+                                    </span>
+                                </span>
+                            </th>
+                            <th>
+                                <span className="icon-text is-flex-wrap-nowrap">
+                                    <span className="icon" >
+                                        <img src={"../images/categories/cat-12.svg"} />
+                                    </span>
+                                    <span>
+                                        Environment
+                                    </span>
+                                </span>
+                            </th>
                             <th>Spending</th>
                             <th>Overall</th>
                         </tr>

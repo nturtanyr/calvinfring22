@@ -12,7 +12,7 @@ import {
 // Gonna need party_name. sex, ethnicity, age, industry, religion, sexuality, attributes
 
 function determineAvatar(sex_id, ethnicity_id, age){
-    var image_path = "av-"
+    var image_path = "avatars/av-"
     switch(sex_id)
     {
         case 4:
@@ -62,7 +62,7 @@ function determineAvatar(sex_id, ethnicity_id, age){
 }
 
 function determineSexuality(sex_id, sexuality_id){
-    var image_path = "sx-"
+    var image_path = "identity/sx-"
     if(sexuality_id == 2){
         if(sex_id == 4){
             image_path += "4n"
@@ -136,8 +136,8 @@ export default function CandidateCard(props) {
                                     props.data.sex.id,
                                     props.data.sexuality.id
                                 )}`} title={props.data.sexuality.name}/>
-                                <img className="image is-48x48 is-flex" src={`../images/ind-${props.data.industry.id}.png`} title={props.data.industry.name}/>
-                                <img className="image is-48x48 is-flex" src={`../images/rel-${props.data.religion.id}.png`} title={props.data.religion.name}/>
+                                <img className="image is-48x48 is-flex" src={`../images/industry/ind-${props.data.industry.id}.png`} title={props.data.industry.name}/>
+                                <img className="image is-48x48 is-flex" src={`../images/religion/rel-${props.data.religion.id}.png`} title={props.data.religion.name}/>
                             </div>
                         </figure>
                     </div>

@@ -69,16 +69,13 @@ export default function UserVoting({constituency_id}) {
             let bodyContent = {
                 candidate_id : currentCandidateId
             }
-            console.log(bodyContent)
             return axios.post(`${process.env.REACT_APP_API_ROOT}/user/vote`, bodyContent, options)
         })
         .then(response => {
-            console.log(response.data.data)
             return response.data.data;
         
         })
         .then(response => {
-            console.log(response)
             if(response.status == "not_voted")
             {
 
@@ -101,11 +98,33 @@ export default function UserVoting({constituency_id}) {
         {
             if(candidate.elected)
             {
-                nameCell = <><td><i className="fas fa-star"></i></td><td><Link to={"/candidate/" + candidate.candidate_id}>{candidate.first_name} {candidate.last_name}</Link></td></>
+                nameCell = <>
+                    <td>
+                        <i className="fas fa-star"></i>
+                    </td>
+                    <td>
+                        <p>
+                            <Link to={"/candidate/" + candidate.candidate_id}>{candidate.first_name} {candidate.last_name}</Link>
+                        </p>
+                        <p>
+                            <i className="is-hidden-mobile">{candidate.quote}</i>
+                        </p>
+                    </td>
+                </>
             }
             else
             {
-                nameCell = <><td></td><td><Link to={"/candidate/" + candidate.candidate_id}>{candidate.first_name} {candidate.last_name}</Link></td></>
+                nameCell = <>
+                    <td></td>
+                    <td>
+                        <p>
+                            <Link to={"/candidate/" + candidate.candidate_id}>{candidate.first_name} {candidate.last_name}</Link>
+                        </p>
+                        <p>
+                            <i className="is-hidden-mobile">{candidate.quote}</i>
+                        </p>
+                    </td>
+                </>
             }
 
             if(!electionInProgress)
@@ -125,7 +144,6 @@ export default function UserVoting({constituency_id}) {
             
             tableRows.push(<tr key={"can-" + candidate.candidate_id}>
                 {nameCell}
-                <td>{candidate.quote}</td>
                 {buttonCell}
             </tr>)
         }
@@ -135,36 +153,36 @@ export default function UserVoting({constituency_id}) {
         <>
             <table className="table">
                 <thead>
-                    <tr><th></th><th>Name</th><th>Quote</th><th></th></tr>
+                    <tr><th></th><th>Name</th><th></th></tr>
                 </thead>
                 <tbody>
                     {tableRows}
                 </tbody>
             </table>
-            <div class={"modal " + modalIsActive}>
-                <div class="modal-background"></div>
-                <div class="modal-card">
-                    <header class="modal-card-head">
-                        <p class="modal-card-title">Are you sure?</p>
-                        <button class="delete" onClick={() => {setModalErrorMessage(null); setModalIsActive('')}}></button>
+            <div className={"modal " + modalIsActive}>
+                <div className="modal-background"></div>
+                <div className="modal-card">
+                    <header className="modal-card-head">
+                        <p className="modal-card-title">Are you sure?</p>
+                        <button className="delete" onClick={() => {setModalErrorMessage(null); setModalIsActive('')}}></button>
                     </header>
-                    <section class="modal-card-body has-text-danger">
+                    <section className="modal-card-body has-text-danger">
                         {!modalErrorMessage && (
                             <>
-                                <h5 class="subtitle has-text-danger">You're about to vote for <b>{currentCandidateName}</b></h5>
+                                <h5 className="subtitle has-text-danger">You're about to vote for <b>{currentCandidateName}</b></h5>
                                 <p>Are you certain? This will use your vote in this election.</p>
                             </>
                         )}
                         {modalErrorMessage && (
                             <>
-                                <h5 class="subtitle has-text-danger">Inaccurate Vote Prevented</h5>
+                                <h5 className="subtitle has-text-danger">Inaccurate Vote Prevented</h5>
                                 <p>{modalErrorMessage}</p>
                             </>
                         )}
                     </section>
-                    <footer class="modal-card-foot">
-                        <button class={"button is-danger " + (voteLoader && "is-loading")} onClick={handleVote}>Cast Vote</button>
-                        <button class="button is-warning" onClick={() => {setModalErrorMessage(null); setModalIsActive('')}}>Let me think...</button>
+                    <footer className="modal-card-foot">
+                        <button className={"button is-danger " + (voteLoader && "is-loading")} onClick={handleVote}>Cast Vote</button>
+                        <button className="button is-warning" onClick={() => {setModalErrorMessage(null); setModalIsActive('')}}>Let me think...</button>
                     </footer>
                 </div>
             </div>

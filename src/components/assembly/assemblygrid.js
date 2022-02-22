@@ -15,7 +15,7 @@ export default class AssemblyGrid extends React.Component {
         }
 
         return (
-            <div className={styles.gridContainer}>
+            <div className={"is-hidden-mobile " + styles.gridContainer}>
                 {tiles}
             </div>
         )
@@ -68,7 +68,7 @@ class AssemblyTile extends React.Component {
                         </Link>
                     </div>
                     <Link to={`/constituency/${this.props.data.constituency_id}`}>
-                        <img src={`/images/con-${this.props.data.constituency_id}.svg`} loading="lazy" title="" className={`image is-64x64 ${styles.constituencyIcon}`}/>
+                        <img src={`/images/constituency/con-${this.props.data.constituency_id}.svg`} loading="lazy" title="" className={`image is-64x64 ${styles.constituencyIcon}`}/>
                     </Link>
                     <div className="is-size-6 has-text-centered">
                         <Link to={`/candidate/${this.props.data.candidate_id}`}>{this.props.data.first_name} {this.props.data.last_name}</Link>

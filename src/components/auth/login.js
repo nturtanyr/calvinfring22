@@ -27,7 +27,6 @@ export default function Login() {
       navigate("/");
     })
     .catch(error => {
-      console.log(error.message)
       if(error.message.match("Username cannot be empty"))
       {
         setEmailInvalid(true)

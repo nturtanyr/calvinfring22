@@ -30,14 +30,6 @@ export default function Codex() {
                             <li><a onClick={() => setSelectedIndex(6)}>Assemblies</a></li>
                             <li><a onClick={() => setSelectedIndex(7)}>Rankings</a></li>
                         </ul>
-                        <p className="menu-label">
-                            Culture
-                        </p>
-                        <ul className="menu-list">
-                            <li><a onClick={() => setSelectedIndex(8)}>Socks</a></li>
-                            <li><a onClick={() => setSelectedIndex(9)}>Bears</a></li>
-                            <li><a onClick={() => setSelectedIndex(10)}></a></li>
-                        </ul>
                     </aside>
                 </div>
                 <div className="column">

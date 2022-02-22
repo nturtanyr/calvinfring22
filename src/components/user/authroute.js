@@ -58,7 +58,6 @@ export default function AuthenticatedRoute(){
             }}
             services={{
                 async validateConstituency(formData) {
-                    console.log(formData["custom:constituency"]);
                     if (formData["custom:constituency"] === 0) {
                         return {
                         "custom:constituency": 'You must pick a home constituency.',

@@ -25,6 +25,7 @@ import UserProfile from "./components/user/userprofile";
 import UserLogout from "./components/user/userlogout";
 import AuthenticatedRoute from './components/user/authroute';
 import NotFound from './components/util/notfound';
+import ConstituencyNav from './components/layout/constituencynavigator';
 
 
 export default function App() {
@@ -34,8 +35,18 @@ export default function App() {
         <Route element={<Layout color="blue" />}>
           <Route path="/" element={<Home />} />
           <Route path="/candidate/:id" element={<Candidate candidate_index={0}/>} />
-          <Route path="/demographies" element={<Demography />} />
-          <Route path="/election/:id"  element={<Election />} />
+          <Route path="/demography" element={<ConstituencyNav 
+            title={"Demography Information"} 
+            subtitle={"We provide this interface to easily observe the demography statistics of all constituencies."}
+          />}>
+            <Route path=":constituency_id" element={<ConstituencyDemography constituency_id={0}/>} />
+          </Route>
+          <Route path="/election/:election_id" element={<ConstituencyNav 
+            title={"Election Information"} 
+            subtitle={"We provide this interface to easily access the election results of all constituencies."}
+          />}>
+            <Route path=":constituency_id"  element={<ConstituencyElectionChart constituency_id={0} election_id={"latest"}/>} />
+          </Route>
           <Route path="/assembly/:id" element={<Assembly />} />
           <Route path="/rankings" element={<Rankings />} />
         </Route>

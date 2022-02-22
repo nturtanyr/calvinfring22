@@ -54,7 +54,6 @@ export function useHasUserVoted() {
         });
     })
     .catch(error => {
-        console.log("No access token available")
         setUserHasVoted(false);
     });
 

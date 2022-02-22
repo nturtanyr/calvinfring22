@@ -2,14 +2,26 @@ import React from "react";
 import axios from 'axios';
 import { useParams } from "react-router-dom"
 import styles from "./assembly.module.css"
-import ScrollToBottom from 'react-scroll-to-bottom';
 
 export default function AssemblyFeed() {
     let params = useParams();
     let [timer, setTime] = React.useState(null);
     let [feedData, setFeedData] = React.useState(null);
-    const messagesEndRef = React.createRef()
-
+    let [scrolledToBottom, setScrolledToBottom] = React.useState(false);
+    const messagesEndRef = React.createRef();
+    const feedContainer = React.useRef(null);
+    const onScroll = () => {
+        if (feedContainer.current) {
+          const { scrollTop, scrollHeight, clientHeight } = feedContainer.current;
+          if (scrollTop + clientHeight === scrollHeight) {
+            setScrolledToBottom(true);
+          }
+          else
+          {
+            setScrolledToBottom(false);
+          }
+        }
+      };
     React.useEffect(() => {
 
         axios.get(`${process.env.REACT_APP_API_ROOT}/assemblyfeed/` + params.id)
@@ -22,8 +34,9 @@ export default function AssemblyFeed() {
             setTime(timer => timer + 1);
         }, 3000);
         
-        if(messagesEndRef.current){
-        messagesEndRef.current.scrollIntoView({ behavior: 'smooth' })}
+        if(messagesEndRef.current && scrolledToBottom){
+            messagesEndRef.current.scrollIntoView({ behavior: 'smooth' })
+        }
         return () => clearInterval(interval);
     },[timer]);
 
@@ -57,7 +70,7 @@ export default function AssemblyFeed() {
                 <div className="content has-text-centered">
                     <h3>Live Updates:</h3>
                 </div>
-                <div className={styles.feedContainer}>
+                <div ref={feedContainer} onScroll={onScroll} className={styles.feedContainer}>
                     {feed}
                     <div ref={messagesEndRef} />
                 </div>
@@ -78,19 +91,19 @@ class AssemblyFeedTop extends React.Component  {
         switch(this.props.data.style)
         {
             case "assembly_start":
-                image_path = '/images/assembly-start.svg';
+                image_path = '/images/assembly/assembly-start.svg';
                 break;
 
             case "vote_begin":
-                image_path = '/images/assembly-voteBegin.svg';
+                image_path = '/images/assembly/assembly-voteBegin.svg';
                 break;
 
             case "assembly_finish":
-                image_path = '/images/assembly-finish.svg';
+                image_path = '/images/assembly/assembly-finish.svg';
                 break;
 
             case "discussion_start":
-                image_path = ("/images/con-" + this.props.data.constituency_id + ".svg");
+                image_path = ("/images/constituency/con-" + this.props.data.constituency_id + ".svg");
                 break;
         }
         
@@ -117,54 +130,54 @@ class AssemblyFeedAction extends React.Component {
         switch(this.props.data.style)
         {
             case "vote_for":
-                image_path = '/images/assembly-actionFor.svg';
+                image_path = '/images/assembly/assembly-actionFor.svg';
                 break;
 
             case "vote_against":
-                image_path = '/images/assembly-actionAgainst.svg';
+                image_path = '/images/assembly/assembly-actionAgainst.svg';
                 break;
 
             case "vote_abstain":
-                image_path = '/images/assembly-actionMeh.svg';
+                image_path = '/images/assembly/assembly-actionMeh.svg';
                 break;
 
             case "vote_for_total":
-                image_path = '/images/assembly-votesFor.svg';
+                image_path = '/images/assembly/assembly-votesFor.svg';
                 break;
 
             case "vote_against_total":
-                image_path = '/images/assembly-votesAgainst.svg';
+                image_path = '/images/assembly/assembly-votesAgainst.svg';
                 break;
 
             case "vote_success":
-                image_path = '/images/assembly-votePassed.svg';
+                image_path = '/images/assembly/assembly-votePassed.svg';
                 break;
 
             case "vote_failure":
-                image_path = '/images/assembly-voteFailed.svg';
+                image_path = '/images/assembly/assembly-voteFailed.svg';
                 break;
             case "positive_success":
-                image_path = '/images/assembly-actionFor.svg';
+                image_path = '/images/assembly/assembly-actionFor.svg';
                 text_class = "has-text-success"
                 break;
             case "positive_failure":
-                image_path = '/images/assembly-failedFor.svg';
+                image_path = '/images/assembly/assembly-failedFor.svg';
                 text_class = "has-text-black"
                 break;
             case "negative_success":
-                image_path = '/images/assembly-actionAgainst.svg';
+                image_path = '/images/assembly/assembly-actionAgainst.svg';
                 text_class = "has-text-danger"
                 break;
             case "negative_failure":
-                image_path = '/images/assembly-failedAgainst.svg';
+                image_path = '/images/assembly/assembly-failedAgainst.svg';
                 text_class = "has-text-black"
                 break;
             case "neutral_bitetongue":
-                image_path = '/images/assembly-quietMeh.svg';
+                image_path = '/images/assembly/assembly-quietMeh.svg';
                 text_class = "has-text-black"
                 break;
             default:
-                image_path = '/images/assembly-quietMeh.svg';
+                image_path = '/images/assembly/assembly-quietMeh.svg';
                 text_class = "has-text-black"
                 break;
         }

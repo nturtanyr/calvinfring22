@@ -10,7 +10,6 @@ class ConstituencyMap extends React.Component {
     handleClick(event){
         var constituency = event.target.parentNode;
         if (event.target.nodeName == "path") {
-            console.log("clicked on region " + constituency.id)
             this.props.handleConstituency(constituency.id)
         }
     }

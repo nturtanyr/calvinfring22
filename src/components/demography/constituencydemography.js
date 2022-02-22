@@ -1,40 +1,68 @@
 import React from "react";
 import axios from 'axios';
 import { ResponsiveContainer, PureComponent, PieChart, Pie, Legend, Tooltip, Cell } from 'recharts';
+import { useParams } from "react-router-dom";
 
 export default function ConstituencyDemography({constituency_id}) {
+    const params = useParams()
     let [demographyData, setDemographyData] = React.useState(null);
     const [selectedDemography, setSelectedDemography] = React.useState('ethnicity');
   
     
     React.useEffect(() => {
-
+        if(params.constituency_id)
+        {
+            constituency_id = params.constituency_id
+        }
         axios.get(`${process.env.REACT_APP_API_ROOT}/constituency/` + constituency_id + `/demography`)
         .then(res => {
             const data = res.data.data;
             setDemographyData(data);
         })
         
-    },[constituency_id]);
+    },[params.constituency_id]);
 
     if (demographyData)
     {
         return (
-            <>
-                <div class="select" value={selectedDemography} onChange={(e) => (setSelectedDemography(e.target.value))}>
-                    <select>
-                        <option value="ethnicity">Ethnicity</option>
-                        <option value="religion">Religion</option>
-                        <option value="industry">Industry</option>
-                        <option value="sex">Sex</option>
-                        <option value="sexuality">Sexuality</option>
-                        <option value="age">Age</option>
-                    </select>
+            <div className="columns">
+                <div className="column is-half">
+                    <div className="select" value={selectedDemography} onChange={(e) => (setSelectedDemography(e.target.value))}>
+                        <select>
+                            <option value="ethnicity">Ethnicity</option>
+                            <option value="religion">Religion</option>
+                            <option value="industry">Industry</option>
+                            <option value="sex">Sex</option>
+                            <option value="sexuality">Sexuality</option>
+                            <option value="age">Age</option>
+                        </select>
+                    </div>
+                    <figure className="content">
+                        <DemographyPie data={demographyData[selectedDemography]}/>
+                    </figure>
                 </div>
-                <figure className="content">
-                    <DemographyPie data={demographyData[selectedDemography]}/>
-                </figure>
-            </>
+                <div className="column is-half">
+                    <table className="table">
+                        <thead>
+                            <tr><th>Group</th><th>Percent</th></tr>
+                        </thead>
+                        <tbody>
+                        {demographyData[selectedDemography].map((entry) => {
+                            return (
+                                <tr>
+                                    <td>
+                                        {entry.name}
+                                    </td>
+                                    <td>
+                                        {entry.percent}%
+                                    </td>
+                                </tr>
+                            )
+                        })}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         )
     }
     else
@@ -46,7 +74,7 @@ export default function ConstituencyDemography({constituency_id}) {
 function DemographyPie({ data})
 {
     return (
-    <ResponsiveContainer width="100%" height={500}>
+    <ResponsiveContainer width="100%" aspect={1}>
         <PieChart>
         <Pie
             data={data}
@@ -61,7 +89,6 @@ function DemographyPie({ data})
         ))}
         </Pie>
         <Tooltip />
-        <Legend />
         </PieChart>
     </ResponsiveContainer>
     );
