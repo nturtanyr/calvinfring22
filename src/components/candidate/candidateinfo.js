@@ -3,7 +3,7 @@ import axios from 'axios';
 import CandidatePolicies from "./candidatepolicies";
 import CandidateVoteHistory from "./candidatehistory";
 import CandidateProfile from "./candidateprofile";
-import CandidateCard from "./candidatecard";
+import CandidateCard from "./candidatestats";
 
 export default function CandidateInfo({candidate_id}) {
     const [page_loading, setPageLoading] = React.useState(false);

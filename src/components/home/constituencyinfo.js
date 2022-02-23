@@ -18,7 +18,6 @@ class ConstituencyInfo extends React.Component {
                 <b>Emblem</b>: {this.props.constituencyDetails.Emblem}<br/>
                 <b>Settlements:</b> {this.props.constituencyDetails.Settlements}<br/>
                 <b>Climate:</b> {this.props.constituencyDetails.Climate}<br/>
-                <NavLink to={`/constituency/${this.props.constituencyDetails.Id}`}>More details...</NavLink>
             </div>
         }
         else

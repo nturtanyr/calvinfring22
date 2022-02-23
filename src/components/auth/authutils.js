@@ -2,29 +2,6 @@ import React from "react";
 import axios from 'axios';
 import { Auth } from "aws-amplify";
 
-export const isLoggedIn = React.createContext({
-     "loggedInState" : false, 
-     "setLoggedInState" : (state) => {}
-    });
-
-export function useAuthenticatedInfo() {
-    const { loggedInState } = React.useContext(isLoggedIn)
-    const [userInfo, setUserInfo] = React.useState(null);
-
-    React.useEffect(() => {
-        Auth.currentAuthenticatedUser()
-        .then(user =>{
-            setUserInfo(user.attributes);
-        })
-        .catch(error => {
-            setUserInfo(null);
-        });
-
-    },[loggedInState]);
-
-    return userInfo;
-}
-
 export function useHasUserVoted() {
     const [userHasVoted, setUserHasVoted] = React.useState(false);
     

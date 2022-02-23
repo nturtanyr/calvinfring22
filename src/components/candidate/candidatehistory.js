@@ -1,19 +1,20 @@
 import React from "react";
 import axios from 'axios';
+import { useParams } from "react-router-dom";
 
-
-export default function CandidateVoteHistory({candidate_id, trust}) {
+export default function CandidateVoteHistory({trust}) {
+    const params = useParams();
     let [votes_data, set_voteData] = React.useState(null);
     
     React.useEffect(() => {
 
-        axios.get(`${process.env.REACT_APP_API_ROOT}/candidates/${candidate_id}/assemblyvotes`)
+        axios.get(`${process.env.REACT_APP_API_ROOT}/candidates/${params.candidate_id}/assemblyvotes`)
         .then(res => {
             const data = res.data.data;
             set_voteData(data);
         })
         
-    },[candidate_id]);
+    },[params.candidate_id]);
 
     var tables =[]
     if (votes_data && votes_data.length > 0)
@@ -62,27 +63,20 @@ export default function CandidateVoteHistory({candidate_id, trust}) {
     }
 
     return (
-        <div className="card">
-            <header className="card-header">
-                <p className="card-header-title">
-                    Candidate's History of Voting in Assemblies
-                </p>
-            </header>
-            <div className="card-content">
-                <p className="title is-4">
-                    Trustworthiness: {trust * 100 }%
-                </p>
-                <table className="table">
-                    <thead>
-                        <tr><th className="has-text-centered" colSpan={2}>Policy</th>
-                        <th className="has-text-centered">Vote</th></tr>
-                    </thead>
-                    <tbody>
-                        {tables}
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <>
+            <p className="title is-4">
+                Trustworthiness: {trust * 100 }%
+            </p>
+            <table className="table">
+                <thead>
+                    <tr><th className="has-text-centered" colSpan={2}>Policy</th>
+                    <th className="has-text-centered">Vote</th></tr>
+                </thead>
+                <tbody>
+                    {tables}
+                </tbody>
+            </table>
+        </>
     )
    
 }

@@ -12,11 +12,8 @@ import Layout from './components/layout/layout';
 import Home from './components/home/home';
 import Assembly from './components/assembly/assembly';
 import Rankings from './components/rankings/rankings';
-import Candidate from './components/candidate/candidate';
-import Demography from './components/demography/demography';
 import News from './components/news/news';
 import Codex from './components/codex/codex';
-import Election from './components/election/election';
 import UserPage from './components/user/userpage';
 import ConstituencyDemography from "./components/demography/constituencydemography";
 import ConstituencyElectionChart from "./components/election/electionresults";
@@ -26,6 +23,7 @@ import UserLogout from "./components/user/userlogout";
 import AuthenticatedRoute from './components/user/authroute';
 import NotFound from './components/util/notfound';
 import ConstituencyNav from './components/layout/constituencynavigator';
+import CandidateNav from './components/candidate/candidatenav';
 
 
 export default function App() {
@@ -34,7 +32,8 @@ export default function App() {
       <Routes>
         <Route element={<Layout color="blue" />}>
           <Route path="/" element={<Home />} />
-          <Route path="/candidate/:id" element={<Candidate candidate_index={0}/>} />
+          <Route path="/candidate/:candidate_id" element={<CandidateNav/>}>
+          </Route>
           <Route path="/demography" element={<ConstituencyNav 
             title={"Demography Information"} 
             subtitle={"We provide this interface to easily observe the demography statistics of all constituencies."}

@@ -63,9 +63,7 @@ class AssemblyTile extends React.Component {
         return (
                 <div>
                     <div className="has-text-centered">
-                        <Link to={`/constituency/${this.props.data.constituency_id}`}>
-                            {constituencyName}
-                        </Link>
+                        {constituencyName}
                     </div>
                     <Link to={`/constituency/${this.props.data.constituency_id}`}>
                         <img src={`/images/constituency/con-${this.props.data.constituency_id}.svg`} loading="lazy" title="" className={`image is-64x64 ${styles.constituencyIcon}`}/>

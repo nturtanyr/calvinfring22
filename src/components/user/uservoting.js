@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { useHasUserVoted, useAuthenticationToken } from "../auth/authutils";
+import { useHasUserVoted } from "../auth/authutils";
 import { Auth } from "aws-amplify";
 
 export default function UserVoting({constituency_id}) {

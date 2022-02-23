@@ -55,7 +55,7 @@ function News() {
                         <NewsArticleEditorial data={articles_editorial[0]}/>
                     </div>
                 </div>
-                <div className="tile">
+                <div className="tile is-hidden-mobile">
                     <div className="tile is-parent is-6">
                         <NewsArticleSub data={articles_main[1]} subtitle="Last month's news"/>
                     </div>
@@ -69,46 +69,58 @@ function News() {
 }
 
 function NewsArticleMain(props){
+    const [contentHidden, setContentHidden] = React.useState('is-hidden-mobile')
+
     if(!props.data){return <article>Data error</article>}
     return(
         <article className="tile is-child notification">
         <p className="title">{props.data.title}</p>
         <p className="subtitle">{props.data.subtitle}</p>
-        <figure className="image is-4by3">
+        <figure className={"image is-4by3 " + contentHidden}>
             <img src={`../images/news/${props.data.id}.jpg`}/>
             <figcaption>Photo by <a href="https://unsplash.com/@element5digital?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Element5 Digital</a> on <a href="https://unsplash.com/s/photos/democracy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-  </figcaption>
+            </figcaption>
         </figure>
-        <div className="content">
-            {ReactHtmlParser(props.data.content || '')}
-        </div>
+            <div className={"content " + contentHidden}>
+                {ReactHtmlParser(props.data.content || '')}
+            </div>
+            <div className="content is-hidden-tablet">
+                <a onClick={() => contentHidden === '' ? setContentHidden('is-hidden-mobile') : setContentHidden('')}>
+                    {contentHidden === '' ? "Show less..." : "Read more..."}
+                </a>
+            </div>
         </article>
     )
 }
 
 function NewsArticleSub(props){
+
     if(!props.data){return <article>Data error</article>}
     return(
         <article className="tile is-child notification">
-        <p className="title is-4">{props.data.title}</p>
-        <p className="subtitle is-6">{props.subtitle}</p>
-        <div className="content">
-            {ReactHtmlParser(props.data.short_content || '')}
-        </div>
+            <p className="title is-4">{props.data.title}</p>
+            <p className="subtitle is-6">{props.subtitle}</p>
         </article>
     
     )
 }
 
 function NewsArticleEditorial(props){
+    const [contentHidden, setContentHidden] = React.useState('is-hidden-mobile')
+
     if(!props.data){return <article>Data error</article>}
     return(
     <article className="tile is-child notification">
         <div className="content">
             <p className="title is-4">EDITORIAL: {props.data.title}</p>
             <p className="subtitle is-6"><i>{props.data.subtitle}</i></p>
-            <div className="content">
+            <div className={"content " + contentHidden}>
                 {ReactHtmlParser(props.data.content || '')}
+            </div>
+            <div className="content is-hidden-tablet">
+                <a onClick={() => contentHidden === '' ? setContentHidden('is-hidden-mobile') : setContentHidden('')}>
+                    {contentHidden === '' ? "Show less..." : "Read more..."}
+                </a>
             </div>
         </div>
     </article>
@@ -117,13 +129,20 @@ function NewsArticleEditorial(props){
 }
 
 function NewsArticleRandom(props){
+    const [contentHidden, setContentHidden] = React.useState('is-hidden-mobile')
+
     if(!props.data){return <article>Data error</article>}
     return(
         <article className="tile is-child notification">
             <p className="title is-4">{props.data.title}</p>
             <p className="subtitle is-6">{props.data.subtitle}</p>
-            <div className="content">
+            <div className={"content " + contentHidden}>
                 {ReactHtmlParser(props.data.content || '')}
+            </div>
+            <div className="content is-hidden-tablet">
+                <a onClick={() => contentHidden === '' ? setContentHidden('is-hidden-mobile') : setContentHidden('')}>
+                    {contentHidden === '' ? "Show less..." : "Read more..."}
+                </a>
             </div>
         </article>
         

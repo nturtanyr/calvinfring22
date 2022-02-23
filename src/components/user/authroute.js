@@ -2,9 +2,6 @@ import React from "react";
 import axios from "axios";
 import { Amplify } from 'aws-amplify';
 import {
-  Routes,
-  Route,
-  Navigate,
   Outlet
 } from "react-router-dom";
 import { Authenticator, useAuthenticator, SelectField } from '@aws-amplify/ui-react';

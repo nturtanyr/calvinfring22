@@ -1,164 +1,95 @@
 import React from "react";
+import axios from 'axios';
 import { useParams } from "react-router-dom";
-import styles from "./candidate.module.css"
-import {
-    Radar,
-    RadarChart,
-    PolarGrid,
-    PolarAngleAxis,
-    PolarRadiusAxis,
-    ResponsiveContainer
-  } from "recharts";
-// Gonna need party_name. sex, ethnicity, age, industry, religion, sexuality, attributes
+import CandidateProfile from "./candidateprofile";
+import CandidateStats from "./candidatestats";
+import CandidatePolicies from "./candidatepolicies";
+import CandidateVoteHistory from "./candidatehistory";
 
-function determineAvatar(sex_id, ethnicity_id, age){
-    var image_path = "avatars/av-"
-    switch(sex_id)
-    {
-        case 4:
-            image_path += "n";
-            break;
-        case 1:
-            image_path += "m";
-            break;
-        default:
-            image_path += "f";
-            break;
-    }
+export default function CandidateCard({selectedConstituency}) {
+    const params = useParams();
+    const { selectedConstituencyID, setSelectedConstituencyID } = selectedConstituency
 
-    switch(ethnicity_id)
-    {
-        case 7:
-            image_path +="a";
-            break;
-        case 2:
-            image_path += "l";
-            break;
-        case 6:
-            image_path += "v";
-            break;
-        case 3:
-            image_path += "z";
-            break;
-        default:
-            image_path += "h";
-            break;
-    }
+    const [pageLoading, setPageLoading] = React.useState(false);
+    const [candidateData, setCandidateData] = React.useState(null);
 
-    if(sex_id != 4){
-        if(age > 70){
-            image_path += "o.png";
-        }else if(age > 40){
-            image_path += "m.png";
-        }else{
-            image_path += "y.png";
-        }
-    }
-    else{
-        image_path += ".png"
-    }
-
-    return image_path
-}
-
-function determineSexuality(sex_id, sexuality_id){
-    var image_path = "identity/sx-"
-    if(sexuality_id == 2){
-        if(sex_id == 4){
-            image_path += "4n"
-        }else if(sex_id == 1){
-            image_path += "2m"
-        }else{
-            image_path += "2f"
-        }
-    }else if(sexuality_id == 4){
-        if(sex_id == 4){
-            image_path += "4n"
-        }else if(sex_id == 1){
-            image_path += "4m"
-        }else{
-            image_path += "4f"
-        }
-    }else{
-        image_path += sexuality_id
-    }
-    image_path += ".png"
-    return image_path
-}
-
-export default function CandidateCard(props) {
-    var attribute_data = []
-    attribute_data.push({
-        "attribute" : "Charisma",
-        "value" : props.data.attribute.charisma
-    })
-    attribute_data.push({
-        "attribute" : "Tenacity",
-        "value" : props.data.attribute.tenacity
-    })
-    attribute_data.push({
-        "attribute" : "Loyalty",
-        "value" : props.data.attribute.loyalty
-    })
-    attribute_data.push({
-        "attribute" : "Baldness",
-        "value" : props.data.attribute.baldness
-    })
-    attribute_data.push({
-        "attribute" : "Fear of Bears",
-        "value" : props.data.attribute.fear_of_bears
-    })
-    attribute_data.push({
-        "attribute" : "Socks",
-        "value" : props.data.attribute.socks
-    })
-
-    return(
+    const [showCardOptions, setShowCardOptions] = React.useState('');
+    const [shownOption, setShownOption] = React.useState('info');
         
+    React.useEffect(() => {
+        setPageLoading(true)
+        axios.get(`${process.env.REACT_APP_API_ROOT}/candidates/${params.candidate_id}/citizen`)
+        .then(res => {
+            const data = res.data.data[0];
+            setCandidateData(data);
+            setSelectedConstituencyID(data.profile.constituency_id)
+            setPageLoading(false);
+        })
+        
+    },[params.candidate_id]);
+
+    if(params.candidate_id === '0')
+    {
+        return( <div className="block"/>)
+    }
+
+    return (    
         <div className='card'> 
             <header className="card-header">
                 <p className="card-header-title">
-                    Candidate Data
+                 {candidateData && candidateData.profile.first_name} {candidateData && candidateData.profile.last_name} 
                 </p>
-            </header>
-            <div className="card-content">
-                <div className="columns">
-                    <div className='column is-one-third'>
-                        <h3 className="subtitle"><i>{props.data.profile.party_name}</i></h3>
-                        <figure className="image is-fullwidth">
-                            <img className="image is-fullwidth" src={`../images/${determineAvatar(
-                                props.data.sex.id,
-                                props.data.ethnicity.id,
-                                props.data.profile.age
-                                )}`} alt="candidate picture" />
-                            <div className={`is-flex ${styles.avatarLowerIcon}`}>
-                                <img className="image is-48x48 is-flex" src={`../images/${determineSexuality(
-                                    props.data.sex.id,
-                                    props.data.sexuality.id
-                                )}`} title={props.data.sexuality.name}/>
-                                <img className="image is-48x48 is-flex" src={`../images/industry/ind-${props.data.industry.id}.png`} title={props.data.industry.name}/>
-                                <img className="image is-48x48 is-flex" src={`../images/religion/rel-${props.data.religion.id}.png`} title={props.data.religion.name}/>
-                            </div>
-                        </figure>
+                <div class={"dropdown is-right is-hidden-desktop " + showCardOptions}>
+                    <div class="dropdown-trigger">
+                        <button class="card-header-icon" onClick={() => showCardOptions === '' ? setShowCardOptions('is-active') : setShowCardOptions('')}>
+                            <span class="icon">
+                                <i class="fas fa-angle-down"  aria-hidden="true"></i>
+                            </span>
+                        </button>
                     </div>
-                    <div className='column'>
-                        <ResponsiveContainer width="100%" height={500}>
-                        <RadarChart data={attribute_data} >
-                            <PolarGrid />
-                            <PolarAngleAxis dataKey="attribute" />
-                            <PolarRadiusAxis />
-                            <Radar
-                                name="Mike"
-                                dataKey="value"
-                                stroke="#8884d8"
-                                fill="#8884d8"
-                                fillOpacity={0.6}
-                            />
-                        </RadarChart>
-                        </ResponsiveContainer>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                            <a class="dropdown-item" onClick={() => {
+                                showCardOptions === '' ? setShowCardOptions('is-active') : setShowCardOptions(''); 
+                                setShownOption('info')}
+                            }>
+                                Info
+                            </a>
+                            <a class="dropdown-item" onClick={() => {
+                                showCardOptions === '' ? setShowCardOptions('is-active') : setShowCardOptions(''); 
+                                setShownOption('stats')}
+                            }>
+                                Statistics
+                            </a>
+                            <a class="dropdown-item" onClick={() => {
+                                showCardOptions === '' ? setShowCardOptions('is-active') : setShowCardOptions(''); 
+                                setShownOption('pol')}
+                            }>
+                                Policies
+                            </a>
+                            <a class="dropdown-item" onClick={() => {
+                                showCardOptions === '' ? setShowCardOptions('is-active') : setShowCardOptions(''); 
+                                setShownOption('hist')}
+                            }>
+                                History
+                            </a>
+                        </div>
                     </div>
                 </div>
+            </header>
+            <div className="card-content">
+                {(!candidateData && <div/>) ||
+                ((shownOption === 'info') && <CandidateProfile data={candidateData}/>) || 
+                ((shownOption === 'pol') && <CandidatePolicies/>) ||
+                ((shownOption === 'stats') && <CandidateStats data={candidateData}/>) ||
+                ((shownOption === 'hist') && <CandidateVoteHistory trust={candidateData.profile.trustworthiness}/>)}
             </div>
+            <footer class="card-footer is-hidden-mobile">
+                <a class="card-footer-item" onClick={() => setShownOption('info')}>Info</a>
+                <a class="card-footer-item" onClick={() => setShownOption('stats')}>Statistics</a>
+                <a class="card-footer-item" onClick={() => setShownOption('pol')}>Policies</a>
+                <a class="card-footer-item" onClick={() => setShownOption('hist')}>History</a>
+            </footer>
         </div>
     )
 }
