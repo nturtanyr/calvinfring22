@@ -78,7 +78,7 @@ function NewsArticleMain(props){
         <p className="subtitle">{props.data.subtitle}</p>
         <figure className={"image is-4by3 " + contentHidden}>
             <img src={`../images/news/${props.data.id}.jpg`}/>
-            <figcaption>Photo by <a href="https://unsplash.com/@element5digital?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Element5 Digital</a> on <a href="https://unsplash.com/s/photos/democracy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+            <figcaption>Photo by <a href="https://unsplash.com/@chrislawton?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Chris Lawton</a> on <a href="https://unsplash.com/s/photos/political-party?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
             </figcaption>
         </figure>
             <div className={"content " + contentHidden}>
