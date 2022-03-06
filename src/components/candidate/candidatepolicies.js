@@ -4,23 +4,35 @@ import { useParams } from "react-router-dom";
 
 export default function CandidatePolicies() {
     const params = useParams();
-    let [policies_data, set_policyData] = React.useState(null);
+    let [policies, setPolicies] = React.useState(null);
+    let [party, setParty] = React.useState(null);
     
     React.useEffect(() => {
 
         axios.get(`${process.env.REACT_APP_API_ROOT}/candidates/${params.candidate_id}/policies`)
         .then(res => {
             const data = res.data.data;
-            set_policyData(data);
+            setPolicies(data);
         })
         
     },[params.candidate_id]);
 
-    var rows =[]
-    if (policies_data && policies_data.length > 0)
+    React.useEffect(() => {
+
+        axios.get(`${process.env.REACT_APP_API_ROOT}/candidates/${params.candidate_id}/party`)
+        .then(res => {
+            const data = res.data.data;
+            setParty(data);
+        })
+        
+    },[params.candidate_id]);
+
+    var personalRows =[]
+    var partyRows =[]
+    if (policies && policies.length > 0)
     {
-        policies_data.forEach(object => {
-            rows.push(
+        policies.forEach(object => {
+            personalRows.push(
             <tr>
                 <td>
                     <figure className="image is-24x24">
@@ -35,7 +47,33 @@ export default function CandidatePolicies() {
         });
     }
     else{
-        rows.push(<tr><td><i>This candidate has retired and therefore has no policies in their platform.</i></td></tr>)
+        personalRows.push(<tr><td><i>This candidate has retired and therefore has no policies in their platform.</i></td></tr>)
+    }
+
+    
+    if (party && party.policies.length > 0)
+    {
+        party.policies.forEach(object => {
+            partyRows.push(
+            <tr>
+                <td>
+                    <figure className="image is-24x24">
+                        <img className="image" src={`../images/categories/cat-${object.category_id}.svg`} title={object.category_name}/>
+                    </figure>
+                </td>
+                <td>
+                    {object.description}
+                </td>
+            </tr>
+            )
+        });
+    }
+    else{
+        partyRows.push(
+            <tr>
+                <td></td><td><i>As an independent candidate, there is no party whose policies need representing.</i></td>
+            </tr>
+        )
     }
 
     return (
@@ -48,7 +86,7 @@ export default function CandidatePolicies() {
                         </tr>
                     </thead>
                     <tbody>
-                        {rows}
+                        {personalRows}
                     </tbody>
                 </table>
             </div>
@@ -60,9 +98,7 @@ export default function CandidatePolicies() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td><td><i>As an independent candidate, there is no party whose policies need representing.</i></td>
-                        </tr>
+                        {partyRows}
                     </tbody>
                 </table>
             </div>

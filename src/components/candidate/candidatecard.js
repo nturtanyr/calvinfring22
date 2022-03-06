@@ -39,35 +39,35 @@ export default function CandidateCard({selectedConstituency}) {
                 <p className="card-header-title">
                  {candidateData && candidateData.profile.first_name} {candidateData && candidateData.profile.last_name} 
                 </p>
-                <div class={"dropdown is-right is-hidden-desktop " + showCardOptions}>
-                    <div class="dropdown-trigger">
-                        <button class="card-header-icon" onClick={() => showCardOptions === '' ? setShowCardOptions('is-active') : setShowCardOptions('')}>
-                            <span class="icon">
-                                <i class="fas fa-angle-down"  aria-hidden="true"></i>
+                <div className={"dropdown is-right is-hidden-desktop " + showCardOptions}>
+                    <div className="dropdown-trigger">
+                        <button className="card-header-icon" onClick={() => showCardOptions === '' ? setShowCardOptions('is-active') : setShowCardOptions('')}>
+                            <span className="icon">
+                                <i className="fas fa-angle-down"  aria-hidden="true"></i>
                             </span>
                         </button>
                     </div>
-                    <div class="dropdown-menu">
-                        <div class="dropdown-content">
-                            <a class="dropdown-item" onClick={() => {
+                    <div className="dropdown-menu">
+                        <div className="dropdown-content">
+                            <a className="dropdown-item" onClick={() => {
                                 showCardOptions === '' ? setShowCardOptions('is-active') : setShowCardOptions(''); 
                                 setShownOption('info')}
                             }>
                                 Info
                             </a>
-                            <a class="dropdown-item" onClick={() => {
+                            <a className="dropdown-item" onClick={() => {
                                 showCardOptions === '' ? setShowCardOptions('is-active') : setShowCardOptions(''); 
                                 setShownOption('stats')}
                             }>
                                 Statistics
                             </a>
-                            <a class="dropdown-item" onClick={() => {
+                            <a className="dropdown-item" onClick={() => {
                                 showCardOptions === '' ? setShowCardOptions('is-active') : setShowCardOptions(''); 
                                 setShownOption('pol')}
                             }>
                                 Policies
                             </a>
-                            <a class="dropdown-item" onClick={() => {
+                            <a className="dropdown-item" onClick={() => {
                                 showCardOptions === '' ? setShowCardOptions('is-active') : setShowCardOptions(''); 
                                 setShownOption('hist')}
                             }>
@@ -84,11 +84,11 @@ export default function CandidateCard({selectedConstituency}) {
                 ((shownOption === 'stats') && <CandidateStats data={candidateData}/>) ||
                 ((shownOption === 'hist') && <CandidateVoteHistory trust={candidateData.profile.trustworthiness}/>)}
             </div>
-            <footer class="card-footer is-hidden-mobile">
-                <a class="card-footer-item" onClick={() => setShownOption('info')}>Info</a>
-                <a class="card-footer-item" onClick={() => setShownOption('stats')}>Statistics</a>
-                <a class="card-footer-item" onClick={() => setShownOption('pol')}>Policies</a>
-                <a class="card-footer-item" onClick={() => setShownOption('hist')}>History</a>
+            <footer className="card-footer is-hidden-mobile">
+                <a className="card-footer-item" onClick={() => setShownOption('info')}>Info</a>
+                <a className="card-footer-item" onClick={() => setShownOption('stats')}>Statistics</a>
+                <a className="card-footer-item" onClick={() => setShownOption('pol')}>Policies</a>
+                <a className="card-footer-item" onClick={() => setShownOption('hist')}>History</a>
             </footer>
         </div>
     )
