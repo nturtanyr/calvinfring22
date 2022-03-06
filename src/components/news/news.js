@@ -100,6 +100,9 @@ function NewsArticleSub(props){
         <article className="tile is-child notification">
             <p className="title is-4">{props.data.title}</p>
             <p className="subtitle is-6">{props.subtitle}</p>
+            <div className="content">
+                {ReactHtmlParser(props.data.short_content || '')}
+            </div>
         </article>
     
     )
