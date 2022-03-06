@@ -25,7 +25,7 @@ class ConstituencyInfo extends React.Component {
             var image = null
             var map = null;
             var details = <div>
-                <p>The wonderous and insignificant country of Kalmany and it's citizens, the Kalmans, has existed for approximately two-hundred hours. They herald as a proud and faithful people, as well as incredible predictable.</p>
+                <p>The wonderous and insignificant country of Kalmany and it's citizens, the Kalmans, has existed for approximately two-hundred hours. They herald as a proud and faithful people, as well as incredibly predictable.</p>
                 <p>Believing so strongly in the political system, the Kalmans have elected that their parliament be formed every day, with new candidates standing and stepping down each day to provide a proper and thorough voice to the people, with no reasonable way to determine exactly what will pass and what will fail.</p>
                 <p>The Kalmans have a natural affinity for socks, bears, and political systems.</p>
             </div>
