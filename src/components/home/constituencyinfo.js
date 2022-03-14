@@ -6,10 +6,10 @@ class ConstituencyInfo extends React.Component {
     render() {
         if(this.props.constituencyDetails.Id != '0'){
             var image = <div className="image is-64x64 mr-3" >
-                <img src={`../images/constituency/con-${this.props.constituencyDetails.Id}.svg`} alt={this.props.constituencyDetails.name} />
+                <img src={`/images/constituency/con-${this.props.constituencyDetails.Id}.svg`} alt={this.props.constituencyDetails.name} />
             </div>
             var map = <figure className="image mr-3" >
-                <img src={`../images/maps/map-${this.props.constituencyDetails.Id}.png`} alt={this.props.constituencyDetails.name} />
+                <img src={`/images/maps/map-${this.props.constituencyDetails.Id}.png`} alt={this.props.constituencyDetails.name} />
             </figure>
             var details = <div>
                 <p>{this.props.constituencyDetails.Info}</p>

@@ -62,11 +62,10 @@ function AssemblyTile({data}){
                 <div className="has-text-centered">
                     {constituencyName}
                 </div>
-                <Link to={`/constituency/${data.constituency_id}`}>
-                    <img src={`/images/constituency/con-${data.constituency_id}.svg`} loading="lazy" title="" style={{"background-color": ("#" + data.party_color)}} className={`image is-64x64 ${styles.constituencyIcon}`}/>
-                </Link>
+                <img src={`/images/constituency/con-${data.constituency_id}.svg`} loading="lazy" title="" style={{"background-color": ("#" + data.party_color)}} className={`image is-64x64 ${styles.constituencyIcon}`}/>
+                
                 <div className="is-size-6 has-text-centered">
-                    <Link to={`/candidate/${data.candidate_id}`}>{data.first_name} {data.last_name}</Link>
+                    <Link to={`/election/latest/candidate/${data.candidate_id}`}>{data.first_name} {data.last_name}</Link>
                 </div>
                 <div className="is-size-7 has-text-centered">
                     {policy_desc}

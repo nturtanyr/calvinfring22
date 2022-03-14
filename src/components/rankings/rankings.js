@@ -57,7 +57,7 @@ function Rankings() {
                             <th>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"../images/categories/cat-1.svg"} />
+                                        <img src={"/images/categories/cat-1.svg"} />
                                     </span>
                                     <span>
                                         Welfare
@@ -67,7 +67,7 @@ function Rankings() {
                             <th>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"../images/categories/cat-2.svg"} />
+                                        <img src={"/images/categories/cat-2.svg"} />
                                     </span>
                                     <span>
                                         Health
@@ -77,7 +77,7 @@ function Rankings() {
                             <th>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"../images/categories/cat-3.svg"} />
+                                        <img src={"/images/categories/cat-3.svg"} />
                                     </span>
                                     <span>
                                         Pensions
@@ -87,7 +87,7 @@ function Rankings() {
                             <th>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"../images/categories/cat-4.svg"} />
+                                        <img src={"/images/categories/cat-4.svg"} />
                                     </span>
                                     <span>
                                         Education
@@ -97,7 +97,7 @@ function Rankings() {
                             <th>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"../images/categories/cat-5.svg"} />
+                                        <img src={"/images/categories/cat-5.svg"} />
                                     </span>
                                     <span>
                                         Defense
@@ -107,7 +107,7 @@ function Rankings() {
                             <th>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"../images/categories/cat-6.svg"} />
+                                        <img src={"/images/categories/cat-6.svg"} />
                                     </span>
                                     <span>
                                         Transport
@@ -117,7 +117,7 @@ function Rankings() {
                             <th>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"../images/categories/cat-7.svg"} />
+                                        <img src={"/images/categories/cat-7.svg"} />
                                     </span>
                                     <span>
                                         <nobr>Public Order</nobr><br/>
@@ -128,7 +128,7 @@ function Rankings() {
                             <th>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"../images/categories/cat-8.svg"} />
+                                        <img src={"/images/categories/cat-8.svg"} />
                                     </span>
                                     <span>
                                         Business <br/>
@@ -139,7 +139,7 @@ function Rankings() {
                             <th>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"../images/categories/cat-10.svg"} />
+                                        <img src={"/images/categories/cat-10.svg"} />
                                     </span>
                                     <span>
                                         Housing <br/>
@@ -150,7 +150,7 @@ function Rankings() {
                             <th>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"../images/categories/cat-11.svg"} />
+                                        <img src={"/images/categories/cat-11.svg"} />
                                     </span>
                                     <span>
                                         Culture
@@ -160,7 +160,7 @@ function Rankings() {
                             <th>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"../images/categories/cat-12.svg"} />
+                                        <img src={"/images/categories/cat-12.svg"} />
                                     </span>
                                     <span>
                                         Environment

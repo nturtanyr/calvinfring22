@@ -22,6 +22,9 @@ export default function ConstituencyElectionChart ({constituency_id, election_id
         axios.get(`${process.env.REACT_APP_API_ROOT}/constituency/` + constituency_id + `/election/` + election_id)
         .then(res => {
             const data = res.data.data;
+            data.details.forEach(element => {
+                element['bar_label'] = element.last_name + " (" + element.party_shortname + ")"
+            });
             setChartData(data);
         })
 
@@ -33,35 +36,16 @@ export default function ConstituencyElectionChart ({constituency_id, election_id
             
             return () => clearInterval(interval);
         }
-    },[timer, params.constituency_id, params.election_id]);
+    },[timer, constituency_id, election_id]);
 
-    var barColors = [
-        "#6996b5",
-        "#FA7C91",
-        "#528f20",
-        "#80711f",
-        "#1c1652",
-        "#c04949"
-    ]
-    var barLighterColors = [
-        "#9dc8e4",
-        "#fab3bf",
-        "#aadb82",
-        "#dbce86",
-        "#8b83d4",
-        "#d18585"
-    ]
-    var fill_colour
     var title_text 
     if(chartData)
     {
         if(chartData.active)
         {
-            fill_colour = barColors
             title_text = `The election of ${chartData.id} is now underway! Votes are still coming in!`
         }
         else{
-            fill_colour = barLighterColors
             if(chartData.end_date)
             {
                 title_text = `The election of ${chartData.id} has finished - showing the results:`
@@ -77,19 +61,19 @@ export default function ConstituencyElectionChart ({constituency_id, election_id
                 <h1 className="subtitle">{title_text}</h1>
                 <ResponsiveContainer width="100%" aspect={2}>
                     <BarChart data={chartData.details}>
-                        <XAxis type='category' dataKey="last_name"/>
+                        <XAxis type='category' dataKey="bar_label"/>
                         <Tooltip />
                         <Bar dataKey="vote_tally_inperson" name="In Person">
                             {
                                 chartData.details.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={fill_colour[index % 6]} />
+                                    <Cell key={`cell-${index}`} fill={"#" + entry.party_color} />
                                 ))
                             }
                         </Bar>
                         <Bar dataKey="vote_tally_online" name="Online Votes">
                             {
                                 chartData.details.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={fill_colour[index % 6]} />
+                                    <Cell key={`cell-${index}`} fill={"#" + entry.party_color} />
                                 ))
                             }
                         </Bar>

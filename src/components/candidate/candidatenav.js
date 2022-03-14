@@ -25,8 +25,8 @@ export default function CandidateNav() {
     return(
         <section className="section">
             <div className="content has-text-centered">
-                <h2>Candidate Information</h2>
-                <p>We provide this interface to easily access the profiles of all candidates currently running in the election races in each constituency.</p>
+                <h2>Election Information</h2>
+                <p>We provide this interface to easily access the profiles of all election races in each constituency, and the candidates involved.</p>
             </div>
             <div className="columns">
                 <div className="column is-one-quarter is-hidden-mobile">

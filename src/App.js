@@ -32,19 +32,13 @@ export default function App() {
       <Routes>
         <Route element={<Layout color="blue" />}>
           <Route path="/" element={<Home />} />
-          <Route path="/candidate/:candidate_id" element={<CandidateNav/>}>
+          <Route path="/election/:election_id/candidate/:candidate_id" element={<CandidateNav/>}>
           </Route>
           <Route path="/demography" element={<ConstituencyNav 
             title={"Demography Information"} 
             subtitle={"We provide this interface to easily observe the demography statistics of all constituencies."}
           />}>
             <Route path=":constituency_id" element={<ConstituencyDemography constituency_id={0}/>} />
-          </Route>
-          <Route path="/election/:election_id" element={<ConstituencyNav 
-            title={"Election Information"} 
-            subtitle={"We provide this interface to easily access the election results of all constituencies."}
-          />}>
-            <Route path=":constituency_id"  element={<ConstituencyElectionChart constituency_id={0} election_id={"latest"}/>} />
           </Route>
           <Route path="/assembly/:id" element={<Assembly />} />
           <Route path="/rankings" element={<Rankings />} />

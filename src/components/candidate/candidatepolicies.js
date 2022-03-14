@@ -36,7 +36,7 @@ export default function CandidatePolicies() {
             <tr>
                 <td>
                     <figure className="image is-24x24">
-                        <img className="image" src={`../images/categories/cat-${object.category_id}.svg`} title={object.category_name}/>
+                        <img className="image" src={`/images/categories/cat-${object.category_id}.svg`} title={object.category_name}/>
                     </figure>
                 </td>
                 <td>
@@ -58,7 +58,7 @@ export default function CandidatePolicies() {
             <tr>
                 <td>
                     <figure className="image is-24x24">
-                        <img className="image" src={`../images/categories/cat-${object.category_id}.svg`} title={object.category_name}/>
+                        <img className="image" src={`/images/categories/cat-${object.category_id}.svg`} title={object.category_name}/>
                     </figure>
                 </td>
                 <td>

@@ -129,23 +129,23 @@ export default function CandidateStats({data}) {
             <div className='column is-half'>
                 <h3 className="subtitle"><i>{data.profile.party_name}</i></h3>
                 <figure className="image is-square">
-                    <img src={`../images/${determineAvatar(
+                    <img src={`/images/${determineAvatar(
                         data.sex.id,
                         data.ethnicity.id,
                         data.profile.age
                         )}`} alt="candidate picture" />
                     <div className={"is-flex " + styles.avatarLowerIcon}>
                         <figure className="image is-48x48 is-flex">
-                            <img src={`../images/${determineSexuality(
+                            <img src={`/images/${determineSexuality(
                                 data.sex.id,
                                 data.sexuality.id
                             )}`} title={data.sexuality.name}/>
                         </figure>
                         <figure className="image is-48x48 is-flex">
-                            <img src={`../images/industry/ind-${data.industry.id}.png`} title={data.industry.name}/>
+                            <img src={`/images/industry/ind-${data.industry.id}.png`} title={data.industry.name}/>
                         </figure>
                         <figure className="image is-48x48 is-flex">
-                            <img src={`../images/religion/rel-${data.religion.id}.png`} title={data.religion.name}/>
+                            <img src={`/images/religion/rel-${data.religion.id}.png`} title={data.religion.name}/>
                         </figure>
                     </div>
                 </figure>

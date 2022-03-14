@@ -30,7 +30,7 @@ export default function CandidateVoteHistory({trust}) {
                     vote_string = 'Voted against'
                 }
                 tables.push(<tr className={`is-hidden ${object.assembly_id}`}>
-                    <td><img className="image is-24x24" src={`../images/categories/cat-${policy.category_id}.png`}/></td>
+                    <td><img className="image is-24x24" src={`/images/categories/cat-${policy.category_id}.png`}/></td>
                     <td>{policy.policy_description}</td>
                     <td>{vote_string}</td>
                     </tr>

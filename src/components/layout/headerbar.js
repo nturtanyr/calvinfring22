@@ -48,13 +48,10 @@ function HeaderBar(props) {
                             <NavLink to="/news" className="navbar-item" onClick={showNavbar}>
                                 News
                             </NavLink>
-                            <NavLink to="/candidate/0" className="navbar-item" onClick={showNavbar}>
-                                Candidates
-                            </NavLink>
                             <NavLink to="/demography/0" className="navbar-item" onClick={showNavbar}>
                                 Demographies
                             </NavLink>
-                            <NavLink to="/election/latest" className="navbar-item" onClick={showNavbar}>
+                            <NavLink to="/election/latest/candidate/0" className="navbar-item" onClick={showNavbar}>
                                 Election
                             </NavLink>
                             <NavLink to="/assembly/latest" className="navbar-item" onClick={showNavbar}>
