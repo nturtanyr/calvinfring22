@@ -3,9 +3,15 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import styles from "./rankings.module.css"
 
+function sortByColumn(area, a,b)
+{ 
+    return parseFloat(b[area]['rating_value']) - parseFloat(a[area]['rating_value'])
+}
+
 function Rankings() {
     let [rankData, setrankData] = React.useState(null);
     let [deficitNumber, setDeficit] = React.useState(null);
+    const [sortedColumn, setSortedColumn] = React.useState('Government Administration')
     
     React.useEffect(() => {
 
@@ -25,15 +31,7 @@ function Rankings() {
 
     var rankingRows = []
     if(rankData){
-        rankData.sort((a, b) => {
-            if (a['Government Administration']['rating_value'] > b['Government Administration']['rating_value']) {
-              return -1;
-            }
-            if (a['Government Administration']['rating_value'] < b['Government Administration']['rating_value']) {
-              return 1;
-            }
-            return 0;
-          });
+        rankData.sort((a, b) => sortByColumn(sortedColumn, a, b));
         rankData.forEach(row => {
             rankingRows.push(<RankingRow key={`rank-${row['id']}`} data={row}/>)
         });
@@ -54,121 +52,193 @@ function Rankings() {
                             <th>
                                 Constituency
                             </th>
-                            <th>
+                            <th onClick={() => setSortedColumn('Welfare')}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-1.svg"} />
+                                        <img src={"/images/categories/cat-1.svg"} title="Welfare"/>
                                     </span>
-                                    <span>
-                                        Welfare
+                                    {sortedColumn == 'Welfare' ?
+                                        <span className="icon">
+                                            <i className="fas fa-angle-double-down"></i>
+                                        </span> :
+                                        <span className="icon">
+                                            <i className="fas fa-angle-up"></i>
+                                        </span> 
+                                    }
+                                </span>
+                            </th>
+                            <th onClick={() => setSortedColumn('Health')}>
+                                <span className="icon-text is-flex-wrap-nowrap">
+                                    <span className="icon" >
+                                        <img src={"/images/categories/cat-2.svg"} title="Healthcare"/>
                                     </span>
+                                    {sortedColumn == 'Health' ?
+                                        <span className="icon">
+                                            <i className="fas fa-angle-double-down"></i>
+                                        </span> :
+                                        <span className="icon">
+                                            <i className="fas fa-angle-up"></i>
+                                        </span> 
+                                    }
+                                </span>
+                            </th>
+                            <th onClick={() => setSortedColumn('Pensions')}>
+                                <span className="icon-text is-flex-wrap-nowrap">
+                                    <span className="icon" >
+                                        <img src={"/images/categories/cat-3.svg"} title="Pensions" />
+                                    </span>
+                                    {sortedColumn == 'Pensions' ?
+                                        <span className="icon">
+                                            <i className="fas fa-angle-double-down"></i>
+                                        </span> :
+                                        <span className="icon">
+                                            <i className="fas fa-angle-up"></i>
+                                        </span> 
+                                    }
+                                </span>
+                            </th>
+                            <th onClick={() => setSortedColumn('Education')}>
+                                <span className="icon-text is-flex-wrap-nowrap">
+                                    <span className="icon" >
+                                        <img src={"/images/categories/cat-4.svg"} title="Education" />
+                                    </span>
+                                    {sortedColumn == 'Education' ?
+                                        <span className="icon">
+                                            <i className="fas fa-angle-double-down"></i>
+                                        </span> :
+                                        <span className="icon">
+                                            <i className="fas fa-angle-up"></i>
+                                        </span> 
+                                    }
+                                </span>
+                            </th>
+                            <th onClick={() => setSortedColumn('Defense')}>
+                                <span className="icon-text is-flex-wrap-nowrap">
+                                    <span className="icon" >
+                                        <img src={"/images/categories/cat-5.svg"} title="Defense" />
+                                    </span>
+                                    {sortedColumn == 'Defense' ?
+                                        <span className="icon">
+                                            <i className="fas fa-angle-double-down"></i>
+                                        </span> :
+                                        <span className="icon">
+                                            <i className="fas fa-angle-up"></i>
+                                        </span> 
+                                    }
+                                </span>
+                            </th>
+                            <th onClick={() => setSortedColumn('Transport')}>
+                                <span className="icon-text is-flex-wrap-nowrap">
+                                    <span className="icon" >
+                                        <img src={"/images/categories/cat-6.svg"} title="Transport" />
+                                    </span>
+                                    {sortedColumn == 'Transport' ?
+                                        <span className="icon">
+                                            <i className="fas fa-angle-double-down"></i>
+                                        </span> :
+                                        <span className="icon">
+                                            <i className="fas fa-angle-up"></i>
+                                        </span> 
+                                    }
+                                </span>
+                            </th>
+                            <th onClick={() => setSortedColumn('Public Order & Safety')}>
+                                <span className="icon-text is-flex-wrap-nowrap">
+                                    <span className="icon" >
+                                        <img src={"/images/categories/cat-7.svg"} title="Public Order & Safety" />
+                                    </span>
+                                    {sortedColumn == 'Public Order & Safety' ?
+                                        <span className="icon">
+                                            <i className="fas fa-angle-double-down"></i>
+                                        </span> :
+                                        <span className="icon">
+                                            <i className="fas fa-angle-up"></i>
+                                        </span> 
+                                    }
+                                </span>
+                            </th>
+                            <th onClick={() => setSortedColumn('Business & Industry')}>
+                                <span className="icon-text is-flex-wrap-nowrap">
+                                    <span className="icon" >
+                                        <img src={"/images/categories/cat-8.svg"}  title="Business & Industry"/>
+                                    </span>
+                                    {sortedColumn == 'Business & Industry' ?
+                                        <span className="icon">
+                                            <i className="fas fa-angle-double-down"></i>
+                                        </span> :
+                                        <span className="icon">
+                                            <i className="fas fa-angle-up"></i>
+                                        </span> 
+                                    }
+                                </span>
+                            </th>
+                            <th onClick={() => setSortedColumn('Housing & Utilities')}>
+                                <span className="icon-text is-flex-wrap-nowrap">
+                                    <span className="icon" >
+                                        <img src={"/images/categories/cat-10.svg"} title="Housing & Utilities" />
+                                    </span>
+                                    {sortedColumn == 'Housing & Utilities' ?
+                                        <span className="icon">
+                                            <i className="fas fa-angle-double-down"></i>
+                                        </span> :
+                                        <span className="icon">
+                                            <i className="fas fa-angle-up"></i>
+                                        </span> 
+                                    }
+                                </span>
+                            </th>
+                            <th onClick={() => setSortedColumn('Culture')}>
+                                <span className="icon-text is-flex-wrap-nowrap">
+                                    <span className="icon" >
+                                        <img src={"/images/categories/cat-11.svg"} title="Culture" />
+                                    </span>
+                                    {sortedColumn == 'Culture' ?
+                                        <span className="icon">
+                                            <i className="fas fa-angle-double-down"></i>
+                                        </span> :
+                                        <span className="icon">
+                                            <i className="fas fa-angle-up"></i>
+                                        </span> 
+                                    }
+                                </span>
+                            </th>
+                            <th onClick={() => setSortedColumn('Environment')}>
+                                <span className="icon-text is-flex-wrap-nowrap">
+                                    <span className="icon" >
+                                        <img src={"/images/categories/cat-12.svg"} title="Environment" />
+                                    </span>
+                                    {sortedColumn == 'Environment' ?
+                                        <span className="icon">
+                                            <i className="fas fa-angle-double-down"></i>
+                                        </span> :
+                                        <span className="icon">
+                                            <i className="fas fa-angle-up"></i>
+                                        </span> 
+                                    }
                                 </span>
                             </th>
                             <th>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-2.svg"} />
-                                    </span>
-                                    <span>
-                                        Health
+                                        <img src={"/images/religion/rel-2.png"} title="Spending" />
                                     </span>
                                 </span>
                             </th>
-                            <th>
+                            <th onClick={() => setSortedColumn('Government Administration')}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-3.svg"} />
+                                        <img src={"/images/categories/cat-9.svg"} title="Overall" />
                                     </span>
-                                    <span>
-                                        Pensions
-                                    </span>
+                                    {sortedColumn == 'Government Administration' ?
+                                        <span className="icon">
+                                            <i className="fas fa-angle-double-down"></i>
+                                        </span> :
+                                        <span className="icon">
+                                            <i className="fas fa-angle-up"></i>
+                                        </span> 
+                                    }
                                 </span>
                             </th>
-                            <th>
-                                <span className="icon-text is-flex-wrap-nowrap">
-                                    <span className="icon" >
-                                        <img src={"/images/categories/cat-4.svg"} />
-                                    </span>
-                                    <span>
-                                        Education
-                                    </span>
-                                </span>
-                            </th>
-                            <th>
-                                <span className="icon-text is-flex-wrap-nowrap">
-                                    <span className="icon" >
-                                        <img src={"/images/categories/cat-5.svg"} />
-                                    </span>
-                                    <span>
-                                        Defense
-                                    </span>
-                                </span>
-                            </th>
-                            <th>
-                                <span className="icon-text is-flex-wrap-nowrap">
-                                    <span className="icon" >
-                                        <img src={"/images/categories/cat-6.svg"} />
-                                    </span>
-                                    <span>
-                                        Transport
-                                    </span>
-                                </span>
-                            </th>
-                            <th>
-                                <span className="icon-text is-flex-wrap-nowrap">
-                                    <span className="icon" >
-                                        <img src={"/images/categories/cat-7.svg"} />
-                                    </span>
-                                    <span>
-                                        <nobr>Public Order</nobr><br/>
-                                        <nobr> & Safety</nobr>
-                                    </span>
-                                </span>
-                            </th>
-                            <th>
-                                <span className="icon-text is-flex-wrap-nowrap">
-                                    <span className="icon" >
-                                        <img src={"/images/categories/cat-8.svg"} />
-                                    </span>
-                                    <span>
-                                        Business <br/>
-                                        <nobr> & Industry</nobr>
-                                    </span>
-                                </span>
-                            </th>
-                            <th>
-                                <span className="icon-text is-flex-wrap-nowrap">
-                                    <span className="icon" >
-                                        <img src={"/images/categories/cat-10.svg"} />
-                                    </span>
-                                    <span>
-                                        Housing <br/>
-                                        <nobr> & Utilities</nobr>
-                                    </span>
-                                </span>
-                            </th>
-                            <th>
-                                <span className="icon-text is-flex-wrap-nowrap">
-                                    <span className="icon" >
-                                        <img src={"/images/categories/cat-11.svg"} />
-                                    </span>
-                                    <span>
-                                        Culture
-                                    </span>
-                                </span>
-                            </th>
-                            <th>
-                                <span className="icon-text is-flex-wrap-nowrap">
-                                    <span className="icon" >
-                                        <img src={"/images/categories/cat-12.svg"} />
-                                    </span>
-                                    <span>
-                                        Environment
-                                    </span>
-                                </span>
-                            </th>
-                            <th>Spending</th>
-                            <th>Overall</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -184,7 +254,7 @@ class RankingRow extends React.Component{
     render() {
         return(
             <tr>
-                <td><Link to={`/constituency/${this.props.data['id']}`}>{this.props.data['name']}</Link></td>
+                <td>{this.props.data['name']}</td>
                 <RatingCell data={this.props.data['Welfare']}/>
                 <RatingCell data={this.props.data['Health']}/>
                 <RatingCell data={this.props.data['Pensions']}/>
