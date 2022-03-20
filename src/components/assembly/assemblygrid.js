@@ -23,7 +23,7 @@ export default function AssemblyGrid({data}){
 function AssemblyTile({data}){
 
     var constituencyName
-    if(data.constituency_name == 'Here\'s That City You Wanted'){
+    if(data.constituency_name === 'Here\'s That City You Wanted'){
         constituencyName = 'HTCYW'
     }
     else
@@ -31,20 +31,20 @@ function AssemblyTile({data}){
         constituencyName = data.constituency_name
     }
     var policy_desc
-    if(data.policy_result == 1)
+    if(data.policy_result === 1)
     {
         policy_desc = <strong className="has-text-success">{data.policy_desc}
         <br/>
         {data.votes_for } / {data.votes_against}</strong>
     }
-    else if(data.policy_result == 2)
+    else if(data.policy_result === 2)
     {
         policy_desc = <strong>{data.policy_desc}
         <br/>
         {data.votes_for } / {data.votes_against}</strong>
 
     }
-    else if(data.policy_result == -1)
+    else if(data.policy_result === -1)
     {
         policy_desc = <strong className="has-text-danger">{data.policy_desc}
         <br/>
@@ -62,7 +62,7 @@ function AssemblyTile({data}){
                 <div className="has-text-centered">
                     {constituencyName}
                 </div>
-                <img src={`/images/constituency/con-${data.constituency_id}.svg`} loading="lazy" title="" style={{"background-color": ("#" + data.party_color)}} className={`image is-64x64 ${styles.constituencyIcon}`}/>
+                <img src={`/images/constituency/con-${data.constituency_id}.svg`} alt={constituencyName} loading="lazy" title="" style={{"background-color": ("#" + data.party_color)}} className={`image is-64x64 ${styles.constituencyIcon}`}/>
                 
                 <div className="is-size-6 has-text-centered">
                     <Link to={`/election/latest/candidate/${data.candidate_id}`}>{data.first_name} {data.last_name}</Link>

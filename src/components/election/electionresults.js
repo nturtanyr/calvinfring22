@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import { BarChart, XAxis, YAxis, Bar, Cell, Tooltip, ResponsiveContainer } from "recharts";
+import { BarChart, XAxis, Bar, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { useParams } from "react-router-dom";
 
 export default function ConstituencyElectionChart ({constituency_id, election_id}) {

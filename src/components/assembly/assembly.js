@@ -22,7 +22,7 @@ function Assembly() {
         
         return () => clearInterval(interval);
         
-    },[timer]);
+    },[timer, params.id]);
 
     return (
         <div>

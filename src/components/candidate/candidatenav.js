@@ -1,6 +1,5 @@
 import React from "react";
 import axios from 'axios';
-import { Outlet, useNavigate, useParams } from "react-router-dom";
 import CandidateList from "./candidatelist";
 
 

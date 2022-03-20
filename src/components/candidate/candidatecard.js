@@ -30,7 +30,12 @@ export default function CandidateCard({selectedConstituency}) {
 
     if(params.candidate_id === '0')
     {
-        return( <div className="block"/>)
+        return( <div className="block"/>);
+    }
+
+    if(pageLoading)
+    {
+        return (<progress className="progress is-primary" max="100"></progress>);
     }
 
     return (    

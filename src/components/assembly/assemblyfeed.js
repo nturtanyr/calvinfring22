@@ -43,7 +43,7 @@ export default function AssemblyFeed() {
     var feed = []
     if(feedData){
         feedData.forEach( (object) =>{
-            if(object.style == "discussion_start" || object.style == "assembly_finish" || object.style == "assembly_start" || object.style == "vote_begin")
+            if(object.style === "discussion_start" || object.style === "assembly_finish" || object.style === "assembly_start" || object.style === "vote_begin")
             {
                 feed.push(
                     <AssemblyFeedTop key={`comment-${object.id}`} data={object}/>
@@ -83,115 +83,115 @@ export default function AssemblyFeed() {
     
 }
 
-class AssemblyFeedTop extends React.Component  {
-    render() {
-        var image_path
+function AssemblyFeedTop({data}){
+    var image_path
 
-        // Determine image off style
-        switch(this.props.data.style)
-        {
-            case "assembly_start":
-                image_path = '/images/assembly/assembly-start.svg';
-                break;
+    // Determine image off style
+    switch(data.style)
+    {
+        case "assembly_start":
+            image_path = '/images/assembly/assembly-start.svg';
+            break;
 
-            case "vote_begin":
-                image_path = '/images/assembly/assembly-voteBegin.svg';
-                break;
+        case "vote_begin":
+            image_path = '/images/assembly/assembly-voteBegin.svg';
+            break;
 
-            case "assembly_finish":
-                image_path = '/images/assembly/assembly-finish.svg';
-                break;
+        case "assembly_finish":
+            image_path = '/images/assembly/assembly-finish.svg';
+            break;
 
-            case "discussion_start":
-                image_path = ("/images/constituency/con-" + this.props.data.constituency_id + ".svg");
-                break;
-        }
-        
-        return (
-            <div className={styles.feedTop}>
-                <figure className="image is-64x64">
-                    <img src={image_path} />
-                </figure>
-                <div className="ml-3">
-                    <strong>{this.props.data.message}</strong>
-                    <hr className={styles.commentRule}/>
-                </div>
-            </div>
-        )
+        case "discussion_start":
+            image_path = ("/images/constituency/con-" + data.constituency_id + ".svg");
+            break;
+        default:
+            image_path = '/images/assembly/assembly-voteBegin.svg';
+            break;
     }
+    
+    return (
+        <div className={styles.feedTop}>
+            <figure className="image is-64x64">
+                <img src={image_path} alt={data.style} />
+            </figure>
+            <div className="ml-3">
+                <strong>{data.message}</strong>
+                <hr className={styles.commentRule}/>
+            </div>
+        </div>
+    )
 }
-class AssemblyFeedAction extends React.Component {
-    render() {
 
-        // Determine image off style and whether there's a candidate involved
-        var image_path
-        var text_class
-        // No candidate means it's the final tallies of a motion being passed
-        switch(this.props.data.style)
-        {
-            case "vote_for":
-                image_path = '/images/assembly/assembly-actionFor.svg';
-                break;
+function AssemblyFeedAction({data}){
 
-            case "vote_against":
-                image_path = '/images/assembly/assembly-actionAgainst.svg';
-                break;
+    // Determine image off style and whether there's a candidate involved
+    var image_path
+    var text_class
+    // No candidate means it's the final tallies of a motion being passed
+    switch(data.style)
+    {
+        case "vote_for":
+            image_path = '/images/assembly/assembly-actionFor.svg';
+            break;
 
-            case "vote_abstain":
-                image_path = '/images/assembly/assembly-actionMeh.svg';
-                break;
+        case "vote_against":
+            image_path = '/images/assembly/assembly-actionAgainst.svg';
+            break;
 
-            case "vote_for_total":
-                image_path = '/images/assembly/assembly-votesFor.svg';
-                break;
+        case "vote_abstain":
+            image_path = '/images/assembly/assembly-actionMeh.svg';
+            break;
 
-            case "vote_against_total":
-                image_path = '/images/assembly/assembly-votesAgainst.svg';
-                break;
+        case "vote_for_total":
+            image_path = '/images/assembly/assembly-votesFor.svg';
+            break;
 
-            case "vote_success":
-                image_path = '/images/assembly/assembly-votePassed.svg';
-                break;
+        case "vote_against_total":
+            image_path = '/images/assembly/assembly-votesAgainst.svg';
+            break;
 
-            case "vote_failure":
-                image_path = '/images/assembly/assembly-voteFailed.svg';
-                break;
-            case "positive_success":
-                image_path = '/images/assembly/assembly-actionFor.svg';
-                text_class = "has-text-success"
-                break;
-            case "positive_failure":
-                image_path = '/images/assembly/assembly-failedFor.svg';
-                text_class = "has-text-black"
-                break;
-            case "negative_success":
-                image_path = '/images/assembly/assembly-actionAgainst.svg';
-                text_class = "has-text-danger"
-                break;
-            case "negative_failure":
-                image_path = '/images/assembly/assembly-failedAgainst.svg';
-                text_class = "has-text-black"
-                break;
-            case "neutral_bitetongue":
-                image_path = '/images/assembly/assembly-quietMeh.svg';
-                text_class = "has-text-black"
-                break;
-            default:
-                image_path = '/images/assembly/assembly-quietMeh.svg';
-                text_class = "has-text-black"
-                break;
-        }
+        case "vote_success":
+            image_path = '/images/assembly/assembly-votePassed.svg';
+            break;
 
-        return (
-            <div className={styles.feedAction}>
-                <figure className="image is-32x32">
-                    <img src={image_path} />
-                </figure>
-                <div className="ml-3">
-                    <p className={text_class}>{this.props.data.message}</p>
-                    <hr className={styles.commentRule}/>
-                </div>
-            </div>
-        )
+        case "vote_failure":
+            image_path = '/images/assembly/assembly-voteFailed.svg';
+            break;
+        case "positive_success":
+            image_path = '/images/assembly/assembly-actionFor.svg';
+            text_class = "has-text-success"
+            break;
+        case "positive_failure":
+            image_path = '/images/assembly/assembly-failedFor.svg';
+            text_class = "has-text-black"
+            break;
+        case "negative_success":
+            image_path = '/images/assembly/assembly-actionAgainst.svg';
+            text_class = "has-text-danger"
+            break;
+        case "negative_failure":
+            image_path = '/images/assembly/assembly-failedAgainst.svg';
+            text_class = "has-text-black"
+            break;
+        case "neutral_bitetongue":
+            image_path = '/images/assembly/assembly-quietMeh.svg';
+            text_class = "has-text-black"
+            break;
+        default:
+            image_path = '/images/assembly/assembly-quietMeh.svg';
+            text_class = "has-text-black"
+            break;
     }
+
+    return (
+        <div className={styles.feedAction}>
+            <figure className="image is-32x32">
+                <img src={image_path} alt={data.style}/>
+            </figure>
+            <div className="ml-3">
+                <p className={text_class}>{data.message}</p>
+                <hr className={styles.commentRule}/>
+            </div>
+        </div>
+    )
 } 

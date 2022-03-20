@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import { ResponsiveContainer, PureComponent, PieChart, Pie, Legend, Tooltip, Cell } from 'recharts';
+import { ResponsiveContainer, PieChart, Pie, Tooltip, Cell } from 'recharts';
 import { useParams } from "react-router-dom";
 
 export default function ConstituencyDemography({constituency_id}) {

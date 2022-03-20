@@ -1,6 +1,5 @@
 import React from "react";
 import axios from 'axios';
-import { Link } from "react-router-dom";
 import styles from "./rankings.module.css"
 
 function sortByColumn(area, a,b)
@@ -55,9 +54,9 @@ function Rankings() {
                             <th onClick={() => setSortedColumn('Welfare')}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-1.svg"} title="Welfare"/>
+                                        <img src={"/images/categories/cat-1.svg"} alt="Welfare" title="Welfare"/>
                                     </span>
-                                    {sortedColumn == 'Welfare' ?
+                                    {sortedColumn === 'Welfare' ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -70,9 +69,9 @@ function Rankings() {
                             <th onClick={() => setSortedColumn('Health')}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-2.svg"} title="Healthcare"/>
+                                        <img src={"/images/categories/cat-2.svg"} alt="Healthcare" title="Healthcare"/>
                                     </span>
-                                    {sortedColumn == 'Health' ?
+                                    {sortedColumn === 'Health' ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -85,9 +84,9 @@ function Rankings() {
                             <th onClick={() => setSortedColumn('Pensions')}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-3.svg"} title="Pensions" />
+                                        <img src={"/images/categories/cat-3.svg"} alt="Pensions" title="Pensions" />
                                     </span>
-                                    {sortedColumn == 'Pensions' ?
+                                    {sortedColumn === 'Pensions' ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -100,9 +99,9 @@ function Rankings() {
                             <th onClick={() => setSortedColumn('Education')}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-4.svg"} title="Education" />
+                                        <img src={"/images/categories/cat-4.svg"} alt="Education" title="Education" />
                                     </span>
-                                    {sortedColumn == 'Education' ?
+                                    {sortedColumn === 'Education' ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -115,9 +114,9 @@ function Rankings() {
                             <th onClick={() => setSortedColumn('Defense')}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-5.svg"} title="Defense" />
+                                        <img src={"/images/categories/cat-5.svg"} alt="Defense" title="Defense" />
                                     </span>
-                                    {sortedColumn == 'Defense' ?
+                                    {sortedColumn === 'Defense' ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -130,9 +129,9 @@ function Rankings() {
                             <th onClick={() => setSortedColumn('Transport')}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-6.svg"} title="Transport" />
+                                        <img src={"/images/categories/cat-6.svg"} alt="Transport" title="Transport" />
                                     </span>
-                                    {sortedColumn == 'Transport' ?
+                                    {sortedColumn === 'Transport' ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -145,9 +144,9 @@ function Rankings() {
                             <th onClick={() => setSortedColumn('Public Order & Safety')}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-7.svg"} title="Public Order & Safety" />
+                                        <img src={"/images/categories/cat-7.svg"} alt="Public Order & Safety" title="Public Order & Safety" />
                                     </span>
-                                    {sortedColumn == 'Public Order & Safety' ?
+                                    {sortedColumn === 'Public Order & Safety' ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -160,9 +159,9 @@ function Rankings() {
                             <th onClick={() => setSortedColumn('Business & Industry')}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-8.svg"}  title="Business & Industry"/>
+                                        <img src={"/images/categories/cat-8.svg"} alt="Business & Industry" title="Business & Industry"/>
                                     </span>
-                                    {sortedColumn == 'Business & Industry' ?
+                                    {sortedColumn === 'Business & Industry' ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -175,9 +174,9 @@ function Rankings() {
                             <th onClick={() => setSortedColumn('Housing & Utilities')}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-10.svg"} title="Housing & Utilities" />
+                                        <img src={"/images/categories/cat-10.svg"} alt="Housing & Utilities" title="Housing & Utilities" />
                                     </span>
-                                    {sortedColumn == 'Housing & Utilities' ?
+                                    {sortedColumn === 'Housing & Utilities' ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -190,9 +189,9 @@ function Rankings() {
                             <th onClick={() => setSortedColumn('Culture')}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-11.svg"} title="Culture" />
+                                        <img src={"/images/categories/cat-11.svg"} alt="Culture" title="Culture" />
                                     </span>
-                                    {sortedColumn == 'Culture' ?
+                                    {sortedColumn === 'Culture' ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -205,9 +204,9 @@ function Rankings() {
                             <th onClick={() => setSortedColumn('Environment')}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-12.svg"} title="Environment" />
+                                        <img src={"/images/categories/cat-12.svg"} alt="Environment" title="Environment" />
                                     </span>
-                                    {sortedColumn == 'Environment' ?
+                                    {sortedColumn === 'Environment' ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -220,16 +219,16 @@ function Rankings() {
                             <th>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/religion/rel-2.png"} title="Spending" />
+                                        <img src={"/images/religion/rel-2.png"} alt="Spending" title="Spending" />
                                     </span>
                                 </span>
                             </th>
                             <th onClick={() => setSortedColumn('Government Administration')}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-9.svg"} title="Overall" />
+                                        <img src={"/images/categories/cat-9.svg"} alt="Overall"  title="Overall" />
                                     </span>
-                                    {sortedColumn == 'Government Administration' ?
+                                    {sortedColumn === 'Government Administration' ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
