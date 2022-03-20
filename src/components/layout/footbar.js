@@ -5,7 +5,7 @@ function FooterBar() {
         <footer className="footer p-1">
             <div className="content is-small has-text-centered">
                 <i>No bears were hurt in the making of this site - so say us, the Kalmany Electoral Commission</i><br/>
-                beetroot v1.1.0 &#169; 2022 nturtaynment
+                {process.env.REACT_APP_NAME} v{process.env.REACT_APP_VERSION} &#169; 2022 nturtaynment
             </div>    
         </footer>
     )
