@@ -1,6 +1,6 @@
 {
   "name": "kalmany-beetroot",
-  "version": "0.3.1",
+  "version": "<version_number>",
   "private": true,
   "dependencies": {
     "@aws-amplify/ui-react": "^2.5.0",
