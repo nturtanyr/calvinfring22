@@ -115,8 +115,8 @@ class Home extends React.Component {
                     {
                         Id : constituencyId,
                         Name : 'Bumcry',
-                        Info : 'The citizens are commited to the idea that it\'s pronounced BEM-kree. Sometimes you need to take a break to where nobody can even pronounce your name. The citizens in Bumcry prefer their dialects of talking fast and talking hard. It helps boost crop yield as well which is very important to this coastal shire!',
-                        Tagline : '(Often unintelligable muttering)',
+                        Info : 'The citizens are committed to the idea that it\'s pronounced BEM-kree. Sometimes you need to take a break to where nobody can even pronounce your name. The citizens in Bumcry prefer their dialects of talking fast and talking hard. It helps boost crop yield as well which is very important to this coastal shire!',
+                        Tagline : '(Often unintelligible muttering)',
                         Emblem : 'The Raging Bull',
                         Settlements : 'Basil (city)',
                         Climate : 'Rough and ready'
@@ -157,7 +157,7 @@ class Home extends React.Component {
                     {
                         Id : constituencyId,
                         Name : 'East Nussex',
-                        Info : 'Almost standoffish, it\'s understandable that sometimes the people of East Nussex don\'t have a great rep. But it\'s hard not to get invovled in their staunch rivalry with West Nussex! Go reds! Famed for its stubborness and for the occasional murder.',
+                        Info : 'Almost standoffish, it\'s understandable that sometimes the people of East Nussex don\'t have a great rep. But it\'s hard not to get involved in their staunch rivalry with West Nussex! Go reds! Famed for its stubbornness and for the occasional murder.',
                         Tagline : 'Stay on our good side, which is east.',
                         Emblem : 'The Red Robins',
                         Settlements : 'Dimham and Love (city)',
@@ -171,7 +171,7 @@ class Home extends React.Component {
                     {
                         Id : constituencyId,
                         Name : 'West Nussex',
-                        Info : 'Understanbly irritated, the people of West Nussex can often be picked out as quick-to-anger or constantly annoyed by bustling shoppers. Their nerves are a little tetchy but that doesn\'t stop them from accepting to new members to join the fight against East Nussex! Go blues! Famed for its anger and the occasional murder.',
+                        Info : 'Understandably irritated, the people of West Nussex can often be picked out as quick-to-anger or constantly annoyed by bustling shoppers. Their nerves are a little tetchy but that doesn\'t stop them from accepting to new members to join the fight against East Nussex! Go blues! Famed for its anger and the occasional murder.',
                         Tagline : 'If you\'re west, you\'re the best!',
                         Emblem : 'The Blue Tits',
                         Settlements : 'Worley (town), Crawling (town)',
@@ -199,7 +199,7 @@ class Home extends React.Component {
                     {
                         Id : constituencyId,
                         Name : 'Isle of Blu',
-                        Info : 'Off the coast and loving it, the Isle of Blue boasts picturesuqe scenes of emptiness and the occasional sheep. Don\'t let that put you off though, the quiet helps you reach a point of tranquility and peace. The peoples are friendly, but they\'ve also not seen new people in a while. They may mistake you for a shaven sheep. Hold onto your passport.',
+                        Info : 'Off the coast and loving it, the Isle of Blue boasts picturesque scenes of emptiness and the occasional sheep. Don\'t let that put you off though, the quiet helps you reach a point of tranquility and peace. The peoples are friendly, but they\'ve also not seen new people in a while. They may mistake you for a shaven sheep. Hold onto your passport.',
                         Tagline : 'A peaceful spot of tranquility, away from it all.',
                         Emblem : 'The Lonely Fisherman',
                         Settlements : 'Oldport (town)',
@@ -213,7 +213,7 @@ class Home extends React.Component {
                     {
                         Id : constituencyId,
                         Name : 'Can\'t',
-                        Info : 'The attitude of workign hard is lost to the people of Can\'t - sometimes you need to step back and understand that not everything is possible. They believe that sometimes, it\'s best to accept your limitations, relax, and have a beer. Because not everything needs to go a mile a minute. Also I was going to, but now you asked me I\'m not going to.',
+                        Info : 'The attitude of working hard is lost to the people of Can\'t - sometimes you need to step back and understand that not everything is possible. They believe that sometimes, it\'s best to accept your limitations, relax, and have a beer. Because not everything needs to go a mile a minute. Also I was going to, but now you asked me I\'m not going to.',
                         Tagline : 'Sometimes, you just have to say no.',
                         Emblem : 'The Disgruntled Maiden',
                         Settlements : 'Two Hills (town), Peachanham (town)',
@@ -297,7 +297,7 @@ class Home extends React.Component {
                     {
                         Id : constituencyId,
                         Name : 'Wear and Tear',
-                        Info : 'Castle are Wear and Tear\'s biggest draw, but their fashion industry is also in full swing. Who wouldn\'t want to wear a full rendition of Chateus de Tissu on your head? Walled so you can\'t get out, Wear and Tear hopes to keep its visitors coming back for more. They\'ve even resorted to changing up their history every so often to keep you guessing!',
+                        Info : 'Castles are Wear and Tear\'s biggest draw, but their fashion industry is also in full swing. Who wouldn\'t want to wear a full rendition of Chateua de Tissu on your head? Walled so you can\'t get out, Wear and Tear hopes to keep its visitors coming back for more. They\'ve even resorted to changing up their history every so often to keep you guessing!',
                         Tagline : 'Hiding in our castles!',
                         Emblem : 'The Sleepless Watchman',
                         Settlements : 'Chateau de Tissu (city)',
@@ -311,7 +311,7 @@ class Home extends React.Component {
                     {
                         Id : constituencyId,
                         Name : 'Wilting Flowers',
-                        Info : 'Flowerbeds litter the fields of Wilting Flowers to draw the bees and birds in - wildlife just loves the colours that Wilting Flowers provides! But be warned, hayfever sufferers may just have to be hospitalised when they enter! No seriously, its a serious problem. We can\'t keep up with them. If you suffer from hayfever, just stay away. Please.',
+                        Info : 'Flowerbeds litter the fields of Wilting Flowers to draw the bees and birds in - wildlife just loves the colours that Wilting Flowers provides! But be warned, hay-fever sufferers may just have to be hospitalised when they enter! No seriously, its a serious problem. We can\'t keep up with them. If you suffer from hay-fever, just stay away. Please.',
                         Tagline : 'Comforting breezes and a deadly sun',
                         Emblem : 'The Dried Sunflower',
                         Settlements : 'Jazztown (city)',
@@ -353,7 +353,7 @@ class Home extends React.Component {
                     {
                         Id : constituencyId,
                         Name : 'Hurry',
-                        Info : 'Fast paced when it comes to technology! You best run as the public transport system is a little busy, especially in work hours! Hurry is seen as the hub of fast choices and new invention, all in the name of making things faster. After all, it was Hurry who first iniatiated bears into the police force and all constituencies have followed since! Truly remarkable and wholly inventive.',
+                        Info : 'Fast paced when it comes to technology! You best run as the public transport system is a little busy, especially in work hours! Hurry is seen as the hub of fast choices and new invention, all in the name of making things faster. After all, it was Hurry who first initiated bears into the police force and all constituencies have followed since! Truly remarkable and wholly inventive.',
                         Tagline : 'Quick to the punch, slow to the bell!',
                         Emblem : 'The Black Stallion',
                         Settlements : 'Awaking (town), Guild of Bears (town)',
