@@ -104,7 +104,7 @@ export default function UserVoting({constituency_id}) {
                     </td>
                     <td>
                         <p>
-                            <Link to={"/candidate/" + candidate.candidate_id}>{candidate.first_name} {candidate.last_name}</Link>
+                            <Link to={"/election/latest/candidate/" + candidate.candidate_id}>{candidate.first_name} {candidate.last_name}</Link>
                         </p>
                         <p>
                             <i className="is-hidden-mobile">{candidate.quote}</i>
