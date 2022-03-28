@@ -5,7 +5,7 @@ function FooterBar() {
         <footer className="footer p-1">
             <div className="content is-small has-text-centered">
                 <i>No bears were hurt in the making of this site - so say us, the Kalmany Electoral Commission</i><br/>
-                kalmany-beetroot v{process.env.BUILD_DISPLAY_NAME} &#169; 2022 nturtaynment
+                kalmany-beetroot v!version_number! &#169; 2022 nturtaynment
             </div>    
         </footer>
     )
