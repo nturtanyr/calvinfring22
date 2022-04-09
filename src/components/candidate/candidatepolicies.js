@@ -1,46 +1,21 @@
 import React from "react";
-import axios from 'axios';
-import { useParams } from "react-router-dom";
 
-export default function CandidatePolicies() {
-    const params = useParams();
-    let [policies, setPolicies] = React.useState(null);
-    let [party, setParty] = React.useState(null);
-    
-    React.useEffect(() => {
-
-        axios.get(`${process.env.REACT_APP_API_ROOT}/candidates/${params.candidate_id}/policies`)
-        .then(res => {
-            const data = res.data.data;
-            setPolicies(data);
-        })
-        
-    },[params.candidate_id]);
-
-    React.useEffect(() => {
-
-        axios.get(`${process.env.REACT_APP_API_ROOT}/candidates/${params.candidate_id}/party`)
-        .then(res => {
-            const data = res.data.data;
-            setParty(data);
-        })
-        
-    },[params.candidate_id]);
+export default function CandidatePolicies({candidateData, candidatePolicies, candidatePartyPolicies}) {
 
     var personalRows =[]
     var partyRows =[]
-    if (policies && policies.length > 0)
+    if (candidatePolicies && candidatePolicies.length > 0)
     {
-        policies.forEach(object => {
+        candidatePolicies.forEach(policy => {
             personalRows.push(
             <tr>
                 <td>
                     <figure className="image is-24x24">
-                        <img className="image" src={`/images/categories/cat-${object.category_id}.svg`} title={object.category_name}/>
+                        <img className="image" src={`/images/categories/cat-${policy.category.id}.svg`} title={policy.category.name}/>
                     </figure>
                 </td>
                 <td>
-                    {object.description}
+                    {policy.foaValue > 0 ? policy.proDescription : policy.conDescription}
                 </td>
             </tr>
             )
@@ -51,18 +26,18 @@ export default function CandidatePolicies() {
     }
 
     
-    if (party && party.policies.length > 0)
+    if (candidatePartyPolicies && candidatePartyPolicies.length > 0)
     {
-        party.policies.forEach(object => {
+        candidatePartyPolicies.forEach(policy => {
             partyRows.push(
             <tr>
                 <td>
                     <figure className="image is-24x24">
-                        <img className="image" src={`/images/categories/cat-${object.category_id}.svg`} title={object.category_name}/>
+                        <img className="image" src={`/images/categories/cat-${policy.category.id}.svg`} title={policy.category.name}/>
                     </figure>
                 </td>
                 <td>
-                    {object.description}
+                    {policy.foaValue > 0 ? policy.proDescription : policy.conDescription}
                 </td>
             </tr>
             )

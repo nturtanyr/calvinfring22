@@ -11,19 +11,25 @@ export default function ConstituencyElectionChart ({constituency_id, election_id
     React.useEffect(() => {
         if(params.constituency_id)
         {
-            constituency_id = params.constituency_id
+            constituency_id = params.constituency_id;
         }
 
         if(params.election_id)
         {
-            election_id = params.election_id
+            election_id = params.election_id;
         }
 
-        axios.get(`${process.env.REACT_APP_API_ROOT}/constituency/` + constituency_id + `/election/` + election_id)
+        if(election_id == 'latest')
+        {
+            var utcStr = new Date().toISOString();
+            election_id = utcStr.replace('-', '').replace('-', '').substring(0, 8);
+        }
+
+        axios.get(`${process.env.REACT_APP_API_ROOT}/election/` + election_id + `?constituencyID=` + constituency_id)
         .then(res => {
             const data = res.data.data;
-            data.details.forEach(element => {
-                element['bar_label'] = element.last_name + " (" + element.party_shortname + ")"
+            data.candidates.forEach(element => {
+                element['barLabel'] = element.candidate.citizen.lastName + " (" + element.candidate.party.shortName + ")"
             });
             setChartData(data);
         })
@@ -46,7 +52,7 @@ export default function ConstituencyElectionChart ({constituency_id, election_id
             title_text = `The election of ${chartData.id} is now underway! Votes are still coming in!`
         }
         else{
-            if(chartData.end_date)
+            if(chartData.end)
             {
                 title_text = `The election of ${chartData.id} has finished - showing the results:`
             }
@@ -60,20 +66,20 @@ export default function ConstituencyElectionChart ({constituency_id, election_id
             <div>
                 <h1 className="subtitle">{title_text}</h1>
                 <ResponsiveContainer width="100%" aspect={2}>
-                    <BarChart data={chartData.details}>
-                        <XAxis type='category' dataKey="bar_label"/>
+                    <BarChart data={chartData.candidates}>
+                        <XAxis type='category' dataKey="barLabel"/>
                         <Tooltip />
-                        <Bar dataKey="vote_tally_inperson" name="In Person">
+                        <Bar dataKey="votesInPerson" name="In Person">
                             {
-                                chartData.details.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={"#" + entry.party_color} />
+                                chartData.candidates.map((entry, index) => (
+                                    <Cell key={`cell-${index}`} fill={"#" + entry.candidate.party.color} />
                                 ))
                             }
                         </Bar>
-                        <Bar dataKey="vote_tally_online" name="Online Votes">
+                        <Bar dataKey="votesOnline" name="Online Votes">
                             {
-                                chartData.details.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={"#" + entry.party_color} />
+                                chartData.candidates.map((entry, index) => (
+                                    <Cell key={`cell-${index}`} fill={"#" + entry.candidate.party.color} />
                                 ))
                             }
                         </Bar>

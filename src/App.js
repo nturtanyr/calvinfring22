@@ -39,8 +39,8 @@ export default function App() {
           />}>
             <Route path=":constituency_id" element={<ConstituencyDemography constituency_id={0}/>} />
           </Route>
-          <Route path="/assembly/:id" element={<Assembly />} />
-          <Route path="/rankings" element={<Maintenance />} />
+          <Route path="/assembly/:assembly_id" element={<Assembly />} />
+          <Route path="/rankings" element={<Rankings />} />
         </Route>
         <Route element={<Layout color="red" />}>
           <Route path="/news" element={<News />} />

@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom"
 import styles from "./assembly.module.css"
 
-export default function AssemblyGrid({data}){
+export default function AssemblyGrid({assemblyData}){
 
     var tiles = []
     
-    if(data){
-        data.forEach( (object) =>{
-            tiles.push(<AssemblyTile key={`tile-${object.constituency_id}`} data={object}/>)
+    if(assemblyData){
+        assemblyData.members.forEach( (object) =>{
+            tiles.push(<AssemblyTile key={`tile-${object.constituency.id}`} tileData={object}/>)
             
         });
     }
@@ -20,41 +20,38 @@ export default function AssemblyGrid({data}){
     )
 }
 
-function AssemblyTile({data}){
+function AssemblyTile({tileData}){
 
     var constituencyName
-    if(data.constituency_name === 'Here\'s That City You Wanted'){
+    if(tileData.constituency.name === 'Here\'s That City You Wanted'){
         constituencyName = 'HTCYW'
     }
     else
     {
-        constituencyName = data.constituency_name
+        constituencyName = tileData.constituency.name
     }
-    var policy_desc
-    if(data.policy_result === 1)
-    {
-        policy_desc = <strong className="has-text-success">{data.policy_desc}
+    var policyDescription = <>
+        {tileData.policy.foaValue > 0 ? tileData.policy.proDescription : tileData.policy.conDescription}
         <br/>
-        {data.votes_for } / {data.votes_against}</strong>
+        {tileData.assemblyVotes.countVotesFor || 0} / {tileData.assemblyVotes.countVotesAgainst || 0}
+    </>
+    var policyDescriptionFormatted
+    if(tileData.voteResult === 1)
+    {
+        policyDescriptionFormatted = <strong className="has-text-success">{policyDescription}</strong>
     }
-    else if(data.policy_result === 2)
+    else if(tileData.voteResult === 2)
     {
-        policy_desc = <strong>{data.policy_desc}
-        <br/>
-        {data.votes_for } / {data.votes_against}</strong>
+        policyDescriptionFormatted = <strong>{policyDescription}</strong>
 
     }
-    else if(data.policy_result === -1)
+    else if(tileData.voteResult === -1)
     {
-        policy_desc = <strong className="has-text-danger">{data.policy_desc}
-        <br/>
-        {data.votes_for } / {data.votes_against}</strong>
+        policyDescriptionFormatted = <strong className="has-text-danger">{policyDescription}</strong>
     }
     else
     {
-        policy_desc = <i>{data.policy_desc}
-        <br/>
-        {data.votes_for } / {data.votes_against}</i>
+        policyDescriptionFormatted = <i>{policyDescription}</i>
 
     }
     return (
@@ -62,13 +59,13 @@ function AssemblyTile({data}){
                 <div className="has-text-centered">
                     {constituencyName}
                 </div>
-                <img src={`/images/constituency/con-${data.constituency_id}.svg`} alt={constituencyName} loading="lazy" title="" style={{"background-color": ("#" + data.party_color)}} className={`image is-64x64 ${styles.constituencyIcon}`}/>
+                <img src={`/images/constituency/con-${tileData.constituency.id}.svg`} alt={constituencyName} loading="lazy" title="" style={{"background-color": ("#" + tileData.candidate.party.color)}} className={`image is-64x64 ${styles.constituencyIcon}`}/>
                 
                 <div className="is-size-6 has-text-centered">
-                    <Link to={`/election/latest/candidate/${data.candidate_id}`}>{data.first_name} {data.last_name}</Link>
+                    <Link to={`/election/latest/candidate/${tileData.candidate.id}`}>{tileData.candidate.citizen.firstName} {tileData.candidate.citizen.lastName}</Link>
                 </div>
                 <div className="is-size-7 has-text-centered">
-                    {policy_desc}
+                    {policyDescriptionFormatted}
                 </div>
             </div>
     )

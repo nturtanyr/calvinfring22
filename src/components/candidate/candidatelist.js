@@ -12,7 +12,7 @@ export default function CandidateList({selectedConstituency}) {
     const [pageLoading, setPageLoading] = React.useState(false);
     
     React.useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_ROOT}/constituency/` + selectedConstituencyID + "/candidates")
+        axios.get(`${process.env.REACT_APP_API_ROOT}/candidate?constituencyID=` + selectedConstituencyID)
             .then(res => {
                 const data = res.data.data;
                 data.sort((a , b) => {
@@ -21,7 +21,7 @@ export default function CandidateList({selectedConstituency}) {
                     else if (a.running != b.running) {
                         return (b.running - a.running) 
                     } else {
-                        return a.last_name.localeCompare(b.last_name);
+                        return a.citizen.lastName.localeCompare(b.citizen.lastName);
                     }
                 })
                 setCurrentConstituencyCandidates(data);
@@ -38,16 +38,16 @@ export default function CandidateList({selectedConstituency}) {
     var tableRows = []
     currentConstituencyCandidates.map(candidate => {
         
-        tableRows.push(<tr key={"can-" + candidate.candidate_id}>
+        tableRows.push(<tr key={"can-" + candidate.id}>
             <td>{candidate.elected && <i className="fas fa-star"></i>}</td>
             <td>
-                <Link to={"/election/latest/candidate/" + candidate.candidate_id}>
-                    <span className={candidate.running ? "has-text-weight-medium" : "has-text-grey-light is-italic"}>{candidate.first_name} {candidate.last_name}</span>
+                <Link to={"/election/latest/candidate/" + candidate.id}>
+                    <span className={candidate.running ? "has-text-weight-medium" : "has-text-grey-light is-italic"}>{candidate.citizen.firstName} {candidate.citizen.lastName}</span>
                 </Link>
-                <span className="is-hidden-tablet"><br/><i>{candidate.party_shortname}</i></span>
+                <span className="is-hidden-tablet"><br/><i>{candidate.party.shortName}</i></span>
             </td>
             <td className="is-hidden-mobile">
-                {candidate.running ? <b>{candidate.party_name}</b> : "No affiliation"}
+                {candidate.running ? <b>{candidate.party.name}</b> : "No affiliation"}
                 
             </td>
             <td className="is-hidden-mobile">

@@ -6,10 +6,14 @@ import styles from "./assembly.module.css"
 export default function AssemblyFeed() {
     let params = useParams();
     let [timer, setTime] = React.useState(null);
+
+
     let [feedData, setFeedData] = React.useState(null);
     let [scrolledToBottom, setScrolledToBottom] = React.useState(false);
+
     const messagesEndRef = React.createRef();
     const feedContainer = React.useRef(null);
+
     const onScroll = () => {
         if (feedContainer.current) {
           const { scrollTop, scrollHeight, clientHeight } = feedContainer.current;
@@ -22,9 +26,20 @@ export default function AssemblyFeed() {
           }
         }
       };
-    React.useEffect(() => {
 
-        axios.get(`${process.env.REACT_APP_API_ROOT}/assemblyfeed/` + params.id)
+    React.useEffect(() => {
+        var assembly_id
+        if(params.assembly_id && (params.assembly_id != 'latest'))
+        {
+            assembly_id = params.assembly_id;
+        }
+        else
+        {
+            var utcStr = new Date().toISOString();
+            assembly_id = utcStr.replace('-', '').replace('-', '').substring(0, 8);
+        }
+
+        axios.get(`${process.env.REACT_APP_API_ROOT}/assembly/` + assembly_id + `/feed`)
         .then(res => {
             const data = res.data.data;
             setFeedData(data);

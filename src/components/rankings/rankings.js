@@ -1,38 +1,54 @@
 import React from "react";
 import axios from 'axios';
 import styles from "./rankings.module.css"
+import { ResponsiveContainer, PieChart, Pie, Tooltip, Cell } from 'recharts';
 
-function sortByColumn(area, a,b)
-{ 
-    return parseFloat(b[area]['rating_value']) - parseFloat(a[area]['rating_value'])
+function sortByColumn(categoryID, a,b)
+{
+    var ASectorRating = a.ratings.find( element => element.categoryID == categoryID)
+    var BSectorRating = b.ratings.find( element => element.categoryID == categoryID)
+    if(parseFloat(BSectorRating.ratingValue) == parseFloat(ASectorRating.ratingValue))
+    {
+        return a.name.localeCompare(b.name)
+    }
+    else
+    {
+        return parseFloat(parseFloat(BSectorRating.ratingValue) - parseFloat(ASectorRating.ratingValue))
+    }
 }
 
 function Rankings() {
-    let [rankData, setrankData] = React.useState(null);
-    let [deficitNumber, setDeficit] = React.useState(null);
-    const [sortedColumn, setSortedColumn] = React.useState('Government Administration')
+    let [constituencyRatingData, setConstituencyRatingData] = React.useState(null);
+    let [constituencyRatingMetaData, setConstituencyRatingMetaData] = React.useState(null);
+    const [sortedColumn, setSortedColumn] = React.useState(9);
+    const [pageLoading, setPageLoading] = React.useState(false);
     
     React.useEffect(() => {
+        setPageLoading(true)
+        var UTCstr = new Date().toISOString();
+        var assembly_id = UTCstr.replace('-', '').replace('-', '').substring(0, 8)
 
-        axios.get(`${process.env.REACT_APP_API_ROOT}/leagueratings`)
+        axios.get(`${process.env.REACT_APP_API_ROOT}/constituency/rating?assemblyID=${assembly_id}`)
         .then(res => {
             const data = res.data.data;
-            setrankData(data);
-        })
-
-        axios.get(`${process.env.REACT_APP_API_ROOT}/deficit`)
-        .then(res => {
-            const data = res.data.data;
-            setDeficit(data);
+            const meta = res.data.meta
+            setConstituencyRatingMetaData(meta);
+            setConstituencyRatingData(data);
+            setPageLoading(false)
         })
         
     },[]);
 
+    if(pageLoading || !(constituencyRatingData && constituencyRatingMetaData))
+    {
+        return (<progress className="progress is-primary" max="100"></progress>)
+    }
+
     var rankingRows = []
-    if(rankData){
-        rankData.sort((a, b) => sortByColumn(sortedColumn, a, b));
-        rankData.forEach(row => {
-            rankingRows.push(<RankingRow key={`rank-${row['id']}`} data={row}/>)
+    if(constituencyRatingData){
+        constituencyRatingData.sort((a, b) => sortByColumn(sortedColumn, a, b));
+        constituencyRatingData.forEach(row => {
+            rankingRows.push(<RankingRow key={`rank-${row['id']}`} singleConstituencyData={row}/>)
         });
     }
 
@@ -42,7 +58,11 @@ function Rankings() {
                 <h3>Constituency Rankings by Government Sector</h3>
             </div>
             <div className="content has-text-centered">
-                <h4>Current Deficit: K {(deficitNumber * 1000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h4>
+                <h4 className="has-text-danger">Current Deficit: K {( parseFloat(constituencyRatingMetaData.deficit) * 1000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h4>
+            </div>
+            <div className="content has-text-centered">
+                <h4>Current Distribution of Government Spending</h4>
+                <SpendingPie spendingData={constituencyRatingMetaData.spending} />
             </div>
             <div className="table-container">
                 <table className="table is-hoverable">
@@ -51,12 +71,12 @@ function Rankings() {
                             <th>
                                 Constituency
                             </th>
-                            <th onClick={() => setSortedColumn('Welfare')}>
+                            <th onClick={() => setSortedColumn(1)}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-1.svg"} alt="Welfare" title="Welfare"/>
+                                        <img src={"/images/categories/cat-1.svg"} alt="Welfare & Pensions" title="Welfare & Pensions"/>
                                     </span>
-                                    {sortedColumn === 'Welfare' ?
+                                    {sortedColumn === 1 ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -66,12 +86,12 @@ function Rankings() {
                                     }
                                 </span>
                             </th>
-                            <th onClick={() => setSortedColumn('Health')}>
+                            <th onClick={() => setSortedColumn(2)}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-2.svg"} alt="Healthcare" title="Healthcare"/>
+                                        <img src={"/images/categories/cat-2.svg"} alt="Healthcare" title="Healthcare & Social Services"/>
                                     </span>
-                                    {sortedColumn === 'Health' ?
+                                    {sortedColumn === 2 ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -81,12 +101,12 @@ function Rankings() {
                                     }
                                 </span>
                             </th>
-                            <th onClick={() => setSortedColumn('Pensions')}>
+                            <th onClick={() => setSortedColumn(4)}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-3.svg"} alt="Pensions" title="Pensions" />
+                                        <img src={"/images/categories/cat-4.svg"} alt="Education" title="Education & Development" />
                                     </span>
-                                    {sortedColumn === 'Pensions' ?
+                                    {sortedColumn === 4 ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -96,12 +116,12 @@ function Rankings() {
                                     }
                                 </span>
                             </th>
-                            <th onClick={() => setSortedColumn('Education')}>
+                            <th onClick={() => setSortedColumn(5)}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-4.svg"} alt="Education" title="Education" />
+                                        <img src={"/images/categories/cat-5.svg"} alt="Defense" title="Defense & Diplomacy" />
                                     </span>
-                                    {sortedColumn === 'Education' ?
+                                    {sortedColumn === 5 ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -111,12 +131,12 @@ function Rankings() {
                                     }
                                 </span>
                             </th>
-                            <th onClick={() => setSortedColumn('Defense')}>
+                            <th onClick={() => setSortedColumn(6)}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-5.svg"} alt="Defense" title="Defense" />
+                                        <img src={"/images/categories/cat-6.svg"} alt="Transport" title="Transport & Infrastructure" />
                                     </span>
-                                    {sortedColumn === 'Defense' ?
+                                    {sortedColumn === 6 ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -126,12 +146,12 @@ function Rankings() {
                                     }
                                 </span>
                             </th>
-                            <th onClick={() => setSortedColumn('Transport')}>
+                            <th onClick={() => setSortedColumn(7)}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-6.svg"} alt="Transport" title="Transport" />
+                                        <img src={"/images/categories/cat-7.svg"} alt="Public Order & Safety" title="Security & Safety" />
                                     </span>
-                                    {sortedColumn === 'Transport' ?
+                                    {sortedColumn === 7 ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -141,27 +161,12 @@ function Rankings() {
                                     }
                                 </span>
                             </th>
-                            <th onClick={() => setSortedColumn('Public Order & Safety')}>
-                                <span className="icon-text is-flex-wrap-nowrap">
-                                    <span className="icon" >
-                                        <img src={"/images/categories/cat-7.svg"} alt="Public Order & Safety" title="Public Order & Safety" />
-                                    </span>
-                                    {sortedColumn === 'Public Order & Safety' ?
-                                        <span className="icon">
-                                            <i className="fas fa-angle-double-down"></i>
-                                        </span> :
-                                        <span className="icon">
-                                            <i className="fas fa-angle-up"></i>
-                                        </span> 
-                                    }
-                                </span>
-                            </th>
-                            <th onClick={() => setSortedColumn('Business & Industry')}>
+                            <th onClick={() => setSortedColumn(8)}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
                                         <img src={"/images/categories/cat-8.svg"} alt="Business & Industry" title="Business & Industry"/>
                                     </span>
-                                    {sortedColumn === 'Business & Industry' ?
+                                    {sortedColumn === 8 ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -171,12 +176,12 @@ function Rankings() {
                                     }
                                 </span>
                             </th>
-                            <th onClick={() => setSortedColumn('Housing & Utilities')}>
+                            <th onClick={() => setSortedColumn(10)}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
                                         <img src={"/images/categories/cat-10.svg"} alt="Housing & Utilities" title="Housing & Utilities" />
                                     </span>
-                                    {sortedColumn === 'Housing & Utilities' ?
+                                    {sortedColumn === 10 ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -186,12 +191,12 @@ function Rankings() {
                                     }
                                 </span>
                             </th>
-                            <th onClick={() => setSortedColumn('Culture')}>
+                            <th onClick={() => setSortedColumn(11)}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-11.svg"} alt="Culture" title="Culture" />
+                                        <img src={"/images/categories/cat-11.svg"} alt="Culture" title="Culture, Media, Recreation & Tourism" />
                                     </span>
-                                    {sortedColumn === 'Culture' ?
+                                    {sortedColumn === 11 ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -201,12 +206,12 @@ function Rankings() {
                                     }
                                 </span>
                             </th>
-                            <th onClick={() => setSortedColumn('Environment')}>
+                            <th onClick={() => setSortedColumn(12)}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-12.svg"} alt="Environment" title="Environment" />
+                                        <img src={"/images/categories/cat-12.svg"} alt="Environment" title="Environment & Sanitation Services" />
                                     </span>
-                                    {sortedColumn === 'Environment' ?
+                                    {sortedColumn === 12 ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -219,16 +224,16 @@ function Rankings() {
                             <th>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/religion/rel-2.png"} alt="Spending" title="Spending" />
+                                        <img src={"/images/categories/cat-13.svg"} alt="Spending" title="Treasury" />
                                     </span>
                                 </span>
                             </th>
-                            <th onClick={() => setSortedColumn('Government Administration')}>
+                            <th onClick={() => setSortedColumn(9)}>
                                 <span className="icon-text is-flex-wrap-nowrap">
                                     <span className="icon" >
-                                        <img src={"/images/categories/cat-9.svg"} alt="Overall"  title="Overall" />
+                                        <img src={"/images/categories/cat-9.svg"} alt="Overall"  title="Government Administration" />
                                     </span>
-                                    {sortedColumn === 'Government Administration' ?
+                                    {sortedColumn === 9 ?
                                         <span className="icon">
                                             <i className="fas fa-angle-double-down"></i>
                                         </span> :
@@ -249,36 +254,47 @@ function Rankings() {
     )
 }
 
-class RankingRow extends React.Component{
-    render() {
-        return(
-            <tr>
-                <td>{this.props.data['name']}</td>
-                <RatingCell data={this.props.data['Welfare']}/>
-                <RatingCell data={this.props.data['Health']}/>
-                <RatingCell data={this.props.data['Pensions']}/>
-                <RatingCell data={this.props.data['Education']}/>
-                <RatingCell data={this.props.data['Defense']}/>
-                <RatingCell data={this.props.data['Transport']}/>
-                <RatingCell data={this.props.data['Public Order & Safety']}/>
-                <RatingCell data={this.props.data['Business & Industry']}/>
-                <RatingCell data={this.props.data['Housing & Utilities']}/>
-                <RatingCell data={this.props.data['Culture']}/>
-                <RatingCell data={this.props.data['Environment']}/>
-                <SpendingCell data={this.props.data['Spending']}/>
-                <RankingCell data={this.props.data['Government Administration']}/>
-            </tr>
-        )
+function RankingRow({singleConstituencyData}){
+    var cells = []
+    var spendingCell
+    var rankingCell
+    
+    for(var sector of singleConstituencyData.ratings){
+        for(var categoryID of [1,2,4,5,6,7,8,10,11,12])
+        {
+            if(sector.categoryID == categoryID)
+            {
+                cells.push(
+                    <RatingCell ratingData={sector} />
+                )
+            }
+        }
+
+        if(sector.categoryID == 9)
+        {
+            rankingCell = <RankingCell ratingData={sector} />
+        }
+
+
     }
+
+    spendingCell = <SpendingCell constituencyRatingData={singleConstituencyData} />
+    
+    return(
+        <tr>
+            <td>{singleConstituencyData.name}</td>
+            {cells}
+            {spendingCell}
+            {rankingCell}
+        </tr>
+    )
 }
 
-function RatingCell(props){
+function RatingCell({ratingData}){
     var className = "";
-    var value = props.data['rating_value'] ;
-    var direction = props.data['rating_direction'] ;
-    if( props.data['rating_privatised']){
-        className += "has-background-grey-lighter";
-    }
+    var value = ratingData.ratingValue ;
+    var direction = ratingData.ratingDirection ;
+
     if( value < 25){
         className += " has-text-danger-dark";
     }
@@ -287,12 +303,12 @@ function RatingCell(props){
     }
 
     var icon;
-    if(direction === 'up'){
+    if(direction > 0){
         icon = (
             <i className="fas fa-angle-double-up has-text-success"></i>
         );
     }
-    if(direction === 'down'){
+    if(direction < 0){
         icon = (
             <i className="fas fa-angle-double-down has-text-danger"></i>
         );
@@ -308,42 +324,25 @@ function RatingCell(props){
     
 }
 
-function SpendingCell(props){
+function SpendingCell({constituencyRatingData}){
     var className;
-    var value = props.data['spending_daily'] ;
-    var direction = props.data['spending_direction'] ;
-    if( value < 0){
-        className = "has-text-success-dark"
-    }
-    else{
-        className = "has-text-danger-dark"
-    }
+    var expenditureSum = constituencyRatingData.ratings.reduce((partialSum, a) => partialSum + a.expenditureValue, 0);
+    var incomeSum = constituencyRatingData.ratings.reduce((partialSum, a) => partialSum + a.incomeValue, 0);
 
-    var icon;
-    if(direction === 'up'){
-        icon = (
-            <i className="fas fa-angle-double-up has-text-success"></i>
-        );
-    }
-    if(direction === 'down'){
-        icon = (
-            <i className="fas fa-angle-double-down has-text-danger"></i>
-        );
-    } 
     return (
         <td className={className + " " + styles.cellStyle}>
             <span>
-                K {(value * 1000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} {icon}
+                K {((parseFloat(expenditureSum) - parseFloat(incomeSum)) * 1000).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             </span>
         </td>)
     
 
 }
 
-function RankingCell(props){
+function RankingCell({ratingData}){
     var className
-    var value = props.data['rating_value'] ;
-    var direction = props.data['rating_direction'] ;
+    var value = ratingData.ratingValue ;
+    var direction = ratingData.ratingDirection ;
     if( value < 3){
         className = "has-text-danger"
     }
@@ -352,12 +351,12 @@ function RankingCell(props){
     }
 
     var icon;
-    if(direction === 'up'){
+    if(direction > 0){
         icon = (
             <i className="fas fa-angle-double-up has-text-success"></i>
         );
     }
-    if(direction === 'down'){
+    if(direction < 0){
         icon = (
             <i className="fas fa-angle-double-down has-text-danger"></i>
         );
@@ -373,5 +372,24 @@ function RankingCell(props){
     
 
 }
+
+
+function SpendingPie({spendingData})
+{
+    return (
+        <ResponsiveContainer width={"50%"} aspect={1}>
+            <PieChart>
+                <Pie
+                    data={spendingData}
+                    dataKey="expenditureValue"
+                    nameKey="categoryShortName"
+                >
+                </Pie>
+                <Tooltip />
+            </PieChart>
+        </ResponsiveContainer>
+    );
+};
+
 
 export default Rankings;

@@ -86,75 +86,49 @@ function determineSexuality(sex_id, sexuality_id){
     return image_path
 }
 
-export default function CandidateStats({data}) {
-    var attribute_data = []
-    attribute_data.push({
-        "attribute" : "Charisma",
-        "value" : data.attribute.charisma
-    })
-    attribute_data.push({
-        "attribute" : "Tenacity",
-        "value" : data.attribute.tenacity
-    })
-    attribute_data.push({
-        "attribute" : "Loyalty",
-        "value" : data.attribute.loyalty
-    })
-    attribute_data.push({
-        "attribute" : "Security",
-        "value" : data.attribute.baldness
-    })
-    attribute_data.push({
-        "attribute" : "Wit",
-        "value" : data.attribute.fear_of_bears
-    })
-    attribute_data.push({
-        "attribute" : "Socks",
-        "value" : data.attribute.socks
-    })
+export default function CandidateStats({candidateData, candidateCitizenData}) {
 
-    var statsTotal = parseInt(data.attribute.charisma)
-    + parseInt(data.attribute.tenacity)
-    + parseInt(data.attribute.loyalty)
-    + parseInt(data.attribute.baldness)
-    + parseInt(data.attribute.fear_of_bears)
-    + parseInt(data.attribute.socks)
+    function add(accumulator, a) {
+      return accumulator.value + a;
+    }
+    const statsTotal = candidateData.stats.reduce(add, 0); // with initial value to avoid when the array is empty
 
     var fillColor = '#E85050'
     if(statsTotal > 28) {fillColor = '#E8E850'}
     if(statsTotal > 30) {fillColor = '#52E850'}
+
     return(
         <>
         <div className="columns">
             <div className='column is-half'>
-                <h3 className="subtitle"><i>{data.profile.party_name}</i></h3>
+                <h3 className="subtitle"><i>{candidateData.party.name}</i></h3>
                 <figure className="image is-square">
                     <img src={`/images/${determineAvatar(
-                        data.sex.id,
-                        data.ethnicity.id,
-                        data.profile.age
+                        candidateCitizenData.sex.id,
+                        candidateCitizenData.ethnicity.id,
+                        candidateCitizenData.age
                         )}`} alt="candidate picture" />
                     <div className={"is-flex " + styles.avatarLowerIcon}>
                         <figure className="image is-48x48 is-flex">
                             <img src={`/images/${determineSexuality(
-                                data.sex.id,
-                                data.sexuality.id
-                            )}`} title={data.sexuality.name}/>
+                                candidateCitizenData.sex.id,
+                                candidateCitizenData.sexuality.id
+                            )}`} title={candidateCitizenData.sexuality.name}/>
                         </figure>
                         <figure className="image is-48x48 is-flex">
-                            <img src={`/images/industry/ind-${data.industry.id}.png`} title={data.industry.name}/>
+                            <img src={`/images/industry/ind-${candidateCitizenData.industry.id}.png`} title={candidateCitizenData.industry.name}/>
                         </figure>
                         <figure className="image is-48x48 is-flex">
-                            <img src={`/images/religion/rel-${data.religion.id}.png`} title={data.religion.name}/>
+                            <img src={`/images/religion/rel-${candidateCitizenData.religion.id}.png`} title={candidateCitizenData.religion.name}/>
                         </figure>
                     </div>
                 </figure>
             </div>
             <div className='column'>
                 <ResponsiveContainer width="100%" aspect={1}>
-                <RadarChart data={attribute_data} cx="50%" cy="50%" outerRadius="75%" >
+                <RadarChart data={candidateData.stats} cx="50%" cy="50%" outerRadius="75%" >
                     <PolarGrid outerRadius={10}/>
-                    <PolarAngleAxis dataKey="attribute" />
+                    <PolarAngleAxis dataKey="name" />
                     <PolarRadiusAxis angle={30} domain={[0, 10]}/>
                     <Radar
                         dataKey="value"
@@ -167,7 +141,7 @@ export default function CandidateStats({data}) {
                 </ResponsiveContainer>
             </div>
         </div>
-        <h3><i>"{data.profile.quote}" - {data.profile.last_name}</i></h3>
+        <h3><i>"{candidateData.quote}" - {candidateData.citizen.lastName}</i></h3>
         </>
     )
 }

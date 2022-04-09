@@ -20,7 +20,7 @@ export default function Codex() {
                             <li><a onClick={() => setSelectedIndex(1)}>Ethnicity</a></li>
                             <li><a onClick={() => setSelectedIndex(2)}>Industry</a></li>
                             <li><a onClick={() => setSelectedIndex(3)}>Religion</a></li>
-                            <li><a onClick={() => setSelectedIndex(4)}>Sex & Sexuality</a></li>
+                            <li><a onClick={() => setSelectedIndex(4)}>Gender, Sex & Sexuality</a></li>
                         </ul>
                         <p className="menu-label">
                             Parliament
