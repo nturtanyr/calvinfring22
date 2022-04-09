@@ -7,6 +7,7 @@ export default function AssemblyGrid({assemblyData}){
     var tiles = []
     
     if(assemblyData){
+        assemblyData.members.sort((a,b) => a.constituency.id - b.constituency.id)
         assemblyData.members.forEach( (object) =>{
             tiles.push(<AssemblyTile key={`tile-${object.constituency.id}`} tileData={object}/>)
             

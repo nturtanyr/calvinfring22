@@ -55,14 +55,14 @@ function Rankings() {
     return (
         <section className="section">
             <div className="content has-text-centered">
-                <h3>Constituency Rankings by Government Sector</h3>
+                <h3>Current Distribution of Government Spending</h3>
+                <SpendingPie spendingData={constituencyRatingMetaData.spending} />
             </div>
             <div className="content has-text-centered">
                 <h4 className="has-text-danger">Current Deficit: K {( parseFloat(constituencyRatingMetaData.deficit) * 1000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h4>
             </div>
             <div className="content has-text-centered">
-                <h4>Current Distribution of Government Spending</h4>
-                <SpendingPie spendingData={constituencyRatingMetaData.spending} />
+                <h3>Constituency Rankings by Government Sector</h3>
             </div>
             <div className="table-container">
                 <table className="table is-hoverable">
@@ -326,8 +326,8 @@ function RatingCell({ratingData}){
 
 function SpendingCell({constituencyRatingData}){
     var className;
-    var expenditureSum = constituencyRatingData.ratings.reduce((partialSum, a) => partialSum + a.expenditureValue, 0);
-    var incomeSum = constituencyRatingData.ratings.reduce((partialSum, a) => partialSum + a.incomeValue, 0);
+    var expenditureSum = constituencyRatingData.ratings.reduce((partialSum, a) => partialSum + parseFloat(a.expenditureValue), 0);
+    var incomeSum = constituencyRatingData.ratings.reduce((partialSum, a) => partialSum + parseFloat(a.incomeValue), 0);
 
     return (
         <td className={className + " " + styles.cellStyle}>
@@ -376,13 +376,26 @@ function RankingCell({ratingData}){
 
 function SpendingPie({spendingData})
 {
+    var expenditureSum = spendingData.reduce((partialSum, a) => partialSum + parseFloat(a.expenditureValue), 0);
+    for(var spending of spendingData)
+    {
+        spending['expenditureValueParsed'] = Math.round(100* (parseFloat(spending.expenditureValue) / expenditureSum))
+    }
+
+    const labelFormatter = (value) => {
+        return value + '%';
+    };
+
     return (
         <ResponsiveContainer width={"50%"} aspect={1}>
             <PieChart>
                 <Pie
+                    paddingAngle={5}
+                    innerRadius={60}
                     data={spendingData}
-                    dataKey="expenditureValue"
+                    dataKey="expenditureValueParsed"
                     nameKey="categoryShortName"
+                    label={{ formatter: labelFormatter }}
                 >
                 </Pie>
                 <Tooltip />
