@@ -7,7 +7,6 @@ export default function ConstituencyDemography({constituency_id}) {
     const params = useParams()
     let [demographyData, setDemographyData] = React.useState(null);
     const [selectedDemography, setSelectedDemography] = React.useState('ethnicity');
-  
     
     React.useEffect(() => {
         if(params.constituency_id)
@@ -32,7 +31,7 @@ export default function ConstituencyDemography({constituency_id}) {
                             <option value="ethnicity">Ethnicity</option>
                             <option value="religion">Religion</option>
                             <option value="industry">Industry</option>
-                            <option value="sex">Sex</option>
+                            <option value="gender">Gender</option>
                             <option value="sexuality">Sexuality</option>
                             <option value="age">Age</option>
                         </select>
@@ -47,9 +46,9 @@ export default function ConstituencyDemography({constituency_id}) {
                             <tr><th>Group</th><th>Percent</th></tr>
                         </thead>
                         <tbody>
-                        {demographyData[selectedDemography].map((entry) => {
+                        {demographyData[selectedDemography].map((entry, index) => {
                             return (
-                                <tr>
+                                <tr key={"demo-" + index}>
                                     <td>
                                         {entry.name}
                                     </td>
