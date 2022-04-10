@@ -9,14 +9,9 @@ function Assembly() {
     const [timer, setTime] = React.useState(null);
     const [gridData, setGridData] = React.useState(null);
 
-    var utcStr = new Date().toISOString();
-    var assembly_id = utcStr.replace('-', '').replace('-', '').substring(0, 8)
 
     React.useEffect(() => {
-        if(params.assembly_id && (params.assembly_id != 'latest'))
-        {
-            assembly_id = params.assembly_id
-        }
+        var assembly_id = params.assembly_id
 
         axios.get(`${process.env.REACT_APP_API_ROOT}/assembly/` + assembly_id)
         .then(res => {

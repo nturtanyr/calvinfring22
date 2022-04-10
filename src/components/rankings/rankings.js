@@ -25,10 +25,8 @@ function Rankings() {
     
     React.useEffect(() => {
         setPageLoading(true)
-        var UTCstr = new Date().toISOString();
-        var assembly_id = UTCstr.replace('-', '').replace('-', '').substring(0, 8)
 
-        axios.get(`${process.env.REACT_APP_API_ROOT}/constituency/rating?assemblyID=${assembly_id}`)
+        axios.get(`${process.env.REACT_APP_API_ROOT}/constituency/rating?assemblyID=latest`)
         .then(res => {
             const data = res.data.data;
             const meta = res.data.meta

@@ -28,16 +28,7 @@ export default function AssemblyFeed() {
       };
 
     React.useEffect(() => {
-        var assembly_id
-        if(params.assembly_id && (params.assembly_id != 'latest'))
-        {
-            assembly_id = params.assembly_id;
-        }
-        else
-        {
-            var utcStr = new Date().toISOString();
-            assembly_id = utcStr.replace('-', '').replace('-', '').substring(0, 8);
-        }
+        var assembly_id = params.assembly_id;
 
         axios.get(`${process.env.REACT_APP_API_ROOT}/assembly/` + assembly_id + `/feed`)
         .then(res => {

@@ -19,12 +19,6 @@ export default function ConstituencyElectionChart ({constituency_id, election_id
             election_id = params.election_id;
         }
 
-        if(election_id == 'latest')
-        {
-            var utcStr = new Date().toISOString();
-            election_id = utcStr.replace('-', '').replace('-', '').substring(0, 8);
-        }
-
         axios.get(`${process.env.REACT_APP_API_ROOT}/election/` + election_id + `?constituencyID=` + constituency_id)
         .then(res => {
             const data = res.data.data;
