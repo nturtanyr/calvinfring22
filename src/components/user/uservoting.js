@@ -17,14 +17,14 @@ export default function UserVoting({constituency_id}) {
     var tableRows = []
   
     React.useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_ROOT}/constituency/` + constituency_id + "/candidates")
+        axios.get(`${process.env.REACT_APP_API_ROOT}/candidate?constituencyID=` + constituency_id)
             .then(res => {
                 const data = res.data.data;
                 data.sort((a , b) => {
                     if(a.elected) { return -1 }
                     else if (b.elected) { return 1 }
                     else {
-                        return a.last_name.localeCompare(b.last_name);
+                        return a.citizen.lastName.localeCompare(b.citizen.lastName);
                     }
                 })
                 setCurrentConstituencyCandidates(data);
@@ -32,7 +32,7 @@ export default function UserVoting({constituency_id}) {
     },[]);
 
     React.useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_ROOT}/constituency/` + constituency_id + `/election/latest`)
+        axios.get(`${process.env.REACT_APP_API_ROOT}/election/latest`)
         .then(res => {
             const data = res.data.data;
             setElectionInProgress(data.active)
@@ -43,8 +43,8 @@ export default function UserVoting({constituency_id}) {
     {
         if(modalIsActive == '')
         {
-            setCurrentCandidateName(candidate.first_name + " " + candidate.last_name)
-            setCurrentCandidateId(candidate.candidate_id)
+            setCurrentCandidateName(candidate.citizen.firstName + " " + candidate.citizen.lastName)
+            setCurrentCandidateId(candidate.id)
             setModalIsActive('is-active')
         }
         else
@@ -104,7 +104,7 @@ export default function UserVoting({constituency_id}) {
                     </td>
                     <td>
                         <p>
-                            <Link to={"/election/latest/candidate/" + candidate.candidate_id}>{candidate.first_name} {candidate.last_name}</Link>
+                            <Link to={"/election/latest/candidate/" + candidate.id}>{candidate.citizen.firstName} {candidate.citizen.lastName}</Link>
                         </p>
                         <p>
                             <i className="is-hidden-mobile">{candidate.quote}</i>
@@ -118,7 +118,7 @@ export default function UserVoting({constituency_id}) {
                     <td></td>
                     <td>
                         <p>
-                            <Link to={"/election/latest/candidate/" + candidate.candidate_id}>{candidate.first_name} {candidate.last_name}</Link>
+                            <Link to={"/election/latest/candidate/" + candidate.id}>{candidate.citizen.firstName} {candidate.citizen.lastName}</Link>
                         </p>
                         <p>
                             <i className="is-hidden-mobile">{candidate.quote}</i>
@@ -142,7 +142,7 @@ export default function UserVoting({constituency_id}) {
                 buttonCell = <td><button className="button is-warning" onClick={() => showVoteConfirmation(candidate)}>Vote!</button></td>
             }
             
-            tableRows.push(<tr key={"can-" + candidate.candidate_id}>
+            tableRows.push(<tr key={"can-" + candidate.id}>
                 {nameCell}
                 {buttonCell}
             </tr>)
