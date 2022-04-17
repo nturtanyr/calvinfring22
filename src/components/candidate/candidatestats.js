@@ -9,24 +9,21 @@ import {
     ResponsiveContainer,
     Tooltip
   } from "recharts";
+import { IconCancelScheduleSend } from "@aws-amplify/ui-react";
 // Gonna need party_name. sex, ethnicity, age, industry, religion, sexuality, attributes
 
-function determineAvatar(sex_id, ethnicity_id, age){
+function determineAvatar(sexID, ethnicityID, ageGroupID){
     var image_path = "avatars/av-"
-    switch(sex_id)
+    if(sexID == 1)
     {
-        case 4:
-            image_path += "n";
-            break;
-        case 1:
-            image_path += "m";
-            break;
-        default:
-            image_path += "f";
-            break;
+        image_path += "m";
+    }
+    else
+    {
+        image_path += "f";
     }
 
-    switch(ethnicity_id)
+    switch(ethnicityID)
     {
         case 7:
             image_path +="a";
@@ -45,42 +42,23 @@ function determineAvatar(sex_id, ethnicity_id, age){
             break;
     }
 
-    if(sex_id != 4){
-        if(age > 70){
-            image_path += "o.png";
-        }else if(age > 40){
-            image_path += "m.png";
-        }else{
-            image_path += "y.png";
-        }
-    }
-    else{
-        image_path += ".png"
+    if(ageGroupID = 4){
+        image_path += "o.png";
+    }else if(ageGroupID = 3){
+        image_path += "m.png";
+    }else{
+        image_path += "y.png";
     }
 
     return image_path
 }
 
-function determineSexuality(sex_id, sexuality_id){
-    var image_path = "identity/sx-"
-    if(sexuality_id == 2){
-        if(sex_id == 4){
-            image_path += "4n"
-        }else if(sex_id == 1){
-            image_path += "2m"
-        }else{
-            image_path += "2f"
-        }
-    }else if(sexuality_id == 4){
-        if(sex_id == 4){
-            image_path += "4n"
-        }else if(sex_id == 1){
-            image_path += "4m"
-        }else{
-            image_path += "4f"
-        }
-    }else{
-        image_path += sexuality_id
+function determineSexuality(genderID, sexID, sexualityID){
+    var image_path = "identity/id-"
+    image_path += genderID
+    image_path += sexualityID
+    if([2,3,4].includes(sexualityID)){
+        image_path += sexID
     }
     image_path += ".png"
     return image_path
@@ -106,11 +84,12 @@ export default function CandidateStats({candidateData, candidateCitizenData}) {
                     <img src={`/images/${determineAvatar(
                         candidateCitizenData.sex.id,
                         candidateCitizenData.ethnicity.id,
-                        candidateCitizenData.age
+                        candidateCitizenData.ageGroup.id
                         )}`} alt="candidate picture" />
                     <div className={"is-flex " + styles.avatarLowerIcon}>
                         <figure className="image is-48x48 is-flex">
                             <img src={`/images/${determineSexuality(
+                                candidateCitizenData.gender.id,
                                 candidateCitizenData.sex.id,
                                 candidateCitizenData.sexuality.id
                             )}`} title={candidateCitizenData.sexuality.name}/>

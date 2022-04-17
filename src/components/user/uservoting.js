@@ -13,6 +13,7 @@ export default function UserVoting({constituency_id}) {
     const [currentCandidateName, setCurrentCandidateName] = React.useState(null)
     const [currentCandidateId, setCurrentCandidateId] = React.useState(null)
     const userHasVoted = useHasUserVoted();
+    const [voteInfoLoading, setVoteInfoLoading] = React.useState(true);
 
     var tableRows = []
   
@@ -32,10 +33,12 @@ export default function UserVoting({constituency_id}) {
     },[]);
 
     React.useEffect(() => {
+        setVoteInfoLoading(true);
         axios.get(`${process.env.REACT_APP_API_ROOT}/election/latest`)
         .then(res => {
             const data = res.data.data;
             setElectionInProgress(data.active)
+            setVoteInfoLoading(false);
         })
     },[]);
     
@@ -127,13 +130,16 @@ export default function UserVoting({constituency_id}) {
                 </>
             }
 
-            if(!electionInProgress)
+            if(voteInfoLoading)
+            {
+                buttonCell = <td><button className="button is-loading"></button></td>
+            } 
+            else if(!electionInProgress)
             {
                 buttonCell = <td><button className="button is-disabled">No election</button></td>
                 
             }
-            else 
-            if(userHasVoted)
+            else if(userHasVoted)
             {
                 buttonCell = <td><button className="button is-disabled">Vote cast</button></td>
             } 
