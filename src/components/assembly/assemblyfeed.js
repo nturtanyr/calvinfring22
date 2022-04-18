@@ -108,7 +108,7 @@ function AssemblyFeedTop({data}){
             break;
 
         case "discussion_start":
-            image_path = ("/images/constituency/con-" + data.constituency_id + ".svg");
+            image_path = ("/images/constituency/con-" + data.member.constituency.id + ".svg");
             break;
         default:
             image_path = '/images/assembly/assembly-voteBegin.svg';
