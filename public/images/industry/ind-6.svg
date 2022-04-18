@@ -12,11 +12,11 @@
    viewBox="0 0 128.0 128.0"
    version="1.1"
    id="SVGRoot"
-   sodipodi:docname="ind-11.svg"
+   sodipodi:docname="ind-6.svg"
    inkscape:version="1.0.2-2 (e86c870879, 2021-01-15)"
-   inkscape:export-filename="C:\Users\Stanley\Documents\Kalmany_Stack\calvinfring22\public\images\industry\ind-11.png"
-   inkscape:export-xdpi="96"
-   inkscape:export-ydpi="96">
+   inkscape:export-filename="C:\Users\Stanley\Documents\Kalmany_Stack\calvinfring22\public\images\industry\ind-12.png"
+   inkscape:export-xdpi="96.991699"
+   inkscape:export-ydpi="96.991699">
   <defs
      id="defs833">
     <marker
@@ -97,16 +97,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.6902135"
-     inkscape:cx="77.996734"
-     inkscape:cy="32.473976"
+     inkscape:zoom="5.21875"
+     inkscape:cx="85.178581"
+     inkscape:cy="68.203523"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="true"
      inkscape:window-width="1920"
      inkscape:window-height="1009"
-     inkscape:window-x="3832"
+     inkscape:window-x="1912"
      inkscape:window-y="-8"
      inkscape:window-maximized="1">
     <inkscape:grid
@@ -121,7 +121,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -129,35 +129,48 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <circle
-       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path3709"
-       sodipodi:type="arc"
-       sodipodi:cx="64"
-       sodipodi:cy="64"
-       sodipodi:rx="52"
-       sodipodi:ry="52"
-       sodipodi:start="0"
-       sodipodi:end="6.2708982"
-       sodipodi:open="true"
-       sodipodi:arc-type="arc"
-       d="M 116,64 A 52,52 0 0 1 64.159732,115.99975 52,52 0 0 1 12.000981,64.319463 52,52 0 0 1 63.52081,12.002208 52,52 0 0 1 115.99607,63.361087" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 16,108 v 8 h 52 v -8 z"
+       id="path4995"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       id="path4997"
+       style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 36 8 L 36 24 L 12 24 L 12 32 L 36 32 L 36 108 L 48 108 L 48 32 L 104 32 L 104 24 L 48 24 L 48 8 L 36 8 z " />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 16,32 V 48 H 28 V 32 Z"
+       id="path4999"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 100,32 V 52 L 88,64"
+       id="path5003"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 100,52 12,12"
+       id="path5005" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 84,64 h 32 V 84 H 84 Z"
+       id="path5007" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 84,64 32,20"
+       id="path5009" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 116,64 84,84"
+       id="path5011" />
     <path
        style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="M 40,32 V 96"
-       id="path3711" />
+       d="M 12,24 36,8"
+       id="path5018" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="M 52,32 V 96"
-       id="path3713"
-       sodipodi:nodetypes="cc" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="M 52,64 84,32"
-       id="path3725" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="M 56,60 88,96"
-       id="path3727" />
+       style="fill:none;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 48,8 56,16"
+       id="path5020" />
   </g>
 </svg>
