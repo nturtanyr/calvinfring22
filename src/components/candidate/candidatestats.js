@@ -57,7 +57,7 @@ function determineSexuality(genderID, sexID, sexualityID){
     var image_path = "identity/id-"
     image_path += genderID
     image_path += sexualityID
-    if([2,3,4].includes(sexualityID)){
+    if([2,3].includes(sexualityID)){
         image_path += sexID
     }
     image_path += ".png"
