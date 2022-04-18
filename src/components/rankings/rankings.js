@@ -1,7 +1,7 @@
 import React from "react";
 import axios from 'axios';
 import styles from "./rankings.module.css"
-import { ResponsiveContainer, PieChart, Pie, Tooltip, Cell } from 'recharts';
+import { ResponsiveContainer, PieChart, Pie, Tooltip, Cell, Legend } from 'recharts';
 
 function sortByColumn(categoryID, a,b)
 {
@@ -52,9 +52,13 @@ function Rankings() {
 
     return (
         <section className="section">
-            <div className="content has-text-centered">
-                <h3>Current Distribution of Government Spending</h3>
-                <SpendingPie spendingData={constituencyRatingMetaData.spending} />
+            <div className="columns is-centered">
+                <div className="column is-narrow">
+                    <div className="content has-text-centered">
+                        <h3>Today's Distribution of Government Spending</h3>
+                        <SpendingPie spendingData={constituencyRatingMetaData.spending} />
+                    </div>
+                </div>
             </div>
             <div className="content has-text-centered">
                 <h4 className="has-text-danger">Current Deficit: K {( parseFloat(constituencyRatingMetaData.deficit) * 1000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h4>
@@ -380,23 +384,40 @@ function SpendingPie({spendingData})
         spending['expenditureValueParsed'] = Math.round(100* (parseFloat(spending.expenditureValue) / expenditureSum))
     }
 
-    const labelFormatter = (value) => {
-        return value + '%';
-    };
+    var fillColors = {
+        "Welfare" : "#d47e53",
+        "Healthcare" : "#d45353",
+        "Education" : "#d4ad53",
+        "Foreign Affairs" : "#bcd453",
+        "Transport" : "#53d49a",
+        "Public Services" : "#5373d4",
+        "Industry" : "#53b6d4",
+        "Government" : "#a753d4",
+        "Communities" : "#d45382",
+        "CMRT" : "#d453a0",
+        "Environment" : "#6dd453",
+        "Treasury" : "#d4d253",
+        "Courts" : "#6b53d4"
+    }
 
     return (
-        <ResponsiveContainer width={"50%"} aspect={1}>
+        <ResponsiveContainer width={"100%"} aspect={1}>
             <PieChart>
                 <Pie
-                    paddingAngle={5}
-                    innerRadius={60}
+                    paddingAngle={1}
+                    innerRadius="10%"
                     data={spendingData}
                     dataKey="expenditureValueParsed"
                     nameKey="categoryShortName"
-                    label={{ formatter: labelFormatter }}
                 >
+                {
+                  spendingData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={fillColors[entry['categoryShortName']]}/>
+                  ))
+                }
                 </Pie>
                 <Tooltip />
+                <Legend />
             </PieChart>
         </ResponsiveContainer>
     );
