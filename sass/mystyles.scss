@@ -14,7 +14,7 @@ $red: #AD5271;
 $red-lighter: #CA8EA2;
 $purple: #6152AD;
 $purple-lighter: #988ECA;
-$cyan: #52AD8E;
+$cyan: #52ad8f;
 $cyan-lighter: #8ECAB5;
 $muck: #9EAD52;
 $muck-lighter: #C0CA8E;
@@ -39,3 +39,18 @@ $body-background-color: $blue-lightest;
 @import "../node_modules/bulma/sass/layout/_all.sass";
 @import "../node_modules/bulma/sass/grid/_all.sass";
 @import "../node_modules/bulma/sass/helpers/_all.sass";
+
+ :root, [data-amplify-theme] {
+    --amplify-colors-teal-100: hsl(160, 100%, 15%) !important;
+    --amplify-colors-teal-90: hsl(160, 50%, 25%) !important;
+    --amplify-colors-teal-80: hsl(160, 36%, 50%) !important;
+    --amplify-colors-teal-60: hsl(160, 50%, 50%) !important;
+    --amplify-colors-teal-40: hsl(160, 70%, 70%) !important;
+    --amplify-colors-teal-20: hsl(160, 75%, 85%) !important;
+    --amplify-colors-teal-10: hsl(160, 75%, 95%) !important;
+  }
+  
+  [data-amplify-authenticator] [data-amplify-router] {
+      box-shadow: none !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+  }
