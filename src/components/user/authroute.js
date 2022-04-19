@@ -45,7 +45,6 @@ export default function AuthenticatedRoute(){
 
                         return (
                             <>
-                                <Text className="content has-text-warning is-size-7"><p>You are now registering to vote as a citizen of Kalmany, so as to use the voting mechanism provided in the user area.</p><p>Currently, The Kalmany Electoral Commission has no means to verify you are a official citizen of Kalmany or if you are lying<sup>*</sup>. Therefore ask you input information as accurately as you can possibly afford.</p><p>We will not use your information for nefarious<sup>**</sup> ends.</p></Text>
                                 <Authenticator.SignUp.FormFields />
                                 <SelectField 
                                     label="Constituency"
@@ -57,6 +56,7 @@ export default function AuthenticatedRoute(){
                                         <option key={`con-${con.id}`} value={con.id}>{con.name}</option>
                                     )}
                                 </SelectField>
+                                <Text className="content has-text-warning is-size-7"><p>You are now registering to vote as a citizen of Kalmany, so as to use the voting mechanism<sup>*</sup> provided in the user area.</p><p>Currently, The Kalmany Electoral Commission has no means to verify you are a official citizen of Kalmany or if you are lying<sup>**</sup>. Therefore we ask you politely to input your information as accurately as you can possibly afford or wish to.</p><p>We will not/cannot use your information for nefarious<sup>***</sup> ends.</p></Text>
                             </>
                         );
                     },
