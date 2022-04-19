@@ -4,8 +4,16 @@ import { Amplify } from 'aws-amplify';
 import {
   Outlet
 } from "react-router-dom";
-import { Authenticator, useAuthenticator, SelectField } from '@aws-amplify/ui-react';
+import { Authenticator, useAuthenticator, SelectField, Text } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
+import { I18n } from 'aws-amplify';
+
+I18n.putVocabulariesForLanguage('en', {
+    'Sign In': 'Returning Citizen',
+    'Sign in': 'Log in',
+    'Create Account': 'Register as a Citizen',
+    'Create a new account': 'Citizen Registration',
+});
 
 Amplify.configure({
     aws_cognito_region: "eu-west-2",
@@ -37,6 +45,7 @@ export default function AuthenticatedRoute(){
 
                         return (
                             <>
+                                <Text className="content has-text-warning is-size-7"><p>You are now registering to vote as a citizen of Kalmany, so as to use the voting mechanism provided in the user area.</p><p>Currently, The Kalmany Electoral Commission has no means to verify you are a official citizen of Kalmany or if you are lying<sup>*</sup>. Therefore ask you input information as accurately as you can possibly afford.</p><p>We will not use your information for nefarious<sup>**</sup> ends.</p></Text>
                                 <Authenticator.SignUp.FormFields />
                                 <SelectField 
                                     label="Constituency"
