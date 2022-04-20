@@ -66,11 +66,12 @@ function determineSexuality(genderID, sexID, sexualityID){
 
 export default function CandidateStats({candidateData, candidateCitizenData}) {
 
-    function add(accumulator, a) {
-      return accumulator.value + a;
+    var statsTotal = 0
+    for(var statistic of candidateData.stats)
+    {
+        statsTotal += statistic.value
     }
-    const statsTotal = candidateData.stats.reduce(add, 0); // with initial value to avoid when the array is empty
-
+    console.log(statsTotal)
     var fillColor = '#E85050'
     if(statsTotal > 28) {fillColor = '#E8E850'}
     if(statsTotal > 30) {fillColor = '#52E850'}
