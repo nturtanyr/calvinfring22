@@ -71,7 +71,7 @@ export default function CandidateStats({candidateData, candidateCitizenData}) {
     {
         statsTotal += statistic.value
     }
-    console.log(statsTotal)
+    
     var fillColor = '#E85050'
     if(statsTotal > 28) {fillColor = '#E8E850'}
     if(statsTotal > 30) {fillColor = '#52E850'}
