@@ -41,11 +41,7 @@ export default function App() {
           </Route>
           <Route path="/assembly/:assembly_id" element={<Assembly />} />
           <Route path="/rankings" element={<Rankings />} />
-        </Route>
-        <Route element={<Layout color="red" />}>
           <Route path="/news" element={<News />} />
-        </Route>
-        <Route  element={<Layout color="cyan" />}>
           <Route path="/codex" element={<Codex />} />
           <Route element={<AuthenticatedRoute/>}>
             <Route path="/user" element={<UserPage signOut={signOut}/>}>
@@ -56,8 +52,6 @@ export default function App() {
               <Route path="election" element={<ConstituencyElectionChart constituency_id={user ? user.attributes['custom:constituency'] : 0} election_id="latest"/>} />
             </Route>
           </Route>
-        </Route>
-        <Route element={<Layout color="red" />}>
           <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>

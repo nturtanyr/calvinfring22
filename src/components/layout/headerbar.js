@@ -1,25 +1,28 @@
 import React from "react"
-import { NavLink } from "react-router-dom"
+import { NavLink, useLocation } from "react-router-dom"
 import TickerTape from "./tickertape"
 import styles from "./headerbar.module.css"
 import kec_logo from '../../images/keclogo.png';
 
-function HeaderBar(props) {
+function HeaderBar() {
     const [navbarShow, setNavbarShow] = React.useState('');
+    const [colorClass, setColorClass] = React.useState('');
+    let location = useLocation();
 
-    var colorClass
-    if(props.color == "red")
-    {
-        colorClass = "is-info"
-    }
-    else if(props.color == "cyan")
-    {
-        colorClass = "is-warning"
-    }
-    else
-    {
-        colorClass = "is-primary"
-    }
+    React.useEffect(() => {
+        if(location.pathname.match("\/news"))
+        {
+            setColorClass("is-info")
+        }
+        else if(location.pathname.match("\/codex") || location.pathname.match("\/user") )
+        {
+            setColorClass("is-warning")
+        }
+        else
+        {
+            setColorClass("is-primary")
+        }
+    }, [location]);
 
     function showNavbar()
     {
