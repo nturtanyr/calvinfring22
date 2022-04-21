@@ -14,6 +14,10 @@ function HeaderBar() {
         {
             setColorClass("is-info")
         }
+        else if(location.pathname.match("\/contact"))
+        {
+            setColorClass("is-link")
+        }
         else if(location.pathname.match("\/codex") || location.pathname.match("\/user") )
         {
             setColorClass("is-warning")
@@ -65,6 +69,9 @@ function HeaderBar() {
                             </NavLink>
                             <NavLink to="/codex" className="navbar-item" onClick={showNavbar}>
                                 Information
+                            </NavLink>
+                            <NavLink to="/contact" className="navbar-item" onClick={showNavbar}>
+                                Contact Us
                             </NavLink>
                             <div className="navbar-item">
                                 <div className="buttons">

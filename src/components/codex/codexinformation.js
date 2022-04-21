@@ -116,7 +116,7 @@ export default function CodexInformation(props) {
                 <div className="content is-scrollable">
                     <h3>Elections</h3>
                     <hr/>
-                    <p>Every citizen is given the opportunity to vote for a candidate in their constituency to represent them in parliament. Elections take place from 09:00 until 17:00 each day, apart from Sundays; the day of rest. Any citizen is welcome to stand for election, as long as they bring an application form to the Kalmany Electoral Commission Headquarters in Kalbal. A candidate will be asked to provide a standard list of policies as part of their platform that they may take to parliament.</p>
+                    <p>Every citizen is given the opportunity to vote for a candidate in their constituency to represent them in parliament. Elections take place from 09:00 UTC until 17:00 UTC each day, apart from Sundays; the day of rest. Any citizen is welcome to stand for election, as long as they bring an application form to the Kalmany Electoral Commission Headquarters in Kalbal. A candidate will be asked to provide a standard list of policies as part of their platform that they may take to parliament.</p>
                     <p>Election results are determined by first past the post - the candidate with the most votes is elected as a member of parliament. If there is a tie, the Kalmany Electoral Commission is dedicated to providing a solution as and when this occurs.</p>
                 </div>
             )
@@ -127,7 +127,7 @@ export default function CodexInformation(props) {
                     <h3>Assemblies</h3>
                     <hr/>
                     <p>The central system of legislation within the Kalmany government still stands as it did almost two-hundred years ago, when the Great Sock Fire of 1812 took place. Since then, the parliament of Kalmany has operated using twenty-four elected members to represent each of Kalmany's twenty-four constituencies.</p>
-                    <p>When elected, at 19:00 each day, the parliament will convene at an assembly, where each member is given the opportunity to bring one policy to parliament that they wish to enact.</p>
+                    <p>When elected, at 19:00 UTC each day, the parliament will convene at an assembly, where each member is given the opportunity to bring one policy to parliament that they wish to enact.</p>
                     <p>Each member is then given an opportunity to discuss the policy, but they may only speak by throwing a sock into a ceremonial ring. Discussing a policy is vital to persuading the other members of parliament to the cause.</p>
                     <p>Once the discussion has completed, all members will be allowed to vote For, Against, or Abstain. If the votes For can reached quorum of a third of parliament, and outnumber the votes Against, the policy will be passed and implemented by the government.</p>
                 </div>

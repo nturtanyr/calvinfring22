@@ -22,6 +22,7 @@ import AuthenticatedRoute from './components/user/authroute';
 import NotFound from './components/util/notfound';
 import ConstituencyNav from './components/layout/constituencynavigator';
 import CandidateNav from './components/candidate/candidatenav';
+import ContactUs from './components/contact/contactus';
 import Maintenance from './components/util/maintenance';
 
 
@@ -31,18 +32,18 @@ export default function App() {
       <Routes>
         <Route element={<Layout color="blue" />}>
           <Route path="/" element={<Home />} />
-          <Route path="/election/:election_id/candidate/:candidate_id" element={<CandidateNav/>}>
-          </Route>
+          <Route path="/news" element={<News />} />
           <Route path="/demography" element={<ConstituencyNav 
             title={"Demography Information"} 
             subtitle={"We provide this interface to easily observe the demography statistics of all constituencies."}
           />}>
             <Route path=":constituency_id" element={<ConstituencyDemography constituency_id={0}/>} />
           </Route>
+          <Route path="/election/:election_id/candidate/:candidate_id" element={<CandidateNav/>} />
           <Route path="/assembly/:assembly_id" element={<Assembly />} />
           <Route path="/rankings" element={<Rankings />} />
-          <Route path="/news" element={<News />} />
           <Route path="/codex" element={<Codex />} />
+          <Route path="/contact" element={<ContactUs />} />
           <Route element={<AuthenticatedRoute/>}>
             <Route path="/user" element={<UserPage signOut={signOut}/>}>
               <Route index element={<UserProfile/>} />
