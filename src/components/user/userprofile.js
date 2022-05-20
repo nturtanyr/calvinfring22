@@ -14,7 +14,8 @@ export default function UserProfile(){
         axios.get(`${process.env.REACT_APP_API_ROOT}/constituency/` + user.attributes['custom:constituency'])
         .then(res => {
             const data = res.data.data;
-            setHomeConstituency(data[0]);
+            console.log(data)
+            setHomeConstituency(data);
             setLoadingState(false);
         })
     },[user]);
@@ -23,6 +24,7 @@ export default function UserProfile(){
     {
         return (<progress className="progress is-primary" max="100"></progress>) 
     }
+
     return (
         <div className="content">
             <h2>{user.attributes.name}</h2>
