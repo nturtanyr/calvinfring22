@@ -11,8 +11,8 @@ export default function ConstituencyNav({title, subtitle}) {
     React.useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_ROOT}/constituency`)
         .then(res => {
-            const constituencyList = res.data.data;
-            setConstituencyList(constituencyList);
+            const constituencyListResponse = res.data.data;
+            setConstituencyList(constituencyListResponse.sort((a,b) => a.name.localeCompare(b.name)));
         })
         
     },[]);

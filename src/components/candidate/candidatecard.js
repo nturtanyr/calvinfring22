@@ -60,7 +60,7 @@ export default function CandidateCard({selectedConstituency}) {
             <header className="card-header">
                 <p className={"card-header-title" + (pageLoading ? " has-text-grey-light" : "")}>
                  {
-                     pageLoading && <span class="loader"></span>
+                     pageLoading && <span className="loader"></span>
                  }&nbsp;{candidateData && candidateData.citizen.firstName} {candidateData && candidateData.citizen.lastName} 
                 </p>
                 <div className={"dropdown is-right is-hidden-desktop " + showCardOptions}>

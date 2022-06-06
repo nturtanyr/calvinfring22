@@ -93,7 +93,7 @@ export default function ContactUs() {
 
                     <div className="field">
                         <label className="label">Email (If you wish to receive a response)</label>
-                        <p class={"help is-danger " + (invalidEmail ? "" : "is-hidden ")}>This email is invalid</p>
+                        <p className={"help is-danger " + (invalidEmail ? "" : "is-hidden ")}>This email is invalid</p>
                         <div className="control has-icons-left">
                             <input ref={emailInput} className={"input " + (invalidEmail ? "is-danger " : "")} type="email" placeholder="Email" onChange={handleChange}/>
                             <span className="icon is-small is-left">
@@ -104,7 +104,7 @@ export default function ContactUs() {
 
                     <div className="field">
                         <label className="label">How can we help?</label>
-                        <p class={"help is-danger " + (invalidMessage ? "" : "is-hidden ")}>Please provide a message</p>
+                        <p className={"help is-danger " + (invalidMessage ? "" : "is-hidden ")}>Please provide a message</p>
                         <div className="control">
                             <textarea  ref={messageInput} className={"textarea " + (invalidMessage ? "is-danger " : "")} placeholder="Is this all just a big conspiracy? etc..."  onChange={handleChange}></textarea>
                         </div>
