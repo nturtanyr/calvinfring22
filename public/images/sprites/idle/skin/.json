@@ -1,0 +1,60 @@
+﻿{
+    "meta":  {
+                 "scale":  "1",
+                 "format":  "RGBA8888",
+                 "version":  "1.0",
+                 "size":  {
+                              "h":  null,
+                              "w":  null
+                          },
+                 "image":  "human.png"
+             },
+    "frames":  {
+                   "idle_skin__00.png":  {
+                                             "trimmed":  false,
+                                             "spriteSourceSize":  {
+                                                                      "y":  0,
+                                                                      "w":  null,
+                                                                      "h":  null,
+                                                                      "x":  0
+                                                                  },
+                                             "sourceSize":  {
+                                                                "h":  null,
+                                                                "w":  null
+                                                            },
+                                             "rotated":  false,
+                                             "frame":  {
+                                                           "y":  0,
+                                                           "w":  null,
+                                                           "h":  null,
+                                                           "x":  0
+                                                       }
+                                         },
+                   "idle_skin__-01.png":  {
+                                              "trimmed":  false,
+                                              "spriteSourceSize":  {
+                                                                       "y":  0,
+                                                                       "w":  null,
+                                                                       "h":  null,
+                                                                       "x":  0
+                                                                   },
+                                              "sourceSize":  {
+                                                                 "h":  null,
+                                                                 "w":  null
+                                                             },
+                                              "rotated":  false,
+                                              "frame":  {
+                                                            "y":  0,
+                                                            "w":  null,
+                                                            "h":  null,
+                                                            "x":  0
+                                                        }
+                                          }
+               },
+    "animations":  {
+                       "idle":  [
+                                    "idle_skin__00.png",
+                                    "idle_skin__-01.png"
+                                ]
+                   }
+}

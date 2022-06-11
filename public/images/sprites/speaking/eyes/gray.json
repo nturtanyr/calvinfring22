@@ -1,0 +1,438 @@
+﻿{
+    "meta":  {
+                 "scale":  "1",
+                 "format":  "RGBA8888",
+                 "version":  "1.0",
+                 "size":  {
+                              "h":  128,
+                              "w":  2560
+                          },
+                 "image":  "gray.png"
+             },
+    "frames":  {
+                   "speaking_eyes_gray_00.png":  {
+                                                     "trimmed":  false,
+                                                     "spriteSourceSize":  {
+                                                                              "y":  0,
+                                                                              "w":  128,
+                                                                              "h":  128,
+                                                                              "x":  0
+                                                                          },
+                                                     "sourceSize":  {
+                                                                        "h":  128,
+                                                                        "w":  128
+                                                                    },
+                                                     "rotated":  false,
+                                                     "frame":  {
+                                                                   "y":  0,
+                                                                   "w":  128,
+                                                                   "h":  128,
+                                                                   "x":  0
+                                                               }
+                                                 },
+                   "speaking_eyes_gray_01.png":  {
+                                                     "trimmed":  false,
+                                                     "spriteSourceSize":  {
+                                                                              "y":  0,
+                                                                              "w":  128,
+                                                                              "h":  128,
+                                                                              "x":  128
+                                                                          },
+                                                     "sourceSize":  {
+                                                                        "h":  128,
+                                                                        "w":  128
+                                                                    },
+                                                     "rotated":  false,
+                                                     "frame":  {
+                                                                   "y":  0,
+                                                                   "w":  128,
+                                                                   "h":  128,
+                                                                   "x":  128
+                                                               }
+                                                 },
+                   "speaking_eyes_gray_02.png":  {
+                                                     "trimmed":  false,
+                                                     "spriteSourceSize":  {
+                                                                              "y":  0,
+                                                                              "w":  128,
+                                                                              "h":  128,
+                                                                              "x":  256
+                                                                          },
+                                                     "sourceSize":  {
+                                                                        "h":  128,
+                                                                        "w":  128
+                                                                    },
+                                                     "rotated":  false,
+                                                     "frame":  {
+                                                                   "y":  0,
+                                                                   "w":  128,
+                                                                   "h":  128,
+                                                                   "x":  256
+                                                               }
+                                                 },
+                   "speaking_eyes_gray_03.png":  {
+                                                     "trimmed":  false,
+                                                     "spriteSourceSize":  {
+                                                                              "y":  0,
+                                                                              "w":  128,
+                                                                              "h":  128,
+                                                                              "x":  384
+                                                                          },
+                                                     "sourceSize":  {
+                                                                        "h":  128,
+                                                                        "w":  128
+                                                                    },
+                                                     "rotated":  false,
+                                                     "frame":  {
+                                                                   "y":  0,
+                                                                   "w":  128,
+                                                                   "h":  128,
+                                                                   "x":  384
+                                                               }
+                                                 },
+                   "speaking_eyes_gray_04.png":  {
+                                                     "trimmed":  false,
+                                                     "spriteSourceSize":  {
+                                                                              "y":  0,
+                                                                              "w":  128,
+                                                                              "h":  128,
+                                                                              "x":  512
+                                                                          },
+                                                     "sourceSize":  {
+                                                                        "h":  128,
+                                                                        "w":  128
+                                                                    },
+                                                     "rotated":  false,
+                                                     "frame":  {
+                                                                   "y":  0,
+                                                                   "w":  128,
+                                                                   "h":  128,
+                                                                   "x":  512
+                                                               }
+                                                 },
+                   "speaking_eyes_gray_05.png":  {
+                                                     "trimmed":  false,
+                                                     "spriteSourceSize":  {
+                                                                              "y":  0,
+                                                                              "w":  128,
+                                                                              "h":  128,
+                                                                              "x":  640
+                                                                          },
+                                                     "sourceSize":  {
+                                                                        "h":  128,
+                                                                        "w":  128
+                                                                    },
+                                                     "rotated":  false,
+                                                     "frame":  {
+                                                                   "y":  0,
+                                                                   "w":  128,
+                                                                   "h":  128,
+                                                                   "x":  640
+                                                               }
+                                                 },
+                   "speaking_eyes_gray_06.png":  {
+                                                     "trimmed":  false,
+                                                     "spriteSourceSize":  {
+                                                                              "y":  0,
+                                                                              "w":  128,
+                                                                              "h":  128,
+                                                                              "x":  768
+                                                                          },
+                                                     "sourceSize":  {
+                                                                        "h":  128,
+                                                                        "w":  128
+                                                                    },
+                                                     "rotated":  false,
+                                                     "frame":  {
+                                                                   "y":  0,
+                                                                   "w":  128,
+                                                                   "h":  128,
+                                                                   "x":  768
+                                                               }
+                                                 },
+                   "speaking_eyes_gray_07.png":  {
+                                                     "trimmed":  false,
+                                                     "spriteSourceSize":  {
+                                                                              "y":  0,
+                                                                              "w":  128,
+                                                                              "h":  128,
+                                                                              "x":  896
+                                                                          },
+                                                     "sourceSize":  {
+                                                                        "h":  128,
+                                                                        "w":  128
+                                                                    },
+                                                     "rotated":  false,
+                                                     "frame":  {
+                                                                   "y":  0,
+                                                                   "w":  128,
+                                                                   "h":  128,
+                                                                   "x":  896
+                                                               }
+                                                 },
+                   "speaking_eyes_gray_08.png":  {
+                                                     "trimmed":  false,
+                                                     "spriteSourceSize":  {
+                                                                              "y":  0,
+                                                                              "w":  128,
+                                                                              "h":  128,
+                                                                              "x":  1024
+                                                                          },
+                                                     "sourceSize":  {
+                                                                        "h":  128,
+                                                                        "w":  128
+                                                                    },
+                                                     "rotated":  false,
+                                                     "frame":  {
+                                                                   "y":  0,
+                                                                   "w":  128,
+                                                                   "h":  128,
+                                                                   "x":  1024
+                                                               }
+                                                 },
+                   "speaking_eyes_gray_09.png":  {
+                                                     "trimmed":  false,
+                                                     "spriteSourceSize":  {
+                                                                              "y":  0,
+                                                                              "w":  128,
+                                                                              "h":  128,
+                                                                              "x":  1152
+                                                                          },
+                                                     "sourceSize":  {
+                                                                        "h":  128,
+                                                                        "w":  128
+                                                                    },
+                                                     "rotated":  false,
+                                                     "frame":  {
+                                                                   "y":  0,
+                                                                   "w":  128,
+                                                                   "h":  128,
+                                                                   "x":  1152
+                                                               }
+                                                 },
+                   "speaking_eyes_gray_10.png":  {
+                                                     "trimmed":  false,
+                                                     "spriteSourceSize":  {
+                                                                              "y":  0,
+                                                                              "w":  128,
+                                                                              "h":  128,
+                                                                              "x":  1280
+                                                                          },
+                                                     "sourceSize":  {
+                                                                        "h":  128,
+                                                                        "w":  128
+                                                                    },
+                                                     "rotated":  false,
+                                                     "frame":  {
+                                                                   "y":  0,
+                                                                   "w":  128,
+                                                                   "h":  128,
+                                                                   "x":  1280
+                                                               }
+                                                 },
+                   "speaking_eyes_gray_11.png":  {
+                                                     "trimmed":  false,
+                                                     "spriteSourceSize":  {
+                                                                              "y":  0,
+                                                                              "w":  128,
+                                                                              "h":  128,
+                                                                              "x":  1408
+                                                                          },
+                                                     "sourceSize":  {
+                                                                        "h":  128,
+                                                                        "w":  128
+                                                                    },
+                                                     "rotated":  false,
+                                                     "frame":  {
+                                                                   "y":  0,
+                                                                   "w":  128,
+                                                                   "h":  128,
+                                                                   "x":  1408
+                                                               }
+                                                 },
+                   "speaking_eyes_gray_12.png":  {
+                                                     "trimmed":  false,
+                                                     "spriteSourceSize":  {
+                                                                              "y":  0,
+                                                                              "w":  128,
+                                                                              "h":  128,
+                                                                              "x":  1536
+                                                                          },
+                                                     "sourceSize":  {
+                                                                        "h":  128,
+                                                                        "w":  128
+                                                                    },
+                                                     "rotated":  false,
+                                                     "frame":  {
+                                                                   "y":  0,
+                                                                   "w":  128,
+                                                                   "h":  128,
+                                                                   "x":  1536
+                                                               }
+                                                 },
+                   "speaking_eyes_gray_13.png":  {
+                                                     "trimmed":  false,
+                                                     "spriteSourceSize":  {
+                                                                              "y":  0,
+                                                                              "w":  128,
+                                                                              "h":  128,
+                                                                              "x":  1664
+                                                                          },
+                                                     "sourceSize":  {
+                                                                        "h":  128,
+                                                                        "w":  128
+                                                                    },
+                                                     "rotated":  false,
+                                                     "frame":  {
+                                                                   "y":  0,
+                                                                   "w":  128,
+                                                                   "h":  128,
+                                                                   "x":  1664
+                                                               }
+                                                 },
+                   "speaking_eyes_gray_14.png":  {
+                                                     "trimmed":  false,
+                                                     "spriteSourceSize":  {
+                                                                              "y":  0,
+                                                                              "w":  128,
+                                                                              "h":  128,
+                                                                              "x":  1792
+                                                                          },
+                                                     "sourceSize":  {
+                                                                        "h":  128,
+                                                                        "w":  128
+                                                                    },
+                                                     "rotated":  false,
+                                                     "frame":  {
+                                                                   "y":  0,
+                                                                   "w":  128,
+                                                                   "h":  128,
+                                                                   "x":  1792
+                                                               }
+                                                 },
+                   "speaking_eyes_gray_15.png":  {
+                                                     "trimmed":  false,
+                                                     "spriteSourceSize":  {
+                                                                              "y":  0,
+                                                                              "w":  128,
+                                                                              "h":  128,
+                                                                              "x":  1920
+                                                                          },
+                                                     "sourceSize":  {
+                                                                        "h":  128,
+                                                                        "w":  128
+                                                                    },
+                                                     "rotated":  false,
+                                                     "frame":  {
+                                                                   "y":  0,
+                                                                   "w":  128,
+                                                                   "h":  128,
+                                                                   "x":  1920
+                                                               }
+                                                 },
+                   "speaking_eyes_gray_16.png":  {
+                                                     "trimmed":  false,
+                                                     "spriteSourceSize":  {
+                                                                              "y":  0,
+                                                                              "w":  128,
+                                                                              "h":  128,
+                                                                              "x":  2048
+                                                                          },
+                                                     "sourceSize":  {
+                                                                        "h":  128,
+                                                                        "w":  128
+                                                                    },
+                                                     "rotated":  false,
+                                                     "frame":  {
+                                                                   "y":  0,
+                                                                   "w":  128,
+                                                                   "h":  128,
+                                                                   "x":  2048
+                                                               }
+                                                 },
+                   "speaking_eyes_gray_17.png":  {
+                                                     "trimmed":  false,
+                                                     "spriteSourceSize":  {
+                                                                              "y":  0,
+                                                                              "w":  128,
+                                                                              "h":  128,
+                                                                              "x":  2176
+                                                                          },
+                                                     "sourceSize":  {
+                                                                        "h":  128,
+                                                                        "w":  128
+                                                                    },
+                                                     "rotated":  false,
+                                                     "frame":  {
+                                                                   "y":  0,
+                                                                   "w":  128,
+                                                                   "h":  128,
+                                                                   "x":  2176
+                                                               }
+                                                 },
+                   "speaking_eyes_gray_18.png":  {
+                                                     "trimmed":  false,
+                                                     "spriteSourceSize":  {
+                                                                              "y":  0,
+                                                                              "w":  128,
+                                                                              "h":  128,
+                                                                              "x":  2304
+                                                                          },
+                                                     "sourceSize":  {
+                                                                        "h":  128,
+                                                                        "w":  128
+                                                                    },
+                                                     "rotated":  false,
+                                                     "frame":  {
+                                                                   "y":  0,
+                                                                   "w":  128,
+                                                                   "h":  128,
+                                                                   "x":  2304
+                                                               }
+                                                 },
+                   "speaking_eyes_gray_19.png":  {
+                                                     "trimmed":  false,
+                                                     "spriteSourceSize":  {
+                                                                              "y":  0,
+                                                                              "w":  128,
+                                                                              "h":  128,
+                                                                              "x":  2432
+                                                                          },
+                                                     "sourceSize":  {
+                                                                        "h":  128,
+                                                                        "w":  128
+                                                                    },
+                                                     "rotated":  false,
+                                                     "frame":  {
+                                                                   "y":  0,
+                                                                   "w":  128,
+                                                                   "h":  128,
+                                                                   "x":  2432
+                                                               }
+                                                 }
+               },
+    "animations":  {
+                       "speaking":  [
+                                        "speaking_eyes_gray_00.png",
+                                        "speaking_eyes_gray_01.png",
+                                        "speaking_eyes_gray_02.png",
+                                        "speaking_eyes_gray_03.png",
+                                        "speaking_eyes_gray_04.png",
+                                        "speaking_eyes_gray_05.png",
+                                        "speaking_eyes_gray_06.png",
+                                        "speaking_eyes_gray_07.png",
+                                        "speaking_eyes_gray_08.png",
+                                        "speaking_eyes_gray_09.png",
+                                        "speaking_eyes_gray_10.png",
+                                        "speaking_eyes_gray_11.png",
+                                        "speaking_eyes_gray_12.png",
+                                        "speaking_eyes_gray_13.png",
+                                        "speaking_eyes_gray_14.png",
+                                        "speaking_eyes_gray_15.png",
+                                        "speaking_eyes_gray_16.png",
+                                        "speaking_eyes_gray_17.png",
+                                        "speaking_eyes_gray_18.png",
+                                        "speaking_eyes_gray_19.png"
+                                    ]
+                   }
+}

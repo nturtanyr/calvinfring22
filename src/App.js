@@ -33,6 +33,7 @@ import CodexElections from './components/codex/codexElections';
 import CodexRankings from './components/codex/codexRankings';
 import CodexDefault from './components/codex/codexDefault';
 import CodexConstituency from './components/codex/codexConstituency';
+import BluHouse from './components/animation/bluehouse';
 
 
 export default function App() {
@@ -41,6 +42,7 @@ export default function App() {
       <Routes>
         <Route element={<Layout color="blue" />}>
           <Route path="/" element={<Home />} />
+          <Route path="/bluhouse" element={<BluHouse />} />
           <Route path="/news" element={<News />} />
           <Route path="/demography" element={<ConstituencyNav 
             title={"Demography Information"} 

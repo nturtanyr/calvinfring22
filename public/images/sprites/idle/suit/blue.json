@@ -1,0 +1,417 @@
+{
+    "meta":  {
+                 "scale":  "1",
+                 "format":  "RGBA8888",
+                 "version":  "1.0",
+                 "size":  {
+                              "h":  128,
+                              "w":  2432
+                          },
+                 "image":  "blue.png"
+             },
+    "frames":  {
+                   "idle_suit_00.png":  {
+                                            "trimmed":  false,
+                                            "spriteSourceSize":  {
+                                                                     "y":  0,
+                                                                     "w":  128,
+                                                                     "h":  128,
+                                                                     "x":  0
+                                                                 },
+                                            "sourceSize":  {
+                                                               "h":  128,
+                                                               "w":  128
+                                                           },
+                                            "rotated":  false,
+                                            "frame":  {
+                                                          "y":  0,
+                                                          "w":  128,
+                                                          "h":  128,
+                                                          "x":  0
+                                                      }
+                                        },
+                   "idle_suit_01.png":  {
+                                            "trimmed":  false,
+                                            "spriteSourceSize":  {
+                                                                     "y":  0,
+                                                                     "w":  128,
+                                                                     "h":  128,
+                                                                     "x":  128
+                                                                 },
+                                            "sourceSize":  {
+                                                               "h":  128,
+                                                               "w":  128
+                                                           },
+                                            "rotated":  false,
+                                            "frame":  {
+                                                          "y":  0,
+                                                          "w":  128,
+                                                          "h":  128,
+                                                          "x":  128
+                                                      }
+                                        },
+                   "idle_suit_02.png":  {
+                                            "trimmed":  false,
+                                            "spriteSourceSize":  {
+                                                                     "y":  0,
+                                                                     "w":  128,
+                                                                     "h":  128,
+                                                                     "x":  256
+                                                                 },
+                                            "sourceSize":  {
+                                                               "h":  128,
+                                                               "w":  128
+                                                           },
+                                            "rotated":  false,
+                                            "frame":  {
+                                                          "y":  0,
+                                                          "w":  128,
+                                                          "h":  128,
+                                                          "x":  256
+                                                      }
+                                        },
+                   "idle_suit_03.png":  {
+                                            "trimmed":  false,
+                                            "spriteSourceSize":  {
+                                                                     "y":  0,
+                                                                     "w":  128,
+                                                                     "h":  128,
+                                                                     "x":  384
+                                                                 },
+                                            "sourceSize":  {
+                                                               "h":  128,
+                                                               "w":  128
+                                                           },
+                                            "rotated":  false,
+                                            "frame":  {
+                                                          "y":  0,
+                                                          "w":  128,
+                                                          "h":  128,
+                                                          "x":  384
+                                                      }
+                                        },
+                   "idle_suit_04.png":  {
+                                            "trimmed":  false,
+                                            "spriteSourceSize":  {
+                                                                     "y":  0,
+                                                                     "w":  128,
+                                                                     "h":  128,
+                                                                     "x":  512
+                                                                 },
+                                            "sourceSize":  {
+                                                               "h":  128,
+                                                               "w":  128
+                                                           },
+                                            "rotated":  false,
+                                            "frame":  {
+                                                          "y":  0,
+                                                          "w":  128,
+                                                          "h":  128,
+                                                          "x":  512
+                                                      }
+                                        },
+                   "idle_suit_05.png":  {
+                                            "trimmed":  false,
+                                            "spriteSourceSize":  {
+                                                                     "y":  0,
+                                                                     "w":  128,
+                                                                     "h":  128,
+                                                                     "x":  640
+                                                                 },
+                                            "sourceSize":  {
+                                                               "h":  128,
+                                                               "w":  128
+                                                           },
+                                            "rotated":  false,
+                                            "frame":  {
+                                                          "y":  0,
+                                                          "w":  128,
+                                                          "h":  128,
+                                                          "x":  640
+                                                      }
+                                        },
+                   "idle_suit_06.png":  {
+                                            "trimmed":  false,
+                                            "spriteSourceSize":  {
+                                                                     "y":  0,
+                                                                     "w":  128,
+                                                                     "h":  128,
+                                                                     "x":  768
+                                                                 },
+                                            "sourceSize":  {
+                                                               "h":  128,
+                                                               "w":  128
+                                                           },
+                                            "rotated":  false,
+                                            "frame":  {
+                                                          "y":  0,
+                                                          "w":  128,
+                                                          "h":  128,
+                                                          "x":  768
+                                                      }
+                                        },
+                   "idle_suit_07.png":  {
+                                            "trimmed":  false,
+                                            "spriteSourceSize":  {
+                                                                     "y":  0,
+                                                                     "w":  128,
+                                                                     "h":  128,
+                                                                     "x":  896
+                                                                 },
+                                            "sourceSize":  {
+                                                               "h":  128,
+                                                               "w":  128
+                                                           },
+                                            "rotated":  false,
+                                            "frame":  {
+                                                          "y":  0,
+                                                          "w":  128,
+                                                          "h":  128,
+                                                          "x":  896
+                                                      }
+                                        },
+                   "idle_suit_08.png":  {
+                                            "trimmed":  false,
+                                            "spriteSourceSize":  {
+                                                                     "y":  0,
+                                                                     "w":  128,
+                                                                     "h":  128,
+                                                                     "x":  1024
+                                                                 },
+                                            "sourceSize":  {
+                                                               "h":  128,
+                                                               "w":  128
+                                                           },
+                                            "rotated":  false,
+                                            "frame":  {
+                                                          "y":  0,
+                                                          "w":  128,
+                                                          "h":  128,
+                                                          "x":  1024
+                                                      }
+                                        },
+                   "idle_suit_09.png":  {
+                                            "trimmed":  false,
+                                            "spriteSourceSize":  {
+                                                                     "y":  0,
+                                                                     "w":  128,
+                                                                     "h":  128,
+                                                                     "x":  1152
+                                                                 },
+                                            "sourceSize":  {
+                                                               "h":  128,
+                                                               "w":  128
+                                                           },
+                                            "rotated":  false,
+                                            "frame":  {
+                                                          "y":  0,
+                                                          "w":  128,
+                                                          "h":  128,
+                                                          "x":  1152
+                                                      }
+                                        },
+                   "idle_suit_10.png":  {
+                                            "trimmed":  false,
+                                            "spriteSourceSize":  {
+                                                                     "y":  0,
+                                                                     "w":  128,
+                                                                     "h":  128,
+                                                                     "x":  1280
+                                                                 },
+                                            "sourceSize":  {
+                                                               "h":  128,
+                                                               "w":  128
+                                                           },
+                                            "rotated":  false,
+                                            "frame":  {
+                                                          "y":  0,
+                                                          "w":  128,
+                                                          "h":  128,
+                                                          "x":  1280
+                                                      }
+                                        },
+                   "idle_suit_11.png":  {
+                                            "trimmed":  false,
+                                            "spriteSourceSize":  {
+                                                                     "y":  0,
+                                                                     "w":  128,
+                                                                     "h":  128,
+                                                                     "x":  1408
+                                                                 },
+                                            "sourceSize":  {
+                                                               "h":  128,
+                                                               "w":  128
+                                                           },
+                                            "rotated":  false,
+                                            "frame":  {
+                                                          "y":  0,
+                                                          "w":  128,
+                                                          "h":  128,
+                                                          "x":  1408
+                                                      }
+                                        },
+                   "idle_suit_12.png":  {
+                                            "trimmed":  false,
+                                            "spriteSourceSize":  {
+                                                                     "y":  0,
+                                                                     "w":  128,
+                                                                     "h":  128,
+                                                                     "x":  1536
+                                                                 },
+                                            "sourceSize":  {
+                                                               "h":  128,
+                                                               "w":  128
+                                                           },
+                                            "rotated":  false,
+                                            "frame":  {
+                                                          "y":  0,
+                                                          "w":  128,
+                                                          "h":  128,
+                                                          "x":  1536
+                                                      }
+                                        },
+                   "idle_suit_13.png":  {
+                                            "trimmed":  false,
+                                            "spriteSourceSize":  {
+                                                                     "y":  0,
+                                                                     "w":  128,
+                                                                     "h":  128,
+                                                                     "x":  1664
+                                                                 },
+                                            "sourceSize":  {
+                                                               "h":  128,
+                                                               "w":  128
+                                                           },
+                                            "rotated":  false,
+                                            "frame":  {
+                                                          "y":  0,
+                                                          "w":  128,
+                                                          "h":  128,
+                                                          "x":  1664
+                                                      }
+                                        },
+                   "idle_suit_14.png":  {
+                                            "trimmed":  false,
+                                            "spriteSourceSize":  {
+                                                                     "y":  0,
+                                                                     "w":  128,
+                                                                     "h":  128,
+                                                                     "x":  1792
+                                                                 },
+                                            "sourceSize":  {
+                                                               "h":  128,
+                                                               "w":  128
+                                                           },
+                                            "rotated":  false,
+                                            "frame":  {
+                                                          "y":  0,
+                                                          "w":  128,
+                                                          "h":  128,
+                                                          "x":  1792
+                                                      }
+                                        },
+                   "idle_suit_15.png":  {
+                                            "trimmed":  false,
+                                            "spriteSourceSize":  {
+                                                                     "y":  0,
+                                                                     "w":  128,
+                                                                     "h":  128,
+                                                                     "x":  1920
+                                                                 },
+                                            "sourceSize":  {
+                                                               "h":  128,
+                                                               "w":  128
+                                                           },
+                                            "rotated":  false,
+                                            "frame":  {
+                                                          "y":  0,
+                                                          "w":  128,
+                                                          "h":  128,
+                                                          "x":  1920
+                                                      }
+                                        },
+                   "idle_suit_16.png":  {
+                                            "trimmed":  false,
+                                            "spriteSourceSize":  {
+                                                                     "y":  0,
+                                                                     "w":  128,
+                                                                     "h":  128,
+                                                                     "x":  2048
+                                                                 },
+                                            "sourceSize":  {
+                                                               "h":  128,
+                                                               "w":  128
+                                                           },
+                                            "rotated":  false,
+                                            "frame":  {
+                                                          "y":  0,
+                                                          "w":  128,
+                                                          "h":  128,
+                                                          "x":  2048
+                                                      }
+                                        },
+                   "idle_suit_17.png":  {
+                                            "trimmed":  false,
+                                            "spriteSourceSize":  {
+                                                                     "y":  0,
+                                                                     "w":  128,
+                                                                     "h":  128,
+                                                                     "x":  2176
+                                                                 },
+                                            "sourceSize":  {
+                                                               "h":  128,
+                                                               "w":  128
+                                                           },
+                                            "rotated":  false,
+                                            "frame":  {
+                                                          "y":  0,
+                                                          "w":  128,
+                                                          "h":  128,
+                                                          "x":  2176
+                                                      }
+                                        },
+                   "idle_suit_18.png":  {
+                                            "trimmed":  false,
+                                            "spriteSourceSize":  {
+                                                                     "y":  0,
+                                                                     "w":  128,
+                                                                     "h":  128,
+                                                                     "x":  2304
+                                                                 },
+                                            "sourceSize":  {
+                                                               "h":  128,
+                                                               "w":  128
+                                                           },
+                                            "rotated":  false,
+                                            "frame":  {
+                                                          "y":  0,
+                                                          "w":  128,
+                                                          "h":  128,
+                                                          "x":  2304
+                                                      }
+                                        }
+               },
+    "animations":  {
+                       "idle":  [
+                                    "idle_suit_00.png",
+                                    "idle_suit_01.png",
+                                    "idle_suit_02.png",
+                                    "idle_suit_03.png",
+                                    "idle_suit_04.png",
+                                    "idle_suit_05.png",
+                                    "idle_suit_06.png",
+                                    "idle_suit_07.png",
+                                    "idle_suit_08.png",
+                                    "idle_suit_09.png",
+                                    "idle_suit_10.png",
+                                    "idle_suit_11.png",
+                                    "idle_suit_12.png",
+                                    "idle_suit_13.png",
+                                    "idle_suit_14.png",
+                                    "idle_suit_15.png",
+                                    "idle_suit_16.png",
+                                    "idle_suit_17.png",
+                                    "idle_suit_18.png"
+                                ]
+                   }
+}
