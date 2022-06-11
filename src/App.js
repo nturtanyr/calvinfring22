@@ -24,6 +24,15 @@ import ConstituencyNav from './components/layout/constituencynavigator';
 import CandidateNav from './components/candidate/candidatenav';
 import ContactUs from './components/contact/contactus';
 import Maintenance from './components/util/maintenance';
+import CodexEthnicity from './components/codex/codexEthnicity';
+import CodexIndustry from './components/codex/codexIndustry';
+import CodexReligion from './components/codex/codexReligion';
+import CodexGSS from './components/codex/codexGSS';
+import CodexAssemblies from './components/codex/codexAssemblies';
+import CodexElections from './components/codex/codexElections';
+import CodexRankings from './components/codex/codexRankings';
+import CodexDefault from './components/codex/codexDefault';
+import CodexConstituency from './components/codex/codexConstituency';
 
 
 export default function App() {
@@ -42,7 +51,18 @@ export default function App() {
           <Route path="/election/:election_id/candidate/:candidate_id" element={<CandidateNav/>} />
           <Route path="/assembly/:assembly_id" element={<Assembly />} />
           <Route path="/rankings" element={<Rankings />} />
-          <Route path="/codex" element={<Codex />} />
+          <Route path="/codex" element={<Codex />} >
+            <Route path="ethnicity" element={<CodexEthnicity />} />
+            <Route path="industry" element={<CodexIndustry />} />
+            <Route path="religion" element={<CodexReligion />} />
+            <Route path="gss" element={<CodexGSS />} />
+            <Route path="assemblies" element={<CodexAssemblies />} />
+            <Route path="elections" element={<CodexElections />} />
+            <Route path="rankings" element={<CodexRankings />} />
+            <Route path="constituency/:constituency_id" element={<CodexConstituency />} />
+            <Route path="*" element={<CodexDefault />} />
+
+          </Route>
           <Route path="/contact" element={<ContactUs />} />
           <Route element={<AuthenticatedRoute/>}>
             <Route path="/user" element={<UserPage signOut={signOut}/>}>

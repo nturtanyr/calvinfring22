@@ -1,8 +1,9 @@
 import React from "react";
-import CodexInformation from "./codexinformation";
+import { Outlet } from "react-router-dom";
+import CodexMenu from "./codexMenu";
 
 export default function Codex() {
-    const [selected_index, setSelectedIndex] = React.useState(0)
+    const [modalActive, setModalActive] = React.useState("");
 
     return(
         <section className="section">
@@ -11,30 +12,28 @@ export default function Codex() {
                 <p>To visitors of Kalmany, we welcome you to our humble nation, and ask that you pick up after your pets, treat our people with respect, and keep an open mind as the Kalmans are very opinionated.</p>
             </div>
             <div className="columns">
-                <div className="column is-one-quarter">
-                    <aside className="menu">
-                        <p className="menu-label">
-                            Citizens
-                        </p>
-                        <ul className="menu-list">
-                            <li><a onClick={() => setSelectedIndex(1)}>Ethnicity</a></li>
-                            <li><a onClick={() => setSelectedIndex(2)}>Industry</a></li>
-                            <li><a onClick={() => setSelectedIndex(3)}>Religion</a></li>
-                            <li><a onClick={() => setSelectedIndex(4)}>Gender, Sex & Sexuality</a></li>
-                        </ul>
-                        <p className="menu-label">
-                            Parliament
-                        </p>
-                        <ul className="menu-list">
-                            <li><a onClick={() => setSelectedIndex(5)}>Elections</a></li>
-                            <li><a onClick={() => setSelectedIndex(6)}>Assemblies</a></li>
-                            <li><a onClick={() => setSelectedIndex(7)}>Rankings</a></li>
-                        </ul>
-                    </aside>
+                <div className="is-hidden-tablet is-clickable">
+                    <a role="button" className="navbar-burger is-pulled-left" onClick={() => setModalActive("is-active")}>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                <div className="column is-one-quarter is-hidden-mobile">
+                    <CodexMenu />
                 </div>
                 <div className="column">
-                    <CodexInformation identifier={selected_index}/>
+                    <Outlet />
                 </div>
+            </div>
+            <div className={"modal " + modalActive} onClick={() => setModalActive("")}>
+                <div className="modal-background"></div>
+                <div className="modal-content">
+                    <div className="box">
+                        <CodexMenu/>
+                    </div>
+                </div>
+                <button className="modal-close is-large" onClick={() => setModalActive("")}></button>
             </div>
         </section>
     )

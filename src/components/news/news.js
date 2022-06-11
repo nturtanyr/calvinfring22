@@ -70,10 +70,11 @@ function News() {
 
 function NewsArticleMain(props){
     const [contentHidden, setContentHidden] = React.useState('is-hidden-mobile')
-
     if(!props.data){return <article>Data error</article>}
+    var newsDate = new Date(props.data.datetime);
     return(
         <article className="tile is-child notification">
+        <p className="is-italic">{newsDate.toLocaleString("en-GB", {day: "numeric",month: "short",year: "numeric"})}</p>
         <p className="title">{props.data.title}</p>
         <p className="subtitle">{props.data.subtitle}</p>
         <figure className={"image is-4by3 " + contentHidden}>
@@ -96,10 +97,11 @@ function NewsArticleMain(props){
 function NewsArticleSub(props){
 
     if(!props.data){return <article>Data error</article>}
+    var newsDate = new Date(props.data.datetime);
     return(
         <article className="tile is-child notification">
             <p className="title is-4">{props.data.title}</p>
-            <p className="subtitle is-6">{props.subtitle}</p>
+            <p className="subtitle is-6">{newsDate.toLocaleString("en-GB", {day: "numeric",month: "short",year: "numeric"})}</p>
             <div className="content">
                 {ReactHtmlParser(props.data.short_content || '')}
             </div>
