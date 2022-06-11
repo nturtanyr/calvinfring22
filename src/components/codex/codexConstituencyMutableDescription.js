@@ -186,13 +186,7 @@ export default function CodexConstituencyMutableDescription({name, description, 
 
     return (
         <div className="content">
-            
             <p>{description}</p>
-            <p>{mutableTextRegion}</p>
-            <p>{mutableTextDanger}</p>
-            <p>{mutableTextFamilies}</p>
-            <p>{mutableTextProtection}</p>
-            <p>{mutableTextOther}</p>
         </div>
             
     )

@@ -4,21 +4,6 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import CodexConstituencyMutableDescription from "./codexConstituencyMutableDescription";
 
-function getIcon(id){
-    switch(id){
-        case 1 :
-            return <i className="fas fa-place-of-worship"></i>
-        case 2 :
-            return <i className="fas fa-skull-cow"></i>
-        case 3 :
-            return <i className="fas fa-building"></i>
-        case 4 :
-            return <i className="fas fa-shield-alt"></i>
-        default:
-            return <i className="fas fa-question"></i>
-    }
-}
-
 export default function CodexConstituency() {
     const params = useParams();
     const [pageLoading, setPageLoading] = React.useState(false);
@@ -58,7 +43,7 @@ export default function CodexConstituency() {
             <h5>
                 <span className="icon-text">
                     <span className="icon">
-                        {getIcon(mon.id)}
+                        <i className={"fas " + mon.icon}></i>
                     </span>
                     <span>{mon.name}</span>
                 </span>
@@ -78,9 +63,20 @@ export default function CodexConstituency() {
 
     return (
         <div className="content is-scrollable">
-            <h3>{constituencyData.name}</h3>
-            <hr/>
-            <CodexConstituencyMutableDescription name={constituencyData.name} description={constituencyData.description} attributes={constituencyData.attributes}/>
+            <div className="columns">
+                <div className="column is-narrow">
+                    <figure className="image is-128x128 m-3">
+                        <img src={`/images/constituency/shield_${constituencyData.id}.png`} alt={constituencyData.name} />
+                    </figure>
+                </div>
+                <div className="column">
+                    <span> 
+                        <h1>{constituencyData.name}</h1>
+                    </span>
+                    <hr/>
+                    <CodexConstituencyMutableDescription name={constituencyData.name} description={constituencyData.description} attributes={constituencyData.attributes}/>
+                </div>
+            </div>
             <div className="content">
                 <h4>Points of Interest</h4>
                 <hr />
