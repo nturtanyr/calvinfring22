@@ -114,9 +114,12 @@ function NewsArticleEditorial(props){
     const [contentHidden, setContentHidden] = React.useState('is-hidden-mobile')
 
     if(!props.data){return <article>Data error</article>}
+
+    var newsDate = new Date(props.data.datetime);
     return(
     <article className="tile is-child notification">
         <div className="content">
+            <p className="is-italic">{newsDate.toLocaleString("en-GB", {day: "numeric",month: "short",year: "numeric"})}</p>
             <p className="title is-4">EDITORIAL: {props.data.title}</p>
             <p className="subtitle is-6"><i>{props.data.subtitle}</i></p>
             <div className={"content " + contentHidden}>
